@@ -34,4 +34,21 @@ public class RegistrationController {
         return userObj;
     }
 
+
+    @PostMapping("/login")
+    public UserModel loginUser(@RequestBody UserModel userModel) throws Exception {
+        String tempEmail = userModel.getEmail();
+        String tempPassword = userModel.getPassword();
+
+        UserModel userObj = null;
+
+        if(tempEmail != null && tempPassword != null) {
+            userObj = userService.fetchUserByEmailAndPassword(tempEmail, tempPassword);
+        }
+        if(userObj == null) {
+            throw new Exception("Bad credentials");
+        }
+        return userObj;
+    }
+
 }

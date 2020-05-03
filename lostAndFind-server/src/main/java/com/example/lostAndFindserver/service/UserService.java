@@ -19,4 +19,8 @@ public class UserService {
         return registrationRepository.findByEmail(emailId);
     }
 
+    public UserModel fetchUserByEmailAndPassword(String emailId, String password) {
+        return registrationRepository.findByEmailAndPassword(emailId, password);
+    }
+
 }
