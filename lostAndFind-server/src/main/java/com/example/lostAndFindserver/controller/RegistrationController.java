@@ -17,6 +17,7 @@ public class RegistrationController {
     @Autowired
     private UserService userService;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/register")
     public UserModel registerUser(@RequestBody UserModel userModel) throws Exception{
 
@@ -35,7 +36,8 @@ public class RegistrationController {
     }
 
 
-    @PostMapping("/login")
+    @PostMapping("/authenticate")
+    @CrossOrigin(origins = "http://localhost:4200")
     public UserModel loginUser(@RequestBody UserModel userModel) throws Exception {
         String tempEmail = userModel.getEmail();
         String tempPassword = userModel.getPassword();
