@@ -22,10 +22,10 @@ export class AuthenticationService {
     return this.http.post(AppConfig.BASE_URL + 'register', user, { headers: headers }).pipe();
   }
 
-  authenticateUser(user: { username: string; password: string; }): Observable<any> {
+  authenticateUser(user: User): Observable<any> {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    return this.http.post<any>(AppConfig.BASE_URL + 'RegistrationController/authenticate', user, { headers: headers }).pipe();
+    return this.http.post(AppConfig.BASE_URL + 'authenticate', user, { headers: headers }).pipe();
   }
 
 }

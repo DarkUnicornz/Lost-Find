@@ -12,8 +12,8 @@ export class LoginComponent implements OnInit {
 
   user = new User();
 
-  username: string;
-  password: string;
+  // username: string;
+  // password: string;
 
   constructor(
     private authService: AuthenticationService,
@@ -24,10 +24,7 @@ export class LoginComponent implements OnInit {
 
   onLoginSubmit() {
     console.log('Login button');
-    this.authService.authenticateUser ({
-      username: this.username,
-      password: this.password,
-    }).subscribe((res) => {
+    this.authService.authenticateUser(this.user).subscribe((res) => {
       console.log('fgsgdhs');
       if (res['success']) {
         console.log('response res');

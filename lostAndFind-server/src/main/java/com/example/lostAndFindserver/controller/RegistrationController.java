@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class RegistrationController {
 
@@ -17,8 +18,9 @@ public class RegistrationController {
     @Autowired
     private UserService userService;
 
-    @CrossOrigin(origins = "http://localhost:4200")
+
     @PostMapping("/register")
+    @CrossOrigin(origins = "http://localhost:4200")
     public UserModel registerUser(@RequestBody UserModel userModel) throws Exception{
 
         String tempEmail = userModel.getEmail();
@@ -48,7 +50,7 @@ public class RegistrationController {
             userObj = userService.fetchUserByEmailAndPassword(tempEmail, tempPassword);
         }
         if(userObj == null) {
-            throw new Exception("Bad credentials");
+            throw new Exception("Bad credentials****");
         }
         return userObj;
     }
