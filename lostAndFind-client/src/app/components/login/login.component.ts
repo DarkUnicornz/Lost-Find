@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgFlashMessageService } from 'ng-flash-messages';
+import { Router } from '@angular/router';
 
 import { AuthenticationService } from './../../services/authentication.service';
 import { User } from './../../models/user.model';
@@ -10,28 +12,50 @@ import { User } from './../../models/user.model';
 })
 export class LoginComponent implements OnInit {
 
-  user = new User();
+  // user = new User();
 
-  // username: string;
-  // password: string;
+  email: string;
+  password: string;
 
   constructor(
     private authService: AuthenticationService,
+    private ngFlashMessageService: NgFlashMessageService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
   }
 
   onLoginSubmit() {
-    console.log('Login button');
-    this.authService.authenticateUser(this.user).subscribe((res) => {
-      console.log('fgsgdhs');
-      if (res['success']) {
-        console.log('response res');
+    this.authService.authenticateUser({
+      email: this.email,
+      password: this.password,
+    }).subscribe( (res) => {
+      // console.log(res);
+      if (res) {
+        this.ngFlashMessageService.showFlashMessage({
+          messages: ['Login success'],
+          dismissible: true,
+          timeout: 3000,
+          type: 'success'
+        });
+        setTimeout(() => {
+          this.router.navigate(['']);
+        },
+        3000);
+
       } else {
-        console.log('Error in hear');
+        this.ngFlashMessageService.showFlashMessage({
+          messages: ['xxxxxx'],
+          dismissible: true,
+          timeout: 3000,
+          type: 'danger'
+        });
+        setTimeout(() => {
+          this.router.navigate(['/register']);
+        },
+        3000);
       }
-      console.log('Wrong syntax');
     });
   }
 
