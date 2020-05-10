@@ -50,7 +50,7 @@ public class RegistrationController {
             userObj = userService.fetchUserByEmailAndPassword(tempEmail, tempPassword);
         }
         if(userObj == null) {
-            throw new Exception("Bad credentials****");
+            throw new Exception("Bad credentials");
         }
         return userObj;
     }

@@ -31,7 +31,8 @@ export class LoginComponent implements OnInit {
       email: this.email,
       password: this.password,
     }).subscribe( (res) => {
-      // console.log(res);
+      console.log(res);
+      console.log(this.email);
       if (res) {
         this.ngFlashMessageService.showFlashMessage({
           messages: ['Login success'],
@@ -44,9 +45,9 @@ export class LoginComponent implements OnInit {
         },
         3000);
 
-      } else {
+      } else if (this.email === undefined && this.password === undefined) {
         this.ngFlashMessageService.showFlashMessage({
-          messages: ['xxxxxx'],
+          messages: ['Fill all Feilds'],
           dismissible: true,
           timeout: 3000,
           type: 'danger'
@@ -55,6 +56,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/register']);
         },
         3000);
+        console.log('error');
       }
     });
   }
