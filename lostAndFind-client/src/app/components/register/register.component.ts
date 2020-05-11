@@ -12,6 +12,7 @@ import { AuthenticationService } from './../../services/authentication.service';
 })
 export class RegisterComponent implements OnInit {
 
+  id: string;
   username: string;
   email: string;
   password: string;
@@ -29,6 +30,7 @@ export class RegisterComponent implements OnInit {
 
   onRegisterSubmit() {
     const user = {
+      id: this.id,
       username: this.username,
       email: this.email,
       password: this.password,
@@ -36,7 +38,7 @@ export class RegisterComponent implements OnInit {
 
     // register user
     this.authService.registerUser(user).subscribe( (res) => {
-      if (res['success']) {
+      if (res) {
         this.ngFlashMessageService.showFlashMessage({
           messages: ['You are now registered'],
           dismissible: true,

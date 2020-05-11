@@ -12,9 +12,16 @@
         <span class="bg-light">OR</span>
       </p>
 
-      <!-- <ng-flash-message></ng-flash-message> -->
+      <ng-flash-message></ng-flash-message>
 
       <form (submit)="onRegisterSubmit()">
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+          </div>
+          <input name="id" [(ngModel)]="id" class="form-control" placeholder="Id" type="text">
+        </div> <!-- form-group// -->
+
         <div class="form-group input-group">
           <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
