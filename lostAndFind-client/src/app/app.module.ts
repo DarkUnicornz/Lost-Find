@@ -12,6 +12,10 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 
+// services
+import { AuthenticationService } from './services/authentication.service';
+import { ValidateService } from './services/validate.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +31,10 @@ import { LoginComponent } from './components/login/login.component';
     HttpClientModule,
     NgFlashMessagesModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    AuthenticationService,
+    ValidateService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

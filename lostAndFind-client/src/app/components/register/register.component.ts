@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgFlashMessageService } from 'ng-flash-messages';
 import { Router } from '@angular/router';
 
-import { User } from './../../models/user.model';
+// import { User } from './../../models/user.model';
 import { AuthenticationService } from './../../services/authentication.service';
+import { ValidateService } from './../../services/validate.service';
 
 @Component({
   selector: 'app-register',
@@ -23,6 +24,7 @@ export class RegisterComponent implements OnInit {
     private authService: AuthenticationService,
     private ngFlashMessageService: NgFlashMessageService,
     private router: Router,
+    private validateService: ValidateService,
   ) { }
 
   ngOnInit() {
@@ -35,6 +37,38 @@ export class RegisterComponent implements OnInit {
       email: this.email,
       password: this.password,
     };
+
+    // required fields
+    if (!this.validateService.validateRegister(user)) {
+      // console.log('please fill in all filds');
+      this.ngFlashMessageService.showFlashMessage({
+        // Array of messages each will be displayed in new line
+        messages: ['please fill in all filds'],
+        // Whether the flash can be dismissed by the user defaults to false
+        dismissible: true,
+        // Time after which the flash disappears defaults to 2000ms
+        timeout: 3000,
+        // Type of flash message, it defaults to info and success, warning, danger types can also be used
+        type: 'danger'
+      });
+      return false;
+    }
+
+    // validate email
+    if (!this.validateService.validateEmail(user.email)) {
+      // console.log('please use a valied email');
+      this.ngFlashMessageService.showFlashMessage({
+        // Array of messages each will be displayed in new line
+        messages: ['please use a valied email'],
+        // Whether the flash can be dismissed by the user defaults to false
+        dismissible: true,
+        // Time after which the flash disappears defaults to 2000ms
+        timeout: 3000,
+        // Type of flash message, it defaults to info and success, warning, danger types can also be used
+        type: 'danger'
+      });
+      return false;
+    }
 
     // register user
     this.authService.registerUser(user).subscribe( (res) => {
