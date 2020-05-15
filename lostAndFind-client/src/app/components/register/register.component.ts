@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgFlashMessageService } from 'ng-flash-messages';
 import { Router } from '@angular/router';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 // import { User } from './../../models/user.model';
 import { AuthenticationService } from './../../services/authentication.service';
@@ -25,6 +26,7 @@ export class RegisterComponent implements OnInit {
     private ngFlashMessageService: NgFlashMessageService,
     private router: Router,
     private validateService: ValidateService,
+    public bsModalRef: BsModalRef
   ) { }
 
   ngOnInit() {
@@ -83,6 +85,8 @@ export class RegisterComponent implements OnInit {
           this.router.navigate(['/login']);
         },
         3000);
+
+        this.bsModalRef.hide();
 
       } else {
         this.ngFlashMessageService.showFlashMessage({

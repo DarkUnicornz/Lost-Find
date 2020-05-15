@@ -3,6 +3,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 import { AuthenticationService } from './../services/authentication.service';
 import { LoginComponent } from './../components/login/login.component';
+import { RegisterComponent } from './../components/register/register.component';
 
 @Component({
   selector: 'app-navigation',
@@ -11,7 +12,7 @@ import { LoginComponent } from './../components/login/login.component';
 })
 export class NavigationComponent implements OnInit {
 
-  modalRef: BsModalRef;
+  bsmodalRef: BsModalRef;
 
   loggedIn: boolean;
   isAdmin: boolean;
@@ -19,7 +20,7 @@ export class NavigationComponent implements OnInit {
   isUser: boolean;
 
   constructor(
-    private modalService: BsModalService,
+    private bsmodalService: BsModalService,
     private authService: AuthenticationService,
   ) { }
 
@@ -27,7 +28,11 @@ export class NavigationComponent implements OnInit {
   }
 
   openLoginModal() {
-    this.modalRef = this.modalService.show(LoginComponent);
+    this.bsmodalRef = this.bsmodalService.show(LoginComponent);
+  }
+
+  openRegisterModal() {
+    this.bsmodalRef = this.bsmodalService.show(RegisterComponent);
   }
 
 }

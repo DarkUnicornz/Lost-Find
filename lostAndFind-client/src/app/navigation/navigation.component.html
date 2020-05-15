@@ -94,7 +94,7 @@
 
 
       <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" class="nav-item mr-5">
-        <a class="nav-link btn btn-default" href [routerLink]="['register']">
+        <a class="nav-link btn btn-default" (click)="openRegisterModal()">
           <i class="fa fa-user-plus"></i>
           Sign up
           <!-- <span class="sr-only">(current)</span> -->
