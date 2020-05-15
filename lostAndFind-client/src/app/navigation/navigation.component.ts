@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+
+import { AuthenticationService } from './../services/authentication.service';
+import { LoginComponent } from './../components/login/login.component';
 
 @Component({
   selector: 'app-navigation',
@@ -7,9 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
+  modalRef: BsModalRef;
+
+  loggedIn: boolean;
+  isAdmin: boolean;
+  isMod: boolean;
+  isUser: boolean;
+
+  constructor(
+    private modalService: BsModalService,
+    private authService: AuthenticationService,
+  ) { }
 
   ngOnInit() {
+  }
+
+  openLoginModal() {
+    this.modalRef = this.modalService.show(LoginComponent);
   }
 
 }

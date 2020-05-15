@@ -11,10 +11,14 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 // services
 import { AuthenticationService } from './services/authentication.service';
 import { ValidateService } from './services/validate.service';
+
+// ngx-bootstrap
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,8 @@ import { ValidateService } from './services/validate.service';
     NavigationComponent,
     RegisterComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +35,7 @@ import { ValidateService } from './services/validate.service';
     FormsModule,
     HttpClientModule,
     NgFlashMessagesModule.forRoot(),
+    ModalModule.forRoot(),
   ],
   providers: [
     AuthenticationService,

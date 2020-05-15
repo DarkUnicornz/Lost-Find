@@ -75,7 +75,7 @@
         </a>
       </li> -->
       <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" class="nav-item mr-5">
-        <a class="nav-link btn btn-default" href [routerLink]="['login']">
+        <a class="nav-link btn btn-default" (click)="openLoginModal()">
           <i class="fa fa-sign-in"></i>
           Sign in
           <!-- <span class="sr-only">(current)</span> -->
