@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { TranslateService} from '@ngx-translate/core';
 
 import { AuthenticationService } from './../services/authentication.service';
 import { LoginComponent } from './../components/login/login.component';
@@ -22,7 +23,13 @@ export class NavigationComponent implements OnInit {
   constructor(
     private bsmodalService: BsModalService,
     private authService: AuthenticationService,
-  ) { }
+    public translateService: TranslateService,
+  ) {
+    translateService.addLangs(['en', 'si']);
+    translateService.setDefaultLang('en');
+    const browserLang = translateService.getBrowserLang();
+    translateService.use(browserLang.match(/en|si/) ? browserLang : 'en');
+  }
 
   ngOnInit() {
   }
