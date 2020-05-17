@@ -1,6 +1,23 @@
 {
   "NAVIGATION": {
-    "NAVITEM_1": "Home",
-    "NAVITEM_2": "Sign up"
+    "HOME": "Home",
+    "SIGNIN": "Sign up",
+    "SIGNUP": "Sign up"
+  },
+
+  "LOGIN": {
+    "HEADER": "Sign In",
+    "PLACEHOLDER_EMAIL": "Email",
+    "PLACEHOLDER_PASSWORD": "Password",
+    "SIGNIN_BUTTON": "Sign In"
+  },
+
+  "REGISTER": {
+    "HEADER": "Sign Up",
+    "PLACEHOLDER_ID": "Id",
+    "PLACEHOLDER_USERNAME": "User Name",
+    "PLACEHOLDER_EMAIL": "Email",
+    "PLACEHOLDER_PASSWORD": "Password",
+    "SIGNUP_BUTTON": "Sign Up"
   }
 }

@@ -6,7 +6,7 @@
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
 			<div class="card-header">
-				<h3>Sign Up</h3>
+				<h3>{{'REGISTER.HEADER' | translate}}</h3>
 				<div class="d-flex justify-content-end social_icon">
 					<span><i class="fa fa-facebook-square"></i></span>
 					<span><i class="fa fa-google-plus-square"></i></span>
@@ -23,35 +23,35 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fa fa-id-card"></i></span>
 						</div>
-						<input name="id" [(ngModel)]="id" type="text" class="form-control" placeholder="Id" >
+						<input name="id" [(ngModel)]="id" type="text" class="form-control" placeholder="{{'REGISTER.PLACEHOLDER_ID' | translate}}" >
           </div>
 
           <div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fa fa-user"></i></span>
 						</div>
-						<input name="username" [(ngModel)]="username" type="text" class="form-control" placeholder="User Name" >
+						<input name="username" [(ngModel)]="username" type="text" class="form-control" placeholder="{{'REGISTER.PLACEHOLDER_USERNAME' | translate}}" >
           </div>
 
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fa fa-envelope"></i></span>
 						</div>
-						<input name="email" [(ngModel)]="email" type="text" class="form-control" placeholder="Email" >
+						<input name="email" [(ngModel)]="email" type="text" class="form-control" placeholder="{{'REGISTER.PLACEHOLDER_EMAIL' | translate}}" >
           </div>
 
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fa fa-key"></i></span>
 						</div>
-						<input name="password" [(ngModel)]="password" type="password" class="form-control" placeholder="Password">
+						<input name="password" [(ngModel)]="password" type="password" class="form-control" placeholder="{{'REGISTER.PLACEHOLDER_PASSWORD' | translate}}">
           </div>
 
 					<div class="row align-items-center remember">
 						<input type="checkbox">Remember Me
 					</div>
 					<div class="form-group">
-						<input type="submit" value="Sign Up" class="btn float-right login_btn">
+						<input type="submit" value="{{'REGISTER.SIGNUP_BUTTON' | translate}}" class="btn float-right login_btn">
           </div>
           <!-- </div> -->
 				</form>

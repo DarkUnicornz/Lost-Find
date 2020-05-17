@@ -1,6 +1,23 @@
 {
   "NAVIGATION": {
-    "NAVITEM_1": "මුල් පිටුව",
-    "NAVITEM_2": "ලියාපදිංචි වන්න"
+    "HOME": "මුල් පිටුව",
+    "SIGNIN":"ඇතුල් වන්න",
+    "SIGNUP": "ලියාපදිංචි වන්න"
+  },
+
+  "LOGIN": {
+    "HEADER": "ඇතුල් වන්න",
+    "PLACEHOLDER_EMAIL": "විද්යුත් තැපැල් ලිපිනය",
+    "PLACEHOLDER_PASSWORD": "මුරපදය",
+    "SIGNIN_BUTTON": "ඇතුල් වන්න"
+  },
+
+  "REGISTER": {
+    "HEADER": "ලියාපදිංචි වන්න",
+    "PLACEHOLDER_ID": "ජාතික හැඳුනුම්පත් අංකය",
+    "PLACEHOLDER_USERNAME": "පරිශීලක නාමය",
+    "PLACEHOLDER_EMAIL": "විද්යුත් තැපැල් ලිපිනය",
+    "PLACEHOLDER_PASSWORD": "මුරපදය",
+    "SIGNUP_BUTTON": "ලියාපදිංචි වන්න"
   }
 }
