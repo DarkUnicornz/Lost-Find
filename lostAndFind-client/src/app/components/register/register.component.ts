@@ -18,6 +18,7 @@ export class RegisterComponent implements OnInit {
   username: string;
   email: string;
   password: string;
+  confirm_password: string;
   alert: { type: string; msg: any; };
   success: boolean;
 
@@ -38,6 +39,7 @@ export class RegisterComponent implements OnInit {
       username: this.username,
       email: this.email,
       password: this.password,
+
     };
 
     // required fields

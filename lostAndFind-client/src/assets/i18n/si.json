@@ -18,6 +18,7 @@
     "PLACEHOLDER_USERNAME": "පරිශීලක නාමය",
     "PLACEHOLDER_EMAIL": "විද්යුත් තැපැල් ලිපිනය",
     "PLACEHOLDER_PASSWORD": "මුරපදය",
-    "SIGNUP_BUTTON": "ලියාපදිංචි වන්න"
+    "SIGNUP_BUTTON": "ලියාපදිංචි වන්න",
+    "PLACEHOLDER_CONFIRM-PASSWORD": "මුරපදය තහවුරු කරන්න"
   }
 }

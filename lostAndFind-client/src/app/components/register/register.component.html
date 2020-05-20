@@ -47,6 +47,13 @@
 						<input name="password" [(ngModel)]="password" type="password" class="form-control" placeholder="{{'REGISTER.PLACEHOLDER_PASSWORD' | translate}}">
           </div>
 
+          <div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fa fa-key"></i></span>
+						</div>
+						<input name="confirm_password" (ngModel)="password" type="password" class="form-control" placeholder="{{'REGISTER.PLACEHOLDER_CONFIRM-PASSWORD' | translate}}">
+          </div>
+
 					<div class="row align-items-center remember">
 						<input type="checkbox">Remember Me
 					</div>

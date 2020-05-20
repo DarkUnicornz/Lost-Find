@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgFlashMessageService } from 'ng-flash-messages';
 import { Router } from '@angular/router';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subject } from 'rxjs';
 
 import { AuthenticationService } from './../../services/authentication.service';
 import { User } from './../../models/user.model';
@@ -16,21 +18,51 @@ import { ValidateService } from './../../services/validate.service';
 export class LoginComponent implements OnInit {
 
   // user = new User();
-
-  email: string;
-  password: string;
+  loginForm: FormGroup;
+  public onClose: Subject<boolean>;
+  // submitted = false;
+  // email: string;
+  // password: string;
 
   constructor(
     private authService: AuthenticationService,
     private ngFlashMessageService: NgFlashMessageService,
     private router: Router,
     private validateService: ValidateService,
-    public bsModalRef: BsModalRef
+    public bsModalRef: BsModalRef,
+    private formBuilder: FormBuilder,
 
   ) { }
 
   ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      email: ['', [
+        Validators.required,
+        Validators.email,
+      ]],
+      password: ['', [
+        Validators.required,
+        Validators.minLength(3)
+      ]],
+    });
+
+    this.onClose = new Subject();
   }
+
+  get email() {
+    return this.loginForm.get('email');
+  }
+
+  get password() {
+    return this.loginForm.get('password');
+  }
+
+
+  onCancel() {
+    this.onClose.next(false);
+    this.bsModalRef.hide();
+  }
+
 
   onLoginSubmit() {
 
@@ -68,8 +100,8 @@ export class LoginComponent implements OnInit {
 
 
     this.authService.authenticateUser({
-      email: this.email,
-      password: this.password,
+      email: this.email.value,
+      password: this.password.value,
     }).subscribe( (res) => {
       console.log(res);
       console.log(this.email);

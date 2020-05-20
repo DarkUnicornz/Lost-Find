@@ -18,6 +18,7 @@
     "PLACEHOLDER_USERNAME": "User Name",
     "PLACEHOLDER_EMAIL": "Email",
     "PLACEHOLDER_PASSWORD": "Password",
-    "SIGNUP_BUTTON": "Sign Up"
+    "SIGNUP_BUTTON": "Sign Up",
+    "PLACEHOLDER_CONFIRM-PASSWORD": "Confirm Password"
   }
 }
