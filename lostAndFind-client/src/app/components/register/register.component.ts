@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      id: ['', [
+      nic: ['', [
         Validators.required,
       ]],
       fName: ['', [
@@ -41,11 +41,20 @@ export class RegisterComponent implements OnInit {
       lName: ['', [
         Validators.required,
       ]],
+      email: ['', [
+        Validators.email,
+        Validators.required,
+      ]],
       phone: ['', [
         Validators.required,
       ]],
-      email: ['', [
-        Validators.email,
+      address: ['', [
+        Validators.required,
+      ]],
+      bDay: ['', [
+        Validators.required,
+      ]],
+      gender: ['', [
         Validators.required,
       ]],
       password: ['', [
@@ -58,8 +67,8 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  get id() {
-    return this.registerForm.get('id');
+  get nic() {
+    return this.registerForm.get('nic');
   }
   get fName() {
     return this.registerForm.get('fName');
@@ -67,11 +76,20 @@ export class RegisterComponent implements OnInit {
   get lName() {
     return this.registerForm.get('lName');
   }
+  get email() {
+    return this.registerForm.get('email');
+  }
   get phone() {
     return this.registerForm.get('phone');
   }
-  get email() {
-    return this.registerForm.get('email');
+  get address() {
+    return this.registerForm.get('address');
+  }
+  get bDay() {
+    return this.registerForm.get('bDay');
+  }
+  get gender() {
+    return this.registerForm.get('gender');
   }
   get password() {
     return this.registerForm.get('password');
@@ -84,11 +102,14 @@ export class RegisterComponent implements OnInit {
 
   onRegisterSubmit() {
     const user = {
-      id: this.id.value,
+      nic: this.nic.value,
       fName: this.fName.value,
       lName: this.lName.value,
-      phone: this.phone.value,
       email: this.email.value,
+      phone: this.phone.value,
+      address: this.address.value,
+      bDay: this.bDay.value,
+      gender: this.gender.value,
       password: this.password.value,
 
     };

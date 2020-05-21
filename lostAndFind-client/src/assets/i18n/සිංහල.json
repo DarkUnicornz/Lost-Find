@@ -16,11 +16,16 @@
 
   "REGISTER": {
     "HEADER": "ලියාපදිංචි වන්න",
-    "PLACEHOLDER_ID": "ජාතික හැඳුනුම්පත් අංකය",
+    "PLACEHOLDER_NIC": "ජාතික හැඳුනුම්පත් අංකය",
     "PLACEHOLDER_FNAME": "මුල් නම",
     "PLACEHOLDER_LNAME": "අවසන් නම",
-    "PLACEHOLDER_PHONE": "දුරකතන අංකය",
     "PLACEHOLDER_EMAIL": "විද්යුත් තැපැල් ලිපිනය",
+    "PLACEHOLDER_PHONE": "දුරකතන අංකය",
+    "PLACEHOLDER_ADDRESS": "ලිපිනය",
+    "PLACEHOLDER_BDAY": "උපන් දිනය",
+    "PLACEHOLDER_GENDER": "ස්ත්රී පුරුෂ භාවය",
+    "PLACEHOLDER_GENDER1": "පුරුෂ",
+    "PLACEHOLDER_GENDER2": "ස්ත්රී",
     "PLACEHOLDER_PASSWORD": "මුරපදය",
     "SIGNUP_BUTTON": "ලියාපදිංචි වන්න",
     "PLACEHOLDER_CONFIRM-PASSWORD": "මුරපදය තහවුරු කරන්න"

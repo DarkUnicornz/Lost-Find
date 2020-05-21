@@ -16,11 +16,16 @@
 
   "REGISTER": {
     "HEADER": "Sign Up",
-    "PLACEHOLDER_ID": "Id",
+    "PLACEHOLDER_NIC": "NIC",
     "PLACEHOLDER_FNAME": "First Name",
     "PLACEHOLDER_LNAME": "Last Name",
-    "PLACEHOLDER_PHONE": "Phone Number",
     "PLACEHOLDER_EMAIL": "Email",
+    "PLACEHOLDER_PHONE": "Phone Number",
+    "PLACEHOLDER_ADDRESS": "Address",
+    "PLACEHOLDER_BDAY": "Birth Date",
+    "PLACEHOLDER_GENDER": "Gender",
+    "PLACEHOLDER_GENDER1": "Male",
+    "PLACEHOLDER_GENDER2": "Female",
     "PLACEHOLDER_PASSWORD": "Password",
     "SIGNUP_BUTTON": "Sign Up",
     "PLACEHOLDER_CONFIRM-PASSWORD": "Confirm Password"

@@ -4,8 +4,10 @@ import { FormsModule,  ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { NgFlashMessagesModule } from 'ng-flash-messages';
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';  // multi language
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';        // multi language
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';      // datepicker
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';                       // datepicker
 
 // components
 import { AppComponent } from './app.component';
@@ -53,6 +55,8 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot(),
   ],
   providers: [
     AuthenticationService,

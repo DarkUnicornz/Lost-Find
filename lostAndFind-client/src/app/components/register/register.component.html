@@ -26,10 +26,10 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fa fa-id-card"></i></span>
 						</div>
-            <input name="id" formControlName="id" type="text" class="form-control" placeholder="{{'REGISTER.PLACEHOLDER_ID' | translate}}"
-            [ngClass]="{'is-invalid': (id.touched || id.dirty) && id.invalid }">
-            <div class="invalid-feedback" *ngIf="(id.touched || id.dirty) && id.invalid">
-              Enter your nic number.
+            <input name="nic" formControlName="nic" type="text" class="form-control" placeholder="{{'REGISTER.PLACEHOLDER_NIC' | translate}}"
+            [ngClass]="{'is-invalid': (nic.touched || nic.dirty) && nic.invalid }">
+            <div class="invalid-feedback" *ngIf="(nic.touched || nic.dirty) && nic.invalid">
+              Enter your NIC number.
             </div>
           </div>
 
@@ -55,18 +55,8 @@
             </div>
           </div>
 
-          <div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fa fa-phone"></i></span>
-						</div>
-            <input name="phone" formControlName="phone" type="tel" [pattern]="mobNumberPattern" class="form-control" placeholder="{{'REGISTER.PLACEHOLDER_PHONE' | translate}}"
-            [ngClass]="{'is-invalid': (phone.touched || phone.dirty) && phone.invalid }">
-            <div class="invalid-feedback" *ngIf="(phone.touched || phone.dirty) && phone.invalid">
-              Enter your phone number.
-            </div>
-          </div>
 
-					<div class="input-group form-group">
+          <div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fa fa-envelope"></i></span>
 						</div>
@@ -79,6 +69,59 @@
                 We'll never share your email with anyone else.
             </small> -->
           </div>
+
+
+          <div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fa fa-phone"></i></span>
+						</div>
+            <input name="phone" formControlName="phone" type="tel" [pattern]="mobNumberPattern" class="form-control" placeholder="{{'REGISTER.PLACEHOLDER_PHONE' | translate}}"
+            [ngClass]="{'is-invalid': (phone.touched || phone.dirty) && phone.invalid }">
+            <div class="invalid-feedback" *ngIf="(phone.touched || phone.dirty) && phone.invalid">
+              Enter your phone number.
+            </div>
+          </div>
+
+
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+							<span class="input-group-text"><i class="fa fa-address-card"></i></span>
+						</div>
+            <textarea class="form-control" name="address" formControlName="address" id="exampleFormControlTextarea1" rows="3" placeholder="{{'REGISTER.PLACEHOLDER_ADDRESS' | translate}}"
+            [ngClass]="{'is-invalid': (address.touched || address.dirty) && address.invalid }"></textarea>
+            <div class="invalid-feedback" *ngIf="(address.touched || address.dirty) && address.invalid">
+              Enter your address.
+            </div>
+          </div>
+
+
+          <div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fa fa-birthday-cake"></i></span>
+						</div>
+            <input type="text"  placeholder="bDay" class="form-control" bsDatepicker [bsConfig]="{ isAnimated: true }" placeholder="{{'REGISTER.PLACEHOLDER_BDAY' | translate}}"
+            [ngClass]="{'is-invalid': (bDay.touched || bDay.dirty) && bDay.invalid }">
+            <div class="invalid-feedback" *ngIf="(bDay.touched || bDay.dirty) && bDay.invalid">
+              Enter your birth day.
+            </div>
+          </div>
+
+
+          <div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fa fa-venus-mars"></i></span>
+            </div>
+            <select name="gender" formControlName="gender" class="form-control" id="gender"
+            [ngClass]="{'is-invalid': (gender.touched || gender.dirty) && gender.invalid }">
+            <div class="invalid-feedback" *ngIf="(gender.touched || gender.dirty) && gender.invalid">
+              Enter your gender.
+            </div>
+              <option selected>{{'REGISTER.PLACEHOLDER_GENDER' | translate}}</option>
+              <option value="1">{{'REGISTER.PLACEHOLDER_GENDER1' | translate}}</option>
+              <option value="2">{{'REGISTER.PLACEHOLDER_GENDER2' | translate}}</option>
+            </select>
+          </div>
+
 
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
