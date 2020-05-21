@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
   public onClose: Subject<boolean>;
   registerForm: FormGroup;
 
-  mobNumberPattern = "^((\\+94-?)|0)?[7,9]{1}[1,6,7]{1}[0-9]{7}$";       // "^((\\+91-?)|0)?[0-9]{10}$"
+  mobNumberPattern = '^((\\+94-?)|0)?[7,9]{1}[1,6,7]{1}[0-9]{7}$';       // "^((\\+91-?)|0)?[0-9]{10}$"
 
   constructor(
     private authService: AuthenticationService,
