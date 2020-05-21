@@ -19,13 +19,7 @@ export class RegisterComponent implements OnInit {
   public onClose: Subject<boolean>;
   registerForm: FormGroup;
 
-  // id: string;
-  // username: string;
-  // email: string;
-  // password: string;
-  // confirm_password: string;
-  // alert: { type: string; msg: any; };
-  // success: boolean;
+  mobNumberPattern = "^((\\+94-?)|0)?[7,9]{1}[1,6,7]{1}[0-9]{7}$";       // "^((\\+91-?)|0)?[0-9]{10}$"
 
   constructor(
     private authService: AuthenticationService,
@@ -41,7 +35,13 @@ export class RegisterComponent implements OnInit {
       id: ['', [
         Validators.required,
       ]],
-      username: ['', [
+      fName: ['', [
+        Validators.required,
+      ]],
+      lName: ['', [
+        Validators.required,
+      ]],
+      phone: ['', [
         Validators.required,
       ]],
       email: ['', [
@@ -61,8 +61,14 @@ export class RegisterComponent implements OnInit {
   get id() {
     return this.registerForm.get('id');
   }
-  get username() {
-    return this.registerForm.get('username');
+  get fName() {
+    return this.registerForm.get('fName');
+  }
+  get lName() {
+    return this.registerForm.get('lName');
+  }
+  get phone() {
+    return this.registerForm.get('phone');
   }
   get email() {
     return this.registerForm.get('email');
@@ -71,10 +77,17 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.get('password');
   }
 
+  onCancel() {
+    this.onClose.next(false);
+    this.bsModalRef.hide();
+  }
+
   onRegisterSubmit() {
     const user = {
       id: this.id.value,
-      username: this.username.value,
+      fName: this.fName.value,
+      lName: this.lName.value,
+      phone: this.phone.value,
       email: this.email.value,
       password: this.password.value,
 

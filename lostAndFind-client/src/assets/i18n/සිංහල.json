@@ -17,7 +17,9 @@
   "REGISTER": {
     "HEADER": "ලියාපදිංචි වන්න",
     "PLACEHOLDER_ID": "ජාතික හැඳුනුම්පත් අංකය",
-    "PLACEHOLDER_USERNAME": "පරිශීලක නාමය",
+    "PLACEHOLDER_FNAME": "මුල් නම",
+    "PLACEHOLDER_LNAME": "අවසන් නම",
+    "PLACEHOLDER_PHONE": "දුරකතන අංකය",
     "PLACEHOLDER_EMAIL": "විද්යුත් තැපැල් ලිපිනය",
     "PLACEHOLDER_PASSWORD": "මුරපදය",
     "SIGNUP_BUTTON": "ලියාපදිංචි වන්න",

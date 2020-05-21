@@ -1,8 +1,10 @@
 export class User {
   id: string;
-  username: string;
+  fName: string;
+  lName: string;
   email: string;
   password: string;
+  phone: number;
 
   // constructor(id: string, username: string, email: string, password: string) {
   //   this.id = id;
