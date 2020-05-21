@@ -9,7 +9,9 @@
     "HEADER": "Sign In",
     "PLACEHOLDER_EMAIL": "Email",
     "PLACEHOLDER_PASSWORD": "Password",
-    "SIGNIN_BUTTON": "Sign In"
+    "SIGNIN_BUTTON": "Sign In",
+    "EMAIL_VALIDATE": "Please type in your email.",
+    "PASSWORD_VALIDATE": "Please provide your password."
   },
 
   "REGISTER": {

@@ -25,10 +25,10 @@ export class NavigationComponent implements OnInit {
     private authService: AuthenticationService,
     public translateService: TranslateService,
   ) {
-    translateService.addLangs(['en', 'si']);
-    translateService.setDefaultLang('en');
+    translateService.addLangs(['English', 'සිංහල']);
+    translateService.setDefaultLang('English');
     const browserLang = translateService.getBrowserLang();
-    translateService.use(browserLang.match(/en|si/) ? browserLang : 'en');
+    translateService.use(browserLang.match(/English|සිංහල/) ? browserLang : 'English');
   }
 
   ngOnInit() {

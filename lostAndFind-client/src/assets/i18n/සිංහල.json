@@ -9,7 +9,9 @@
     "HEADER": "ඇතුල් වන්න",
     "PLACEHOLDER_EMAIL": "විද්යුත් තැපැල් ලිපිනය",
     "PLACEHOLDER_PASSWORD": "මුරපදය",
-    "SIGNIN_BUTTON": "ඇතුල් වන්න"
+    "SIGNIN_BUTTON": "ඇතුල් වන්න",
+    "EMAIL_VALIDATE": "කරුණාකර ඔබේ විද්‍යුත් තැපැල් ලිපිනය ලබා දෙන්න.",
+    "PASSWORD_VALIDATE": "කරුණාකර ඔබේ මුරපදය ලබා දෙන්න."
   },
 
   "REGISTER": {

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgFlashMessageService } from 'ng-flash-messages';
 import { Router } from '@angular/router';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subject } from 'rxjs';
 
 // import { User } from './../../models/user.model';
 import { AuthenticationService } from './../../services/authentication.service';
@@ -14,31 +16,67 @@ import { ValidateService } from './../../services/validate.service';
 })
 export class RegisterComponent implements OnInit {
 
-  id: string;
-  username: string;
-  email: string;
-  password: string;
-  confirm_password: string;
-  alert: { type: string; msg: any; };
-  success: boolean;
+  public onClose: Subject<boolean>;
+  registerForm: FormGroup;
+
+  // id: string;
+  // username: string;
+  // email: string;
+  // password: string;
+  // confirm_password: string;
+  // alert: { type: string; msg: any; };
+  // success: boolean;
 
   constructor(
     private authService: AuthenticationService,
     private ngFlashMessageService: NgFlashMessageService,
     private router: Router,
     private validateService: ValidateService,
-    public bsModalRef: BsModalRef
+    public bsModalRef: BsModalRef,
+    private formBuilder: FormBuilder,
   ) { }
 
   ngOnInit() {
+    this.registerForm = this.formBuilder.group({
+      id: ['', [
+        Validators.required,
+      ]],
+      username: ['', [
+        Validators.required,
+      ]],
+      email: ['', [
+        Validators.email,
+        Validators.required,
+      ]],
+      password: ['', [
+        Validators.required,
+        Validators.minLength(3)
+      ]],
+    });
+
+    this.onClose = new Subject();
+  }
+
+
+  get id() {
+    return this.registerForm.get('id');
+  }
+  get username() {
+    return this.registerForm.get('username');
+  }
+  get email() {
+    return this.registerForm.get('email');
+  }
+  get password() {
+    return this.registerForm.get('password');
   }
 
   onRegisterSubmit() {
     const user = {
-      id: this.id,
-      username: this.username,
-      email: this.email,
-      password: this.password,
+      id: this.id.value,
+      username: this.username.value,
+      email: this.email.value,
+      password: this.password.value,
 
     };
 

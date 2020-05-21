@@ -25,7 +25,7 @@
             <input name="email"  formControlName="email" type="text" class="form-control" placeholder="{{'LOGIN.PLACEHOLDER_EMAIL' | translate}}"
             [ngClass]="{'is-invalid': (email.touched || email.dirty) && email.invalid }">
             <div class="invalid-feedback" *ngIf="(email.touched || email.dirty) && !email.valid">
-              Please type in your email.
+              {{'LOGIN.EMAIL_VALIDATE' | translate}}
             </div>
           </div>
 
@@ -36,7 +36,7 @@
             <input name="password" formControlName="password" type="password" class="form-control" placeholder="{{'LOGIN.PLACEHOLDER_PASSWORD' | translate}}"
             [ngClass]="{ 'is-invalid': (password.touched || password.dirty) && password.invalid }">
             <div class="invalid-feedback" *ngIf="(password.touched || password.dirty) && !password.valid">
-                Please provide your password.
+              {{'LOGIN.PASSWORD_VALIDATE' | translate}}
             </div>
           </div>
 

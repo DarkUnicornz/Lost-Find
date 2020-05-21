@@ -17,48 +17,70 @@
       <ng-flash-message></ng-flash-message>
 
 			<div class="card-body">
-				<form (submit)="onRegisterSubmit()">
+				<form (submit)="onRegisterSubmit()" [formGroup]="registerForm">
           <!-- <div style="width: auto; height: 900px"> -->
           <div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fa fa-id-card"></i></span>
 						</div>
-						<input name="id" [(ngModel)]="id" type="text" class="form-control" placeholder="{{'REGISTER.PLACEHOLDER_ID' | translate}}" >
+            <input name="id" formControlName="id" type="text" class="form-control" placeholder="{{'REGISTER.PLACEHOLDER_ID' | translate}}"
+            [ngClass]="{'is-invalid': (id.touched || id.dirty) && id.invalid }">
+            <div class="invalid-feedback" *ngIf="(id.touched || id.dirty) && id.invalid">
+              Enter your nic number.
+            </div>
           </div>
 
           <div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fa fa-user"></i></span>
 						</div>
-						<input name="username" [(ngModel)]="username" type="text" class="form-control" placeholder="{{'REGISTER.PLACEHOLDER_USERNAME' | translate}}" >
+            <input name="username" formControlName="username" type="text" class="form-control" placeholder="{{'REGISTER.PLACEHOLDER_USERNAME' | translate}}"
+            [ngClass]="{'is-invalid': (username.touched || username.dirty) && username.invalid }">
+            <div class="invalid-feedback" *ngIf="(username.touched || username.dirty) && username.invalid">
+              Enter your user name.
+            </div>
           </div>
 
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fa fa-envelope"></i></span>
 						</div>
-						<input name="email" [(ngModel)]="email" type="text" class="form-control" placeholder="{{'REGISTER.PLACEHOLDER_EMAIL' | translate}}" >
+            <input name="email" formControlName="email" type="text" class="form-control" placeholder="{{'REGISTER.PLACEHOLDER_EMAIL' | translate}}"
+            [ngClass]="{'is-invalid': (email.touched || email.dirty) && email.invalid }">
+            <div class="invalid-feedback" *ngIf="(email.touched || email.dirty) && email.invalid">
+              Enter a valid e-mail address.
+            </div>
+            <!-- <small id="emailHelp" class="form-text text-muted" *ngIf="!(email.touched || email.dirty)">
+                We'll never share your email with anyone else.
+            </small> -->
           </div>
 
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fa fa-key"></i></span>
 						</div>
-						<input name="password" [(ngModel)]="password" type="password" class="form-control" placeholder="{{'REGISTER.PLACEHOLDER_PASSWORD' | translate}}">
+            <input name="password" formControlName="password" type="password" class="form-control" placeholder="{{'REGISTER.PLACEHOLDER_PASSWORD' | translate}}"
+            [ngClass]="{'is-invalid': (password.touched || password.dirty) && password.invalid }">
+            <div class="invalid-feedback" *ngIf="(password.touched || password.dirty) && password.invalid">
+              Enter a password for your account.
+            </div>
+          <!-- <password-strength-meter id="passwordHelp" [enableFeedback]="true" [password]="password.value"
+              *ngIf="(password.touched || password.dirty)">
+          </password-strength-meter> -->
           </div>
 
-          <div class="input-group form-group">
+          <!-- <div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fa fa-key"></i></span>
 						</div>
 						<input name="confirm_password" (ngModel)="password" type="password" class="form-control" placeholder="{{'REGISTER.PLACEHOLDER_CONFIRM-PASSWORD' | translate}}">
-          </div>
+          </div> -->
 
 					<div class="row align-items-center remember">
 						<input type="checkbox">Remember Me
 					</div>
 					<div class="form-group">
-						<input type="submit" value="{{'REGISTER.SIGNUP_BUTTON' | translate}}" class="btn float-right login_btn">
+						<input type="submit" [disabled]="registerForm.invalid" value="{{'REGISTER.SIGNUP_BUTTON' | translate}}" class="btn float-right login_btn">
           </div>
           <!-- </div> -->
 				</form>
