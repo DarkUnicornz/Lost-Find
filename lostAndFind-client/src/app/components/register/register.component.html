@@ -99,7 +99,7 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fa fa-birthday-cake"></i></span>
 						</div>
-            <input type="text"  placeholder="bDay" class="form-control" bsDatepicker [bsConfig]="{ isAnimated: true }" placeholder="{{'REGISTER.PLACEHOLDER_BDAY' | translate}}"
+            <input type="text" class="form-control" bsDatepicker [bsConfig]="{ isAnimated: true }" placeholder="{{'REGISTER.PLACEHOLDER_BDAY' | translate}}"
             [ngClass]="{'is-invalid': (bDay.touched || bDay.dirty) && bDay.invalid }">
             <div class="invalid-feedback" *ngIf="(bDay.touched || bDay.dirty) && bDay.invalid">
               Enter your birth day.
