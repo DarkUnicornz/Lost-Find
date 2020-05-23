@@ -126,6 +126,9 @@ export class RegisterComponent implements OnInit {
 
     };
 
+    console.log(this.fName);
+    console.log('222222');
+
     // required fields
     if (!this.validateService.validateRegister(user)) {
       // console.log('please fill in all filds');
@@ -160,6 +163,7 @@ export class RegisterComponent implements OnInit {
 
     // register user
     this.authService.registerUser(user).subscribe( (res) => {
+      console.log('11111');
       if (res) {
         this.ngFlashMessageService.showFlashMessage({
           messages: ['You are now registered'],
@@ -168,10 +172,9 @@ export class RegisterComponent implements OnInit {
           type: 'success'
         });
         setTimeout(() => {
-          this.router.navigate(['/login']);
+          this.router.navigate(['/']);
         },
         3000);
-
         this.bsModalRef.hide();
 
       } else {
