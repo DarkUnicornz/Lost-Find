@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgFlashMessageService } from 'ng-flash-messages';
 import { Router } from '@angular/router';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 
 // import { User } from './../../models/user.model';
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
 
   public onClose: Subject<boolean>;
   registerForm: FormGroup;
-
+  currentDate = new Date();
   mobNumberPattern = '^((\\+94-?)|0)?[7,9]{1}[1,6,7]{1}[0-9]{7}$';       // "^((\\+91-?)|0)?[0-9]{10}$"
 
   constructor(
@@ -30,7 +30,19 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
   ) { }
 
+
+  form = new FormGroup({
+    bDay: new FormControl(new Date()),
+    dateRange: new FormControl([
+      new Date(),
+      new Date(this.currentDate.setDate(this.currentDate.getDate() + 7))
+    ])
+  });
+
+
+
   ngOnInit() {
+
     this.registerForm = this.formBuilder.group({
       nic: ['', [
         Validators.required,

@@ -99,7 +99,7 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fa fa-birthday-cake"></i></span>
 						</div>
-            <input type="text" class="form-control" bsDatepicker [bsConfig]="{ isAnimated: true }" placeholder="{{'REGISTER.PLACEHOLDER_BDAY' | translate}}"
+            <input type="date" class="form-control" formControlName="bDay" bsDatepicker [bsConfig]="{ isAnimated: true , dateInputFormat: 'YYYY-MM-DD' }" placeholder="{{'REGISTER.PLACEHOLDER_BDAY' | translate}}"
             [ngClass]="{'is-invalid': (bDay.touched || bDay.dirty) && bDay.invalid }">
             <div class="invalid-feedback" *ngIf="(bDay.touched || bDay.dirty) && bDay.invalid">
               Enter your birth day.
@@ -150,7 +150,7 @@
 						<input type="checkbox">Remember Me
 					</div>
 					<div class="form-group">
-            <input type="submit" (click)="bsModalRef.hide()" value="Cancel" class="btn float-right cancel_btn">
+            <input type="button" (click)="bsModalRef.hide()" value="Cancel" class="btn float-right cancel_btn">
 						<input type="submit" [disabled]="registerForm.invalid" value="{{'REGISTER.SIGNUP_BUTTON' | translate}}" class="btn float-right login_btn mr-2">
           </div>
           <!-- </div> -->
