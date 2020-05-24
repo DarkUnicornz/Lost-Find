@@ -2,9 +2,11 @@ package com.example.lostAndFindserver.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
+@Table(name = "user_model")
 public class UserModel {
 
     @Id
@@ -25,7 +27,7 @@ public class UserModel {
         this.nic = nic;
         this.fName = fName;
         this.lName = lName;
-        this.email = email;;
+        this.email = email;
         this.phone = phone;
         this.address = address;
         this.bDay = bDay ;
