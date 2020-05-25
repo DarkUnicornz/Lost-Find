@@ -11,7 +11,8 @@
     "PLACEHOLDER_PASSWORD": "Password",
     "SIGNIN_BUTTON": "Sign In",
     "EMAIL_VALIDATE": "Please type in your email.",
-    "PASSWORD_VALIDATE": "Please provide your password."
+    "PASSWORD_VALIDATE": "Please provide your password.",
+    "CANCEL_BUTTON": "Cancel"
   },
 
   "REGISTER": {
@@ -28,6 +29,7 @@
     "PLACEHOLDER_GENDER2": "Female",
     "PLACEHOLDER_PASSWORD": "Password",
     "SIGNUP_BUTTON": "Sign Up",
-    "PLACEHOLDER_CONFIRM-PASSWORD": "Confirm Password"
+    "PLACEHOLDER_CONFIRM-PASSWORD": "Confirm Password",
+    "CANCEL_BUTTON": "Cancel"
   }
 }

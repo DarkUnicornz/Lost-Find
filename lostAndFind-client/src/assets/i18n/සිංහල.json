@@ -11,7 +11,8 @@
     "PLACEHOLDER_PASSWORD": "මුරපදය",
     "SIGNIN_BUTTON": "ඇතුල් වන්න",
     "EMAIL_VALIDATE": "කරුණාකර ඔබේ විද්‍යුත් තැපැල් ලිපිනය ලබා දෙන්න.",
-    "PASSWORD_VALIDATE": "කරුණාකර ඔබේ මුරපදය ලබා දෙන්න."
+    "PASSWORD_VALIDATE": "කරුණාකර ඔබේ මුරපදය ලබා දෙන්න.",
+    "CANCEL_BUTTON": "අවලංගු කරන්න"
   },
 
   "REGISTER": {
@@ -28,6 +29,7 @@
     "PLACEHOLDER_GENDER2": "ස්ත්රී",
     "PLACEHOLDER_PASSWORD": "මුරපදය",
     "SIGNUP_BUTTON": "ලියාපදිංචි වන්න",
-    "PLACEHOLDER_CONFIRM-PASSWORD": "මුරපදය තහවුරු කරන්න"
+    "PLACEHOLDER_CONFIRM-PASSWORD": "මුරපදය තහවුරු කරන්න",
+    "CANCEL_BUTTON": "අවලංගු කරන්න"
   }
 }
