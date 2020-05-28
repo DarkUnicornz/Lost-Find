@@ -30,6 +30,8 @@
     "PLACEHOLDER_PASSWORD": "මුරපදය",
     "SIGNUP_BUTTON": "ලියාපදිංචි වන්න",
     "PLACEHOLDER_CONFIRM-PASSWORD": "මුරපදය තහවුරු කරන්න",
-    "CANCEL_BUTTON": "අවලංගු කරන්න"
+    "CANCEL_BUTTON": "අවලංගු කරන්න",
+    "FOOTER": "ගිණුමක් තිබේද?",
+    "FOOTER_SIGNIN": "ඇතුල් වන්න"
   }
 }

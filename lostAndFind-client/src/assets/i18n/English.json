@@ -30,6 +30,8 @@
     "PLACEHOLDER_PASSWORD": "Password",
     "SIGNUP_BUTTON": "Sign Up",
     "PLACEHOLDER_CONFIRM-PASSWORD": "Confirm Password",
-    "CANCEL_BUTTON": "Cancel"
+    "CANCEL_BUTTON": "Cancel",
+    "FOOTER": "Have an account?",
+    "FOOTER_SIGNIN": "Sign In"
   }
 }
