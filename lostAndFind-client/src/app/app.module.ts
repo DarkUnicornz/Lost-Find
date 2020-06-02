@@ -23,6 +23,7 @@ import { ValidateService } from './services/validate.service';
 
 // ngx-bootstrap
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 
 // AoT requires an exported function for factories
@@ -57,6 +58,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ReactiveFormsModule,
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
+    CarouselModule.forRoot()
   ],
   providers: [
     AuthenticationService,

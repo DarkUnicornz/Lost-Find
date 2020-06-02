@@ -2,7 +2,6 @@ package com.example.lostAndFindserver.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.Date;
 
@@ -11,7 +10,6 @@ import java.util.Date;
 public class UserModel {
 
     @Id
-    @OneToMany
     private String nic;
     private String fName;
     private String lName;
