@@ -134,7 +134,7 @@ export class RegisterComponent implements OnInit {
       // console.log('please fill in all filds');
       this.ngFlashMessageService.showFlashMessage({
         // Array of messages each will be displayed in new line
-        messages: ['please fill in all filds'],
+        messages: ['please fill in all fields'],
         // Whether the flash can be dismissed by the user defaults to false
         dismissible: true,
         // Time after which the flash disappears defaults to 2000ms
@@ -150,7 +150,7 @@ export class RegisterComponent implements OnInit {
       // console.log('please use a valied email');
       this.ngFlashMessageService.showFlashMessage({
         // Array of messages each will be displayed in new line
-        messages: ['please use a valied email'],
+        messages: ['please use a valid email'],
         // Whether the flash can be dismissed by the user defaults to false
         dismissible: true,
         // Time after which the flash disappears defaults to 2000ms
