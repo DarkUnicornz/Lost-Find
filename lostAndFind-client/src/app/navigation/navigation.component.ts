@@ -5,6 +5,7 @@ import { TranslateService} from '@ngx-translate/core';
 import { AuthenticationService } from './../services/authentication.service';
 import { LoginComponent } from './../components/login/login.component';
 import { RegisterComponent } from './../components/register/register.component';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-navigation',
@@ -15,6 +16,7 @@ export class NavigationComponent implements OnInit {
 
   bsmodalRef: BsModalRef;
 
+  user: User;
   loggedIn: boolean;
   isAdmin: boolean;
   isMod: boolean;
@@ -32,7 +34,22 @@ export class NavigationComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.authReset();
   }
+
+  // authReset() {
+  //   this.loggedIn = this.authService.loggedIn();
+  //   if (this.loggedIn) {
+  //     this.user = this.authService.getUser();
+  //     this.isAdmin = this.user.role == 'admin';
+  //     this.isMod = this.user.role == 'mod';
+  //     this.isUser = this.user.role == 'user';
+  //   }
+  //   else {
+  //     this.user = null;
+  //     this.isAdmin = this.isMod = this.isUser = false;
+  //   }
+  // }
 
   openLoginModal() {
     this.bsmodalRef = this.bsmodalService.show(LoginComponent);
