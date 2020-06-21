@@ -39,7 +39,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     RegisterComponent,
     HomeComponent,
     LoginComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

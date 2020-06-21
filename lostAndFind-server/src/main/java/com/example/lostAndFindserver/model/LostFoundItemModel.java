@@ -2,7 +2,7 @@ package com.example.lostAndFindserver.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-//import javax.persistence.ManyToOne;
+import javax.persistence.ManyToOne;
 import java.util.Date;
 
 @Entity
@@ -12,8 +12,9 @@ public class LostFoundItemModel {
     private String itemId;
     private String modelId;
 
-//    @ManyToOne
+    @ManyToOne
     private String nic;
+
     private String location;
     private String lostFoundStatus;
     private Date lostFoundDate;
