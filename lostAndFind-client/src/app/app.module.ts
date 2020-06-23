@@ -24,6 +24,8 @@ import { ValidateService } from './services/validate.service';
 // ngx-bootstrap
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { AdminNewComponent } from './pages/admin-new/admin-new.component';
+import { ModNewComponent } from './pages/mod-new/mod-new.component';
 
 
 // AoT requires an exported function for factories
@@ -40,6 +42,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomeComponent,
     LoginComponent,
     FooterComponent,
+    AdminNewComponent,
+    ModNewComponent,
   ],
   imports: [
     BrowserModule,
