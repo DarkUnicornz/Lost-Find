@@ -14,6 +14,7 @@ public class LostFoundItemModel {
 
 //    @ManyToOne
     private String nic;
+
     private String location;
     private String lostFoundStatus;
     private Date lostFoundDate;

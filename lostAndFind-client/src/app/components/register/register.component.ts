@@ -131,7 +131,7 @@ export class RegisterComponent implements OnInit {
 
     // required fields
     if (!this.validateService.validateRegister(user)) {
-      // console.log('please fill in all filds');
+      // console.log('please fill in all fields');
       this.ngFlashMessageService.showFlashMessage({
         // Array of messages each will be displayed in new line
         messages: ['please fill in all fields'],
@@ -147,7 +147,7 @@ export class RegisterComponent implements OnInit {
 
     // validate email
     if (!this.validateService.validateEmail(user.email)) {
-      // console.log('please use a valied email');
+      // console.log('please use a valid email');
       this.ngFlashMessageService.showFlashMessage({
         // Array of messages each will be displayed in new line
         messages: ['please use a valid email'],

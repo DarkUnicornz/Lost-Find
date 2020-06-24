@@ -6,7 +6,6 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { LostfoundItemComponent } from './components/lostfound-item/lostfound-item.component';
 
-
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'register', component: RegisterComponent },

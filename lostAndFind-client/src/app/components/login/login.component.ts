@@ -68,10 +68,10 @@ export class LoginComponent implements OnInit {
 
     // required fields
     if (!this.validateService.validateLogin(this.email, this.password)) {
-      // console.log('please fill in all filds');
+      // console.log('please fill in all fields');
       this.ngFlashMessageService.showFlashMessage({
         // Array of messages each will be displayed in new line
-        messages: ['please fill in all filds'],
+        messages: ['please fill in all fields'],
         // Whether the flash can be dismissed by the user defaults to false
         dismissible: true,
         // Time after which the flash disappears defaults to 2000ms
@@ -84,10 +84,10 @@ export class LoginComponent implements OnInit {
 
     // validate email
     if (!this.validateService.validateEmail(this.email)) {
-      // console.log('please use a valied email');
+      // console.log('please use a valid email');
       this.ngFlashMessageService.showFlashMessage({
         // Array of messages each will be displayed in new line
-        messages: ['please use a valied email'],
+        messages: ['please use a valid email'],
         // Whether the flash can be dismissed by the user defaults to false
         dismissible: true,
         // Time after which the flash disappears defaults to 2000ms
@@ -120,7 +120,7 @@ export class LoginComponent implements OnInit {
 
       } else {
         this.ngFlashMessageService.showFlashMessage({
-          messages: ['Fill all Feilds'],
+          messages: ['Fill all Fields'],
           dismissible: true,
           timeout: 3000,
           type: 'danger'

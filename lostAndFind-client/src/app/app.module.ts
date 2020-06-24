@@ -24,7 +24,12 @@ import { ValidateService } from './services/validate.service';
 // ngx-bootstrap
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+<<<<<<< HEAD
 import { LostfoundItemComponent } from './components/lostfound-item/lostfound-item.component';
+=======
+import { AdminNewComponent } from './pages/admin-new/admin-new.component';
+import { ModNewComponent } from './pages/mod-new/mod-new.component';
+>>>>>>> 6fe11e348996fd165a26e7d237f65ea69e2e186e
 
 
 // AoT requires an exported function for factories
@@ -41,7 +46,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomeComponent,
     LoginComponent,
     FooterComponent,
+<<<<<<< HEAD
     LostfoundItemComponent
+=======
+    AdminNewComponent,
+    ModNewComponent,
+>>>>>>> 6fe11e348996fd165a26e7d237f65ea69e2e186e
   ],
   imports: [
     BrowserModule,
