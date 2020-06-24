@@ -30,4 +30,7 @@ export class ValidateService {
    // }
   }
 
+  validatePost(post){
+    return true;
+  }
 }

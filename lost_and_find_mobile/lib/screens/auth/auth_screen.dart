@@ -168,26 +168,26 @@ class _AuthScreenState extends State<AuthScreen> {
   }
 }
 
-void _showErrorDialog(BuildContext context) {
-  showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text('Material Dialog'),
-          content: Text('This is the context of the material dialog'),
-          actions: <Widget>[
-            FlatButton(
-              onPressed: () {
-                print('HelloWorld!');
-                _dismissDialog(context);
-              },
-              child: Text('Print HelloWord!'),
-            )
-          ],
-        );
-      });
-}
+// void _showErrorDialog(BuildContext context) {
+//   showDialog(
+//       context: context,
+//       builder: (context) {
+//         return AlertDialog(
+//           title: Text('Material Dialog'),
+//           content: Text('This is the context of the material dialog'),
+//           actions: <Widget>[
+//             FlatButton(
+//               onPressed: () {
+//                 print('HelloWorld!');
+//                 _dismissDialog(context);
+//               },
+//               child: Text('Print HelloWord!'),
+//             )
+//           ],
+//         );
+//       });
+// }
 
-_dismissDialog(BuildContext context) {
-  Navigator.pop(context);
-}
+// _dismissDialog(BuildContext context) {
+//   Navigator.pop(context);
+// }

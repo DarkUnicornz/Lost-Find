@@ -33,5 +33,12 @@
     "CANCEL_BUTTON": "Cancel",
     "FOOTER": "Have an account?",
     "FOOTER_SIGNIN": "Sign In"
+  },
+
+  "LOSTFOUNDITEM": {
+    "HEADER": "LOST FOUND ITEM",
+    "LOCATION": "Location",
+    "DESCRIPTION": "Description",
+    "LOSTFOUNDDATE": "Lost/Found Date"
   }
 }

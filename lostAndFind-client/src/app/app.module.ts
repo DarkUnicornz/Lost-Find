@@ -24,6 +24,7 @@ import { ValidateService } from './services/validate.service';
 // ngx-bootstrap
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { LostfoundItemComponent } from './components/lostfound-item/lostfound-item.component';
 import { AdminNewComponent } from './pages/admin-new/admin-new.component';
 import { ModNewComponent } from './pages/mod-new/mod-new.component';
 
@@ -42,6 +43,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomeComponent,
     LoginComponent,
     FooterComponent,
+    LostfoundItemComponent,
     AdminNewComponent,
     ModNewComponent,
   ],
