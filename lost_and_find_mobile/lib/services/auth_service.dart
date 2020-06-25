@@ -43,6 +43,8 @@ class AuthService {
       instance.setString("token", token);
     }).catchError((err) => false);
   }
+
+  
 }
 // authenticateUser(user: { email: string; password: string; }) {
 //     const headers = new HttpHeaders();
