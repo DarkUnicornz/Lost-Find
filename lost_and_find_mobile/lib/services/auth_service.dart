@@ -1,6 +1,7 @@
 //import 'dart:html';
 import 'package:dio/dio.dart';
 //import 'package:flutter/material.dart';
+import 'package:lost_and_find_mobile/services/pref_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:lost_and_find_mobile/config/config.dart';
 import 'package:logger/logger.dart';
@@ -44,7 +45,12 @@ class AuthService {
     }).catchError((err) => false);
   }
 
-  
+  Future<bool> isLoggedIn(){
+    return PrefService()
+      .getToken()
+      .then((token) => (token != null) ? true : false)
+      .catchError((error) => Logger().e(error));
+  }
 }
 // authenticateUser(user: { email: string; password: string; }) {
 //     const headers = new HttpHeaders();
