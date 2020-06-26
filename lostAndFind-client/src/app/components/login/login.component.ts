@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   // user = new User();
   loginForm: FormGroup;
   public onClose: Subject<boolean>;
+  x: string;
   // submitted = false;
   // email: string;
   // password: string;
@@ -65,6 +66,8 @@ export class LoginComponent implements OnInit {
 
 
   onLoginSubmit() {
+
+    console.log(this.x);
 
     // required fields
     if (!this.validateService.validateLogin(this.email, this.password)) {
@@ -113,7 +116,7 @@ export class LoginComponent implements OnInit {
           type: 'success'
         });
         setTimeout(() => {
-          this.router.navigate(['']);
+          this.router.navigate(['/register']);
         },
         3000);
         this.bsModalRef.hide();
@@ -126,7 +129,7 @@ export class LoginComponent implements OnInit {
           type: 'danger'
         });
         setTimeout(() => {
-          this.router.navigate(['/register']);
+          this.router.navigate(['/test']);
         },
         3000);
         console.log('error');
