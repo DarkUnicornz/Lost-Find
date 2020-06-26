@@ -27,7 +27,6 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { LostfoundItemComponent } from './components/lostfound-item/lostfound-item.component';
 import { AdminNewComponent } from './pages/admin-new/admin-new.component';
 import { ModNewComponent } from './pages/mod-new/mod-new.component';
-import { TestComponent } from './components/test/test.component';
 import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component';
 
 
@@ -48,7 +47,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     LostfoundItemComponent,
     AdminNewComponent,
     ModNewComponent,
-    TestComponent,
     UserDashboardComponent,
   ],
   imports: [

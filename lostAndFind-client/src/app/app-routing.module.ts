@@ -7,7 +7,6 @@ import { LoginComponent } from './components/login/login.component';
 import { AdminNewComponent } from './pages/admin-new/admin-new.component';
 import { ModNewComponent } from './pages/mod-new/mod-new.component';
 import { LostfoundItemComponent } from './components/lostfound-item/lostfound-item.component';
-import { TestComponent } from './components/test/test.component';
 import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component';
 
 
@@ -18,7 +17,6 @@ const routes: Routes = [
   { path: 'new_admin', component: AdminNewComponent },
   { path: 'new_mod', component: ModNewComponent },
   { path: 'lostfounditem', component: LostfoundItemComponent },
-  { path: 'test', component: TestComponent },
   { path: 'user_dashboard', component: UserDashboardComponent},
 ];
 
