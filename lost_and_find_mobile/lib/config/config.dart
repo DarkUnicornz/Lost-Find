@@ -1,3 +1,3 @@
 class Config{
-  static String baseUrl = 'http://localhost//8082';
+  static String baseUrl = "https://fpay-server.herokuapp.com/v1";
 }
