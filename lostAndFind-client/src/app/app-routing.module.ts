@@ -8,6 +8,7 @@ import { AdminNewComponent } from './pages/admin-new/admin-new.component';
 import { ModNewComponent } from './pages/mod-new/mod-new.component';
 import { LostfoundItemComponent } from './components/lostfound-item/lostfound-item.component';
 import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component';
+import { ModDashboardComponent } from './pages/mod-dashboard/mod-dashboard.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'new_mod', component: ModNewComponent },
   { path: 'lostfounditem', component: LostfoundItemComponent },
   { path: 'user_dashboard', component: UserDashboardComponent},
+  { path: 'mod_dashboard', component: ModDashboardComponent},
 ];
 
 @NgModule({

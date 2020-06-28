@@ -28,6 +28,7 @@ import { LostfoundItemComponent } from './components/lostfound-item/lostfound-it
 import { AdminNewComponent } from './pages/admin-new/admin-new.component';
 import { ModNewComponent } from './pages/mod-new/mod-new.component';
 import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component';
+import { ModDashboardComponent } from './pages/mod-dashboard/mod-dashboard.component';
 
 
 // AoT requires an exported function for factories
@@ -48,6 +49,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AdminNewComponent,
     ModNewComponent,
     UserDashboardComponent,
+    ModDashboardComponent,
   ],
   imports: [
     BrowserModule,
