@@ -37,6 +37,9 @@ export class LostfoundItemComponent implements OnInit {
       ]],
       date: ['', [
         Validators.required,
+      ]],
+      status: ['',[
+        Validators.required,
       ]]
     });
     this.onClose = new Subject();
@@ -51,12 +54,16 @@ export class LostfoundItemComponent implements OnInit {
   get date() {
     return this.postForm.get('date');
   }
+  get status(){
+    return this.postForm.get('status');
+  }
 
   onPostSubmit() {
     const post = {
       location: this.location.value,
       description: this.description.value,
       date: this.date.value,
+      status: this.status.value
     };
 
     // if (!this.validateService.validatePost(post)) {

@@ -30,12 +30,12 @@ export class AuthenticationService {
     return this.http.post(AppConfig.BASE_URL + 'authenticate', user, { headers }).pipe();
   }
 
-  // sendPost(post: Post){
-  //   const headers = new HttpHeaders();
-  //   headers.append('Content-Type', 'application/json');
-  //   //fake url
-  //   return this.http.post(AppConfig.BASE_URL + 'register', post, { headers}).pipe();
+  sendPost(post: Post){
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    //fake url(because backend function implement not yet)
+    return this.http.post(AppConfig.BASE_URL + 'register', post, { headers}).pipe();
     
-  // }  
+  }  
   // : Observable<any>
 }
