@@ -6,7 +6,7 @@ import 'package:lost_and_find_mobile/routes/Application.dart';
 class LostFoundUserApp extends StatelessWidget{
   LostFoundUserApp(){
     final router = Router();
-    Routes.configureRouter(router);
+    Routes.configureRouter(router); 
     Application.router = router;
   }
 
