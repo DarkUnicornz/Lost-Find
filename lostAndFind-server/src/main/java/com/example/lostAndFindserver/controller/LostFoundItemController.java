@@ -27,7 +27,11 @@ public class LostFoundItemController {
 
         String tempNIC = lostFoundItemModel.getNic();
         if(tempNIC != null && "".equals(tempNIC)){
-            
+            UserModel userObj = userService.fetchUserByNIC(tempNIC);
+
+            if(userObj!=null){
+                throw new Exception("You should register first");
+            }
         }
         LostFoundItemModel lItemObj = lostFoundItemService.savePost(lostFoundItemModel);
         return lItemObj;
