@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { NgFlashMessageService } from 'ng-flash-messages';
@@ -17,6 +17,7 @@ export class LostfoundItemComponent implements OnInit {
 
   postForm: FormGroup;
   public onClose: Subject<boolean>;
+  //submitted = false;
   //currentDate = new Date();
 
   constructor(
@@ -58,14 +59,19 @@ export class LostfoundItemComponent implements OnInit {
     return this.postForm.get('status');
   }
 
+  // convenience getter for easy access to form fields
+  get f() { return this.postForm.controls; }
+
   onPostSubmit() {
+    //this.submitted=true;
     const post = {
       location: this.location.value,
       description: this.description.value,
       date: this.date.value,
       status: this.status.value
     };
-
+    console.log(this.location);
+    console.log('Asenith');
     // if (!this.validateService.validatePost(post)) {
     //   this.ngFlashMessageService.showFlashMessage({
     //     messages: ['please fill in all fields'],

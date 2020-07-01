@@ -23,4 +23,7 @@ public class UserService {
         return registrationRepository.findByEmailAndPassword(emailId, password);
     }
 
+    public UserModel fetchUserByNIC(String nic){
+        return registrationRepository.findByNIC(nic);
+    }
 }
