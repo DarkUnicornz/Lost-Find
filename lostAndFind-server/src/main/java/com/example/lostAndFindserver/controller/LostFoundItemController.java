@@ -33,7 +33,8 @@ public class LostFoundItemController {
                 throw new Exception("You should register first");
             }
         }
-        LostFoundItemModel lItemObj = lostFoundItemService.savePost(lostFoundItemModel);
+        LostFoundItemModel lItemObj = null;
+        lItemObj = lostFoundItemService.savePost(lostFoundItemModel);
         return lItemObj;
     }
 }
