@@ -1,5 +1,6 @@
 import 'package:circular_bottom_navigation/tab_item.dart';
 import 'package:flutter/material.dart';
+import 'package:lost_and_find_mobile/screens/post/post_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -14,6 +15,11 @@ class _HomeScreenState extends State<HomeScreen> {
     new TabItem(Icons.person, "Profile", Color(0xff07575b)),
     //new TabItem(Icons.as, "Post", Color(0xff07575b)),
   ]);
+
+  static List<Widget> _screens = [
+    PostScreen(),
+  
+  ];
 
   @override
   Widget build(BuildContext context) {
