@@ -19,15 +19,22 @@ export class NavigationComponent implements OnInit {
   bsmodalRef: BsModalRef;
 
   private roles: string[];
-  isLoggedIn = false;
-  showAdminBoard = false;
-  showModeratorBoard = false;
+  // isLoggedIn = false;
+  // showAdminBoard = false;
+  // showModeratorBoard = false;
+  user: User;
+  isLoggedIn: Boolean;
+  isAdmin: Boolean;
+  isMod: Boolean;
+  isUser: Boolean;
   username: string;
+  isCollapsed = true;
 
   constructor(
     private bsmodalService: BsModalService,
     private tokenStorageService: TokenStorageService,
     public translateService: TranslateService,
+    private authService: AuthenticationService,
     private router: Router,
   ) {
     translateService.addLangs(['English', 'සිංහල']);
@@ -37,32 +44,51 @@ export class NavigationComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.authReset();
+  }
+  toggleColapse() { this.isCollapsed = !this.isCollapsed; }
+
+  authReset() {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    console.log('auth reset = ' + this.isLoggedIn);
 
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
 
-      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+      this.isAdmin = this.roles.includes('ROLE_ADMIN');
+      this.isMod = this.roles.includes('ROLE_MODERATOR');
 
       this.username = user.username;
+    } else {
+      this.user = null;
+      this.isAdmin = this.isMod = this.isUser = false;
     }
   }
 
-  onLogoutClick() {
-    this.tokenStorageService.signOut();
-    // window.location.reload();
-    this.router.navigate(['/']);
 
+  onLogoutClick() {
+    this.authService.logout();
+    this.authReset();
   }
 
   openLoginModal() {
+    // this.isLoginFailed = false;
+    // this.isLoggedIn = true;
     this.bsmodalRef = this.bsmodalService.show(LoginComponent);
+
+    this.bsmodalRef.content.onClose.subscribe(result => {
+      this.authReset();
+    });
   }
 
   openRegisterModal() {
     this.bsmodalRef = this.bsmodalService.show(RegisterComponent);
+
+    this.bsmodalRef.content.onClose.subscribe(result => {
+      this.authReset();
+    });
   }
 
 }

@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
+  role: string;
 
 
   constructor(
@@ -41,6 +42,8 @@ export class LoginComponent implements OnInit {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
     }
+
+    this.onClose = new Subject();
   }
 
 
@@ -57,10 +60,36 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
 
+        this.onClose.next(true); // trigger refresh on navigation-component
+
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        this.reloadPage();
+        // this.reloadPage();
+        // this.router.navigate(['']);
+        this.ngFlashMessageService.showFlashMessage({
+          messages: ['Logged in as' + this.roles],
+          dismissible: true,
+          timeout: 3000,
+          type: 'success'
+        });
+        setTimeout(() => {
+
+          if (this.role === 'ROLE_ADMIN') {
+            this.router.navigate(['/admin_dashboard']);
+          } else if (this.role === 'ROLE_MODERATOR') {
+            this.router.navigate(['/mod_dashboard']);
+          } else {
+            this.router.navigate(['/user_dashboard']);
+          }
+
+          // this.router.navigate(['/admin']);
+
+          this.isLoggedIn = true;
+          console.log('Login =' + this.isLoggedIn);
+        },
+        3000);
+        this.bsModalRef.hide();
       },
       err => {
         this.errorMessage = err.error.message;
@@ -69,8 +98,8 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  reloadPage() {
-    window.location.reload();
-  }
+  // reloadPage() {
+  //   window.location.reload();
+  // }
 
 }
