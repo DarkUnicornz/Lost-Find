@@ -1,6 +1,6 @@
 export class User {
   nic: string;
-  fName: string;
+  username: string;
   lName: string;
   email: string;
   phone: number;
