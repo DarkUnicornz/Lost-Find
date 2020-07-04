@@ -31,6 +31,13 @@ export class AuthenticationService {
     }, httpOptions);
   }
 
+  login(credentials): Observable<any> {
+    return this.http.post(AppConfig.BASE_URL + 'signin', {
+      username: credentials.username,
+      password: credentials.password
+    }, httpOptions);
+  }
+
   // *****************************************
 
   registerUser(user: User) {

@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { TranslateService} from '@ngx-translate/core';
+import { Router } from '@angular/router';
 
 import { AuthenticationService } from './../services/authentication.service';
 import { LoginComponent } from './../components/login/login.component';
 import { RegisterComponent } from './../components/register/register.component';
 import { User } from '../models/user.model';
+import { TokenStorageService } from './../services/token-storage.service';
 
 @Component({
   selector: 'app-navigation',
@@ -16,16 +18,17 @@ export class NavigationComponent implements OnInit {
 
   bsmodalRef: BsModalRef;
 
-  user: User;
-  loggedIn: boolean;
-  isAdmin: boolean;
-  isMod: boolean;
-  isUser: boolean;
+  private roles: string[];
+  isLoggedIn = false;
+  showAdminBoard = false;
+  showModeratorBoard = false;
+  username: string;
 
   constructor(
     private bsmodalService: BsModalService,
-    private authService: AuthenticationService,
+    private tokenStorageService: TokenStorageService,
     public translateService: TranslateService,
+    private router: Router,
   ) {
     translateService.addLangs(['English', 'සිංහල']);
     translateService.setDefaultLang('English');
@@ -34,22 +37,25 @@ export class NavigationComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.authReset();
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+
+      this.username = user.username;
+    }
   }
 
-  // authReset() {
-  //   this.loggedIn = this.authService.loggedIn();
-  //   if (this.loggedIn) {
-  //     this.user = this.authService.getUser();
-  //     this.isAdmin = this.user.role == 'admin';
-  //     this.isMod = this.user.role == 'mod';
-  //     this.isUser = this.user.role == 'user';
-  //   }
-  //   else {
-  //     this.user = null;
-  //     this.isAdmin = this.isMod = this.isUser = false;
-  //   }
-  // }
+  onLogoutClick() {
+    this.tokenStorageService.signOut();
+    // window.location.reload();
+    this.router.navigate(['/']);
+
+  }
 
   openLoginModal() {
     this.bsmodalRef = this.bsmodalService.show(LoginComponent);
