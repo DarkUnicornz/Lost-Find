@@ -37,40 +37,24 @@ class AuthScreen extends StatefulWidget {
 
 class _AuthScreenState extends State<AuthScreen> {
   String _email, _password;
-  static final _formkey = new GlobalKey<FormState>();
-  final scaffoldKey = GlobalKey<ScaffoldState>();
-  bool isenabled;
-  @override
-  void initState() {
-    super.initState();
-    isenabled = true;
-  }
+  bool _isLoading = false;
+  GlobalKey<FormState> _formkey = new GlobalKey<FormState>();
 
-  Future _handleLogin(
-    String _email,
-    String _password,
-    BuildContext context,
-  ) async {
+  void _handleLogin(BuildContext context) {
+    setState(() {
+      _isLoading = true;
+    });
     AuthService().login(_email, _password).then((res) {
+      setState(() {
+        _isLoading = false;
+      });
       if (res) {
         Application.router.navigateTo(context, '/home', clearStack: true);
       } else {
-        isenabled = true;
-        showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return AlertDialog(
-                title: Text("Invalid credentials"),
-                actions: <Widget>[
-                  FlatButton(
-                    child: Text("Okay"),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  )
-                ],
-              );
-            });
+        Scaffold.of(context).showSnackBar(SnackBar(
+          content: Text("Invalid Credentials"),
+          backgroundColor: Colors.redAccent,
+        ));
       }
     });
   }
@@ -78,90 +62,176 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffoldKey,
+      backgroundColor: Colors.grey,
+      resizeToAvoidBottomInset: false,
       body: Form(
           key: _formkey,
-          child: Column(
+          child: Stack(
             children: <Widget>[
-              SizedBox(
-                height: 50,
+              Container(
+                height: 140,
+                color: Color(0xfff57f17),
               ),
-              Expanded(
-                child: Container(
-                  width: 200,
-                  height: 200,
-                  child: Image.asset("lib/image/login_image.png"),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              TextFormField(
-                obscureText: false,
-                onChanged: (value) {
-                  setState(() {
-                    _email = value;
-                  });
-                },
-                decoration: new InputDecoration(
-                  labelText: "User email",
-                  fillColor: Colors.white,
-                  border: new OutlineInputBorder(
-                    borderRadius: new BorderRadius.circular(25.0),
-                    borderSide: new BorderSide(),
+              Container(
+                margin: EdgeInsets.fromLTRB(24.0, 70.0, 24.0, 0),
+                child: Form(
+                  key: _formkey,
+                  child: Column(
+                    children: <Widget>[
+                      SizedBox(
+                        height: 20.0,
+                      ),
+                      Container(
+                        height: 100.0,
+                        width: 100.0,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12.0),
+                          boxShadow: [BoxShadow(blurRadius: 12.0)],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 40.0,
+                      ),
+                      TextFormField(
+                        onChanged: (value) {
+                          setState(() {
+                            _email = value;
+                          });
+                        },
+                        style: TextStyle(fontSize: 14.0),
+                        textAlign: TextAlign.center,
+                        decoration: InputDecoration(
+                          hintText: "Email",
+                          contentPadding: EdgeInsets.all(0),
+                          fillColor: Color(0xffc4dfe6),
+                          filled: true,
+                          border: InputBorder.none,
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(4.0)),
+                            borderSide: BorderSide(color: Color(0xff66a5ad)),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(4.0)),
+                            borderSide: BorderSide(
+                                color: Color(0xff07575b), width: 1.5),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(4.0)),
+                            borderSide:
+                                BorderSide(color: Colors.redAccent, width: 1),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(4.0)),
+                            borderSide:
+                                BorderSide(color: Colors.redAccent, width: 1),
+                          ),
+                        ),
+                        validator: (val) {
+                          if (val.isEmpty) {
+                            return 'National ID cannot be empty';
+                          } else if (val.length != 10) {
+                            return "Invalid National ID";
+                          }
+                        },
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      TextFormField(
+                        obscureText: true,
+                        onChanged: (value) {
+                          setState(() {
+                            _password = value;
+                          });
+                        },
+                        style: TextStyle(fontSize: 14.0),
+                        textAlign: TextAlign.center,
+                        decoration: InputDecoration(
+                          hintText: "Password",
+                          contentPadding: EdgeInsets.all(0),
+                          fillColor: Color(0xffc4dfe6),
+                          filled: true,
+                          border: InputBorder.none,
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(4.0)),
+                            borderSide: BorderSide(color: Color(0xff66a5ad)),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(4.0)),
+                            borderSide: BorderSide(
+                                color: Color(0xff07575b), width: 1.5),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(4.0)),
+                            borderSide:
+                                BorderSide(color: Colors.redAccent, width: 1),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(4.0)),
+                            borderSide:
+                                BorderSide(color: Colors.redAccent, width: 1),
+                          ),
+                        ),
+                        validator: (val) {
+                          if (val.isEmpty) {
+                            return 'Password cannot be empty';
+                          }
+                        },
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Builder(
+                        builder: (context) => Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: <Widget>[
+                            FlatButton(
+                                onPressed: () {
+                                  if (_formkey.currentState.validate()) {
+                                    _handleLogin(context);
+                                  }
+                                },
+                                child: Text(
+                                  'Login',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                color: Color(0xfff57f17),
+                              ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      FlatButton(
+                        onPressed: (){
+                          //Navigator.pushNamed(context, '/auth/register');
+                        }, 
+                        child: Text('Regiter'),
+                      ),
+                    ],
                   ),
                 ),
-                validator: UseremailValidator.validateEmail,
-                keyboardType: TextInputType.text,
-                style: new TextStyle(
-                  fontFamily: "Poppins",
-                ),
               ),
-              SizedBox(
-                height: 20,
-              ),
-              TextFormField(
-                obscureText: true,
-                onChanged: (value) {
-                  setState(() {
-                    _password = value;
-                  });
-                },
-                decoration: new InputDecoration(
-                  labelText: "Password",
-                  fillColor: Colors.white,
-                  border: new OutlineInputBorder(
-                    borderRadius: new BorderRadius.circular(25.0),
-                    borderSide: new BorderSide(),
+              (_isLoading)
+                ? Container(
+                  color: Color(0xdd003b46),
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                    ),
                   ),
-                ),
-                validator: PasswordValidator.validate,
-                keyboardType: TextInputType.text,
-                style: new TextStyle(
-                  fontFamily: "Poppins",
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              RaisedButton(
-                onPressed: () {
-                  if (_formkey.currentState.validate()) {
-                    if (isenabled) {
-                      isenabled = false;
-                      _handleLogin(_email, _password, context);
-                    } else {
-                      return null;
-                    }
-                  }
-                },
-                textColor: Colors.white,
-                child: const Text('Login', style: TextStyle(fontSize: 20)),
-                color: Colors.lightBlue,
-              ),
-              Expanded(
-                child: Container(),
-              )
+                )
+                : Container(),
             ],
           )),
     );

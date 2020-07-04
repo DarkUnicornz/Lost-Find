@@ -43,8 +43,8 @@ class _SplashScreenState extends State<SplashScreen>{
             ),
             const SizedBox(height: 30,),
             Container(
-              child: SpinKitDoubleBounce(
-                color: Colors.lightBlueAccent,
+              child: SpinKitFadingCircle(
+                color: Colors.black,
               ),
             )
           ],
