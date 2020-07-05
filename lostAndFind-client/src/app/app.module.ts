@@ -33,6 +33,7 @@ import { authInterceptorProviders } from './helpers/authentication.interceptor';
 // ngx-bootstrap
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 
 
@@ -58,6 +59,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ModDashboardComponent,
     AdminDashboardComponent,
     TestComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
