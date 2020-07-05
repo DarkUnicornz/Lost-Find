@@ -52,7 +52,17 @@ class AuthService {
 
   Future<bool> register(User user) {
     return Dio()
-        .post('$baseUrl/authenticate/register', data: {}).then((res) async {
+        .post('$baseUrl/authenticate/register', data: {
+          "nic": user.nic,
+          "email": user.email,
+          "password": user.password,
+          "first_name": user.fName,
+          "last_name": user.lName,
+          "address": user.address,
+          "DOB": user.dob,
+          "contact_number": user.phoneNo,
+          "gender": user.gender
+        }).then((res) async {
       if (res.statusCode == 201) {
         return await PrefService().setToken(res.data['data']['token']);
       }
