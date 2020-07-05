@@ -6,7 +6,7 @@ class User {
       email,
       phoneNo,
       address,
-      age,
+      dob,
       gender;
 
   User(
@@ -17,7 +17,7 @@ class User {
       this.email,
       this.phoneNo,
       this.address,
-      this.age,
+      this.dob,
       this.gender});
 
   factory User.fromJson(Map<String, dynamic> json) {
@@ -28,7 +28,7 @@ class User {
       email: json['email'],
       phoneNo: json['phone_number'],
       address: json['address'],
-      age: json['age'],
+      dob: json['dob'],
       gender: json['gender']
     );
   }
