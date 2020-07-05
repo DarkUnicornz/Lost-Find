@@ -44,6 +44,10 @@ export class LostfoundItemComponent implements OnInit {
       ]]
     });
     this.onClose = new Subject();
+}
+
+  onCancel(){
+    this.onClose.next(false);
   }
 
   get location() {
@@ -59,8 +63,9 @@ export class LostfoundItemComponent implements OnInit {
     return this.postForm.get('status');
   }
 
+
   // convenience getter for easy access to form fields
-  get f() { return this.postForm.controls; }
+  //get f() { return this.postForm.controls; }
 
   onPostSubmit() {
     //this.submitted=true;
@@ -70,8 +75,11 @@ export class LostfoundItemComponent implements OnInit {
       date: this.date.value,
       status: this.status.value
     };
-    console.log(this.location);
-    console.log('Asenith');
+     console.log(post.location);
+     console.log(post.description);
+     console.log(post.date);
+     console.log(post.status);
+     console.log('Asenith');
     // if (!this.validateService.validatePost(post)) {
     //   this.ngFlashMessageService.showFlashMessage({
     //     messages: ['please fill in all fields'],
@@ -82,29 +90,29 @@ export class LostfoundItemComponent implements OnInit {
     //   return false;
     // }
 
-  //   this.authService.sendPost(post).subscribe((res) => {
-  //     if (res) {
-  //       this.ngFlashMessageService.showFlashMessage({
-  //         messages: ['post success'],
-  //         dismissible: true,
-  //         timeout: 3000,
-  //         type: 'success'
-  //       });
-  //       setTimeout(() => {
-  //         this.router.navigate(['']);
-  //       }, 3000);
-  //     }
-  //     else {
-  //       this.ngFlashMessageService.showFlashMessage({
-  //         messages: ['Fill all Feilds'],
-  //         dismissible: true,
-  //         timeout: 3000,
-  //         type: 'danger'
-  //       });
-  //       setTimeout(() => {
-  //         this.router.navigate(['/lostfounditem']);
-  //       }, 3000);
-  //     }
-  //   });
+    this.authService.sendPost(post).subscribe((res) => {
+      if (res) {
+        this.ngFlashMessageService.showFlashMessage({
+          messages: ['post success'],
+          dismissible: true,
+          timeout: 3000,
+          type: 'success'
+        });
+        setTimeout(() => {
+          this.router.navigate(['']);
+        }, 3000);
+      }
+      else {
+        this.ngFlashMessageService.showFlashMessage({
+          messages: ['Fill all Feilds'],
+          dismissible: true,
+          timeout: 3000,
+          type: 'danger'
+        });
+        setTimeout(() => {
+          this.router.navigate(['/lostfounditem']);
+        }, 3000);
+      }
+    });
   }
 }

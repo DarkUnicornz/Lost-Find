@@ -31,7 +31,7 @@ export class ValidateService {
    // }
   }
 
-  validatePost(post){
-    return true;
-  }
+  // validatePost(post){
+  //   return true;
+  // }
 }
