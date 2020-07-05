@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
+  role: string;
 
 
   constructor(
@@ -41,6 +42,8 @@ export class LoginComponent implements OnInit {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
     }
+
+    this.onClose = new Subject();
   }
 
 
@@ -57,10 +60,43 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
 
+        this.onClose.next(true); // trigger refresh on navigation-component
+
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.roles = this.tokenStorage.getUser().roles;
-        this.reloadPage();
+        this.role = this.tokenStorage.getUser().roles;
+        console.log('role =' + this.role);
+        // this.role = this.roles;
+        // this.reloadPage();
+        // this.router.navigate(['']);
+        this.ngFlashMessageService.showFlashMessage({
+          messages: ['Logged in as' + this.role],
+          dismissible: true,
+          timeout: 3000,
+          type: 'success'
+        });
+        setTimeout(() => {
+
+          console.log('role 2222 =' + this.role);
+
+          if ( this.role == 'ROLE_ADMIN' ) {
+            console.log('IF');
+            this.router.navigate(['/admin_dashboard']);
+          } else if (this.role == 'ROLE_MODERATOR') {
+            console.log('ELSE IF');
+            this.router.navigate(['/mod_dashboard']);
+          } else if (this.role == 'ROLE_USER'){
+            console.log('ELSE');
+            this.router.navigate(['/new_admin']);
+          }
+
+          // this.router.navigate(['/admin']);
+
+          // this.isLoggedIn = true;
+          // console.log('Login =' + this.isLoggedIn);
+        },
+        2000);
+        this.bsModalRef.hide();
       },
       err => {
         this.errorMessage = err.error.message;
@@ -69,8 +105,8 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  reloadPage() {
-    window.location.reload();
-  }
+  // reloadPage() {
+  //   window.location.reload();
+  // }
 
 }

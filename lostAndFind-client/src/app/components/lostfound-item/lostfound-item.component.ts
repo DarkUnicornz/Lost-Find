@@ -47,7 +47,7 @@ export class LostfoundItemComponent implements OnInit {
   }
 
   get location() {
-    return this.postForm.get('lostfoundItem');
+    return this.postForm.get('location');
   }
   get description() {
     return this.postForm.get('description');
