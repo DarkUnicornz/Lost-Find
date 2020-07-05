@@ -64,31 +64,38 @@ export class LoginComponent implements OnInit {
 
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.roles = this.tokenStorage.getUser().roles;
+        this.role = this.tokenStorage.getUser().roles;
+        console.log('role =' + this.role);
+        // this.role = this.roles;
         // this.reloadPage();
         // this.router.navigate(['']);
         this.ngFlashMessageService.showFlashMessage({
-          messages: ['Logged in as' + this.roles],
+          messages: ['Logged in as' + this.role],
           dismissible: true,
           timeout: 3000,
           type: 'success'
         });
         setTimeout(() => {
 
-          if (this.role === 'ROLE_ADMIN') {
+          console.log('role 2222 =' + this.role);
+
+          if ( this.role == 'ROLE_ADMIN' ) {
+            console.log('IF');
             this.router.navigate(['/admin_dashboard']);
-          } else if (this.role === 'ROLE_MODERATOR') {
+          } else if (this.role == 'ROLE_MODERATOR') {
+            console.log('ELSE IF');
             this.router.navigate(['/mod_dashboard']);
-          } else {
-            this.router.navigate(['/user_dashboard']);
+          } else if (this.role == 'ROLE_USER'){
+            console.log('ELSE');
+            this.router.navigate(['/new_admin']);
           }
 
           // this.router.navigate(['/admin']);
 
-          this.isLoggedIn = true;
-          console.log('Login =' + this.isLoggedIn);
+          // this.isLoggedIn = true;
+          // console.log('Login =' + this.isLoggedIn);
         },
-        3000);
+        2000);
         this.bsModalRef.hide();
       },
       err => {
