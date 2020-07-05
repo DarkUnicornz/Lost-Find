@@ -1,10 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-// import { Observable } from 'rxjs';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 import { AppConfig } from './../config/app-config';
 import { User } from './../models/user.model';
 import { Post } from './../models/post.model';
+import { TokenStorageService } from './../services/token-storage.service';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +22,37 @@ export class AuthenticationService {
 
   constructor(
     private http: HttpClient,
+    private router: Router,
+    private tokenStorageService: TokenStorageService,
   ) { }
+  // *****************************************
+
+  register(user): Observable<any> {
+    return this.http.post(AppConfig.BASE_URL + 'signup', {
+      username: user.username,
+      email: user.email,
+      password: user.password
+    }, httpOptions);
+  }
+
+  login(credentials): Observable<any> {
+    return this.http.post(AppConfig.BASE_URL + 'signin', {
+      username: credentials.username,
+      password: credentials.password
+    }, httpOptions);
+  }
+
+  logout() {
+    this.tokenStorageService.signOut();
+    // window.location.reload();
+    // this.isLoggedIn = false;
+    // console.log('singnout 1');
+    this.router.navigate(['']);
+    // console.log('singnout 2');
+    // console.log('logout=' + this.isLoggedIn);
+  }
+
+  // *****************************************
 
   registerUser(user: User) {
     const headers = new HttpHeaders();
@@ -35,7 +71,7 @@ export class AuthenticationService {
     headers.append('Content-Type', 'application/json');
     //fake url(because backend function implement not yet)
     return this.http.post(AppConfig.BASE_URL + 'register', post, { headers}).pipe();
-    
-  }  
+
+  }
   // : Observable<any>
 }

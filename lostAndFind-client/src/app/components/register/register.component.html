@@ -3,162 +3,99 @@
 </button>
 
 <div class="container mt-5 mb-5">
-	<div class="d-flex justify-content-center h-100">
-		<div class="card">
-			<div class="card-header">
-				<h3>{{'REGISTER.HEADER' | translate}}</h3>
-				<div class="d-flex justify-content-end social_icon">
-					<span><i class="fa fa-facebook-square"></i></span>
-					<span><i class="fa fa-google-plus-square"></i></span>
-					<span><i class="fa fa-twitter-square"></i></span>
-				</div>
+  <div class="d-flex justify-content-center h-100">
+    <div class="card">
+      <div class="card-header">
+        <h3>{{'REGISTER.HEADER' | translate}}</h3>
+        <div class="d-flex justify-content-end social_icon">
+          <span><i class="fa fa-facebook-square"></i></span>
+          <span><i class="fa fa-google-plus-square"></i></span>
+          <span><i class="fa fa-twitter-square"></i></span>
+        </div>
       </div>
 
-			<div class="card-body">
-				<form (submit)="onRegisterSubmit()" [formGroup]="registerForm">
-          <!-- <div style="width: auto; height: 900px"> -->
+      <div class="card-body">
+        <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onRegisterSubmit()" #f="ngForm" novalidate>
 
-          <div class="custom-scrollbar-css p-2">
-
-          <div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fa fa-id-card"></i></span>
-						</div>
-            <input name="nic" formControlName="nic" type="text" class="form-control" placeholder="{{'REGISTER.PLACEHOLDER_NIC' | translate}}"
-            [ngClass]="{'is-invalid': (nic.touched || nic.dirty) && nic.invalid }">
-            <div class="invalid-feedback" *ngIf="(nic.touched || nic.dirty) && nic.invalid">
-              Enter your NIC number.
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-user"></i></span>
+              </div>
+              <input type="text" class="form-control" name="username" [(ngModel)]="form.username" required minlength="3"
+                placeholder="{{'REGISTER.PLACEHOLDER_FNAME' | translate}}" maxlength="20" #username="ngModel" />
+            </div>
+            <div class="alert-danger mb-0" *ngIf="f.submitted && username.invalid">
+              <div *ngIf="username.errors.required">Username is required</div>
+              <div *ngIf="username.errors.minlength">
+                Username must be at least 3 characters
+              </div>
+              <div *ngIf="username.errors.maxlength">
+                Username must be at most 20 characters
+              </div>
             </div>
           </div>
 
-          <div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fa fa-user"></i></span>
-						</div>
-            <input name="fName" formControlName="fName" type="text" class="form-control" placeholder="{{'REGISTER.PLACEHOLDER_FNAME' | translate}}"
-            [ngClass]="{'is-invalid': (fName.touched || fName.dirty) && fName.invalid }">
-            <div class="invalid-feedback" *ngIf="(fName.touched || fName.dirty) && fName.invalid">
-              Enter your first name.
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+              </div>
+              <input type="email" class="form-control" name="email" [(ngModel)]="form.email" required email #email="ngModel"
+                placeholder="{{'REGISTER.PLACEHOLDER_EMAIL' | translate}}" />
+            </div>
+            <div class="alert-danger mb-0" *ngIf="f.submitted && email.invalid">
+              <div *ngIf="email.errors.required">Email is required</div>
+              <div *ngIf="email.errors.email">
+                Email must be a valid email address
+              </div>
             </div>
           </div>
 
-          <div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fa fa-user"></i></span>
-						</div>
-            <input name="lName" formControlName="lName" type="text" class="form-control" placeholder="{{'REGISTER.PLACEHOLDER_LNAME' | translate}}"
-            [ngClass]="{'is-invalid': (lName.touched || lName.dirty) && lName.invalid }">
-            <div class="invalid-feedback" *ngIf="(lName.touched || lName.dirty) && lName.invalid">
-              Enter your last name.
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-id-card"></i></span>
+              </div>
+              <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required minlength="6"
+                #password="ngModel" placeholder="{{'REGISTER.PLACEHOLDER_PASSWORD' | translate}}" />
+            </div>
+            <div class="alert-danger mb-0" *ngIf="f.submitted && password.invalid">
+              <div *ngIf="password.errors.required">Password is required</div>
+              <div *ngIf="password.errors.minlength">
+                Password must be at least 6 characters
+              </div>
             </div>
           </div>
-
-
-          <div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fa fa-envelope"></i></span>
-						</div>
-            <input name="email" formControlName="email" type="text" class="form-control" placeholder="{{'REGISTER.PLACEHOLDER_EMAIL' | translate}}"
-            [ngClass]="{'is-invalid': (email.touched || email.dirty) && email.invalid }">
-            <div class="invalid-feedback" *ngIf="(email.touched || email.dirty) && email.invalid">
-              Enter a valid e-mail address.
-            </div>
-            <!-- <small id="emailHelp" class="form-text text-muted" *ngIf="!(email.touched || email.dirty)">
-                We'll never share your email with anyone else.
-            </small> -->
-          </div>
-
-
-          <div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fa fa-phone"></i></span>
-						</div>
-            <input name="phone" formControlName="phone" type="tel" [pattern]="mobNumberPattern" class="form-control" placeholder="{{'REGISTER.PLACEHOLDER_PHONE' | translate}}"
-            [ngClass]="{'is-invalid': (phone.touched || phone.dirty) && phone.invalid }">
-            <div class="invalid-feedback" *ngIf="(phone.touched || phone.dirty) && phone.invalid">
-              Enter your phone number.
-            </div>
-          </div>
-
-
-          <div class="input-group form-group">
-            <div class="input-group-prepend">
-							<span class="input-group-text"><i class="fa fa-address-card"></i></span>
-						</div>
-            <textarea class="form-control" name="address" formControlName="address" id="exampleFormControlTextarea1" rows="3" placeholder="{{'REGISTER.PLACEHOLDER_ADDRESS' | translate}}"
-            [ngClass]="{'is-invalid': (address.touched || address.dirty) && address.invalid }"></textarea>
-            <div class="invalid-feedback" *ngIf="(address.touched || address.dirty) && address.invalid">
-              Enter your address.
-            </div>
-          </div>
-
-
-          <div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fa fa-birthday-cake"></i></span>
-						</div>
-            <input type="date" class="form-control" formControlName="bDay" bsDatepicker [bsConfig]="{ isAnimated: true , dateInputFormat: 'YYYY-MM-DD' }" placeholder="{{'REGISTER.PLACEHOLDER_BDAY' | translate}}"
-            [ngClass]="{'is-invalid': (bDay.touched || bDay.dirty) && bDay.invalid }">
-            <div class="invalid-feedback" *ngIf="(bDay.touched || bDay.dirty) && bDay.invalid">
-              Enter your birth day.
-            </div>
-          </div>
-
-
-          <div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fa fa-venus-mars"></i></span>
-            </div>
-            <select name="gender" formControlName="gender" class="form-control" id="gender"
-            [ngClass]="{'is-invalid': (gender.touched || gender.dirty) && gender.invalid }">
-            <div class="invalid-feedback" *ngIf="(gender.touched || gender.dirty) && gender.invalid">
-              Enter your gender.
-            </div>
-              <option selected>{{'REGISTER.PLACEHOLDER_GENDER' | translate}}</option>
-              <option value="Male">{{'REGISTER.PLACEHOLDER_GENDER1' | translate}}</option>
-              <option value="Female">{{'REGISTER.PLACEHOLDER_GENDER2' | translate}}</option>
-            </select>
-          </div>
-
-
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fa fa-key"></i></span>
-						</div>
-            <input name="password" formControlName="password" type="password" class="form-control" placeholder="{{'REGISTER.PLACEHOLDER_PASSWORD' | translate}}"
-            [ngClass]="{'is-invalid': (password.touched || password.dirty) && password.invalid }">
-            <div class="invalid-feedback" *ngIf="(password.touched || password.dirty) && password.invalid">
-              Enter a password for your account.
-            </div>
-          <!-- <password-strength-meter id="passwordHelp" [enableFeedback]="true" [password]="password.value"
-              *ngIf="(password.touched || password.dirty)">
-          </password-strength-meter> -->
-          </div>
-
-          <!-- <div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fa fa-key"></i></span>
-						</div>
-						<input name="confirm_password" (ngModel)="password" type="password" class="form-control" placeholder="{{'REGISTER.PLACEHOLDER_CONFIRM-PASSWORD' | translate}}">
+          <!-- <div class="form-group">
+            <button class="btn btn-primary btn-block">Sign Up</button>
           </div> -->
 
-        </div>
-
-				  <ng-flash-message></ng-flash-message>
-
-					<div class="form-group">
-            <input type="button" (click)="bsModalRef.hide()" value="{{'REGISTER.CANCEL_BUTTON' | translate}}" class="btn float-right cancel_btn">
-						<input type="submit" [disabled]="registerForm.invalid" value="{{'REGISTER.SIGNUP_BUTTON' | translate}}" class="btn float-right login_btn mr-2">
+          <div *ngIf="f.submitted && isSignUpFailed">
+            <ng-flash-message></ng-flash-message>
           </div>
-          <!-- </div> -->
-				</form>
+
+          <div class="form-group">
+            <input type="button" (click)="bsModalRef.hide()" value="{{'REGISTER.CANCEL_BUTTON' | translate}}"
+              class="btn float-right cancel_btn">
+            <input type="submit" [disabled]="f.invalid" value="{{'REGISTER.SIGNUP_BUTTON' | translate}}"
+              class="btn float-right login_btn mr-2">
+          </div>
+
+        </form>
+
+        <!-- <div *ngIf="isSuccessful"> -->
+          <ng-flash-message></ng-flash-message>
+        <!-- </div> -->
+
       </div>
 
-			<div class="card-footer">
-				<div class="d-flex justify-content-center links">
-					{{'REGISTER.FOOTER' | translate}}<a href="#" >{{'REGISTER.FOOTER_SIGNIN' | translate}}</a>   <!--[routerLink]="['login']"-->
-				</div>
-			</div>
-		</div>
-	</div>
+      <div class="card-footer">
+        <div class="d-flex justify-content-center links">
+          {{'REGISTER.FOOTER' | translate}}<a href="#">{{'REGISTER.FOOTER_SIGNIN' | translate}}</a>
+          <!--[routerLink]="['login']"-->
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

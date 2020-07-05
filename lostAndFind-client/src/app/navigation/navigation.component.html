@@ -74,7 +74,7 @@
           Test
         </a>
       </li> -->
-      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" class="nav-item mr-5">
+      <li [routerLinkActive]="['active']" *ngIf="!isLoggedIn" [routerLinkActiveOptions]="{exact: true}" class="nav-item mr-5">
         <a class="nav-link btn btn-default" (click)="openLoginModal()">
           <i class="fa fa-sign-in"></i>
           {{ 'NAVIGATION.SIGNIN' | translate }}
@@ -83,18 +83,18 @@
       </li>
 
       <!-- <ng-template> -->
-        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" class="nav-item mr-5">
-          <!-- <a class="nav-link btn btn-default" (click)="onLogoutClick()" >
+        <li [routerLinkActive]="['active']" *ngIf="isLoggedIn" [routerLinkActiveOptions]="{exact: true}" class="nav-item mr-5">
+          <a class="nav-link btn btn-default" (click)="onLogoutClick()" >
             <i class="fa fa-sign-out"></i>
             Sign out
-            <!-- <span class="sr-only">(current)</span> --
-          </a> -->
+            <!-- <span class="sr-only">(current)</span> -->
+          </a>
         </li>
       <!-- </ng-template> -->
 
 
-      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" class="nav-item mr-5">
-        <a class="nav-link btn btn-default" (click)="openRegisterModal()">
+      <li [routerLinkActive]="['active']" *ngIf="!isLoggedIn" [routerLinkActiveOptions]="{exact: true}" class="nav-item mr-5">
+        <a class="nav-link btn btn-default"  (click)="openRegisterModal()">
           <i class="fa fa-user-plus"></i>
           {{ 'NAVIGATION.SIGNUP' | translate }}
           <!-- <span class="sr-only">(current)</span> -->

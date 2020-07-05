@@ -27,10 +27,14 @@ import { TestComponent } from './test/test/test.component';
 // services
 import { AuthenticationService } from './services/authentication.service';
 import { ValidateService } from './services/validate.service';
+// import { authInterceptorProviders } from './helpers/authentication.interceptor';
+import { authInterceptorProviders } from './helpers/authentication.interceptor';
 
 // ngx-bootstrap
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+
 
 
 
@@ -55,6 +59,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ModDashboardComponent,
     AdminDashboardComponent,
     TestComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,6 +81,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CarouselModule.forRoot()
   ],
   providers: [
+    authInterceptorProviders,
     AuthenticationService,
     ValidateService,
   ],

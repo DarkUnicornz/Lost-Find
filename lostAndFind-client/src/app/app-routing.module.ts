@@ -11,6 +11,7 @@ import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.co
 import { ModDashboardComponent } from './pages/mod-dashboard/mod-dashboard.component';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 import { TestComponent } from './test/test/test.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'mod_dashboard', component: ModDashboardComponent},
   { path: 'admin_dashboard', component: AdminDashboardComponent},
   { path: 'test', component: TestComponent },
+  { path: 'user_profile',component:UserProfileComponent}
 ];
 
 @NgModule({
