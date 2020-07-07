@@ -34,7 +34,16 @@ class _SplashScreenState extends State<SplashScreen>{
           children: <Widget>[
             Logo(),
             Text(
-              "Welcome to Lost&Find_App",
+              "Welcome",
+              textDirection: TextDirection.ltr,
+              style: TextStyle(
+                decoration: TextDecoration.none,
+                fontSize: 30,
+              ),
+            ),
+            const SizedBox(height: 3,),
+            Text(
+              "LostFoundApp",
               textDirection: TextDirection.ltr,
               style: TextStyle(
                 decoration: TextDecoration.none,
