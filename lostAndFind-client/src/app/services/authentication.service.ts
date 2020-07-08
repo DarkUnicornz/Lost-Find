@@ -28,9 +28,17 @@ export class AuthenticationService {
   // *****************************************
 
   register(user): Observable<any> {
+    console.log('aaaaaaa =' + user.bDay);
     return this.http.post(AppConfig.BASE_URL + 'signup', {
+      nic: user.nic,
       username: user.username,
+      fName: user.fName,
+      lName: user.lName,
       email: user.email,
+      phone: user.phone,
+      address: user.address,
+      bDay: user.bDay,
+      gender: user.gender,
       password: user.password
     }, httpOptions);
   }

@@ -7,7 +7,7 @@
 
   "LOGIN": {
     "HEADER": "Sign In",
-    "PLACEHOLDER_EMAIL": "Email",
+    "PLACEHOLDER_USERNAME": "User Name",
     "PLACEHOLDER_PASSWORD": "Password",
     "SIGNIN_BUTTON": "Sign In",
     "EMAIL_VALIDATE": "Please type in your email.",
@@ -19,6 +19,7 @@
     "HEADER": "Sign Up",
     "PLACEHOLDER_NIC": "NIC",
     "PLACEHOLDER_FNAME": "First Name",
+    "PLACEHOLDER_USERNAME": "User Name",
     "PLACEHOLDER_LNAME": "Last Name",
     "PLACEHOLDER_EMAIL": "Email",
     "PLACEHOLDER_PHONE": "Phone Number",

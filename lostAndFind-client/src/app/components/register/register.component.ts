@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgFlashMessageService } from 'ng-flash-messages';
 import { Router } from '@angular/router';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-// import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 
 // import { User } from './../../models/user.model';
@@ -16,12 +16,10 @@ import { ValidateService } from './../../services/validate.service';
 })
 export class RegisterComponent implements OnInit {
 
-  // public onClose: Subject<boolean>;
-  // registerForm: FormGroup;
-  // currentDate = new Date();
-  // mobNumberPattern = '^((\\+94-?)|0)?[7,9]{1}[1,6,7]{1}[0-9]{7}$';       // "^((\\+91-?)|0)?[0-9]{10}$";
-
-  form: any = {};
+  public onClose: Subject<boolean>;
+  registerForm: FormGroup;
+  currentDate = new Date();
+  mobNumberPattern = '^((\\+94-?)|0)?[7,9]{1}[1,6,7]{1}[0-9]{7}$';       // "^((\\+91-?)|0)?[0-9]{10}$";
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
@@ -32,7 +30,7 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private validateService: ValidateService,
     public bsModalRef: BsModalRef,
-    // private formBuilder: FormBuilder,
+    private formBuilder: FormBuilder,
   ) { }
 
 
@@ -48,69 +46,75 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
 
-    // this.registerForm = this.formBuilder.group({
-    //   nic: ['', [
-    //     Validators.required,
-    //   ]],
-    //   username: ['', [
-    //     Validators.required,
-    //   ]],
-    //   lName: ['', [
-    //     Validators.required,
-    //   ]],
-    //   email: ['', [
-    //     Validators.email,
-    //     Validators.required,
-    //   ]],
-    //   phone: ['', [
-    //     Validators.required,
-    //   ]],
-    //   address: ['', [
-    //     Validators.required,
-    //   ]],
-    //   bDay: ['', [
-    //     Validators.required,
-    //   ]],
-    //   gender: ['', [
-    //     Validators.required,
-    //   ]],
-    //   password: ['', [
-    //     Validators.required,
-    //     Validators.minLength(3)
-    //   ]],
-    // });
+    this.registerForm = this.formBuilder.group({
+      nic: ['', [
+        Validators.required,
+      ]],
+      username: ['', [
+        Validators.required,
+      ]],
+      fName: ['', [
+        Validators.required,
+      ]],
+      lName: ['', [
+        Validators.required,
+      ]],
+      email: ['', [
+        Validators.email,
+        Validators.required,
+      ]],
+      phone: ['', [
+        Validators.required,
+      ]],
+      address: ['', [
+        Validators.required,
+      ]],
+      bDay: ['', [
+        Validators.required,
+      ]],
+      gender: ['', [
+        Validators.required,
+      ]],
+      password: ['', [
+        Validators.required,
+        Validators.minLength(3)
+      ]],
+    });
 
-    // this.onClose = new Subject();
+    this.onClose = new Subject();
   }
 
 
-  // get nic() {
-  //   return this.registerForm.get('nic');
-  // }
-  // get username() {
-  //   return this.registerForm.get('username');
-  // }
-  // get lName() {
-  //   return this.registerForm.get('lName');
-  // }
-  // get email() {
-  //   return this.registerForm.get('email');
-  // }
-  // get phone() {
-  //   return this.registerForm.get('phone');
-  // }
-  // get address() {
-  //   return this.registerForm.get('address');
-  // }
-  // get bDay() {
-  //   return this.registerForm.get('bDay');
-  // }
-  // get gender() {
-  //   return this.registerForm.get('gender');
-  // }
-  // get password() {
-  //   return this.registerForm.get('password');
-  // }
+  get nic() {
+    return this.registerForm.get('nic');
+  }
+  get username() {
+    return this.registerForm.get('username');
+  }
+  get fName() {
+    return this.registerForm.get('fName');
+  }
+  get lName() {
+    return this.registerForm.get('lName');
+  }
+  get email() {
+    return this.registerForm.get('email');
+  }
+  get phone() {
+    return this.registerForm.get('phone');
+  }
+  get address() {
+    return this.registerForm.get('address');
+  }
+  get bDay() {
+    return this.registerForm.get('bDay');
+  }
+  get gender() {
+    return this.registerForm.get('gender');
+  }
+  get password() {
+    return this.registerForm.get('password');
+  }
 
   onCancel() {
     // this.onClose.next(false);
@@ -118,21 +122,22 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegisterSubmit() {
-    // const user = {
-    //   // nic: this.nic.value,
-    //   username: this.username.value,
-    //   // lName: this.lName.value,
-    //   email: this.email.value,
-    //   // phone: this.phone.value,
-    //   // address: this.address.value,
-    //   // bDay: this.bDay.value,
-    //   // gender: this.gender.value,
-    //   password: this.password.value,
+    const user = {
+      nic: this.nic.value,
+      username: this.username.value,
+      fName: this.fName.value,
+      lName: this.lName.value,
+      email: this.email.value,
+      phone: this.phone.value,
+      address: this.address.value,
+      bDay: this.bDay.value,
+      gender: this.gender.value,
+      password: this.password.value,
 
-    // };
+    };
 
-    // console.log(this.fName);
-    // console.log('222222');
+    console.log(this.email.value);
+    console.log('222222');
 
     // // required fields
     // if (!this.validateService.validateRegister(user)) {
@@ -167,7 +172,7 @@ export class RegisterComponent implements OnInit {
     // }
 
     // register user
-    // this.authService.registerUser(user).subscribe( (res) => {
+    // this.authService.registerUser(user).subscribe((res) => {
     //   console.log('11111');
     //   if (res) {
     //     this.ngFlashMessageService.showFlashMessage({
@@ -179,7 +184,7 @@ export class RegisterComponent implements OnInit {
     //     setTimeout(() => {
     //       this.router.navigate(['/']);
     //     },
-    //     3000);
+    //       3000);
     //     this.bsModalRef.hide();
 
     //   } else {
@@ -192,13 +197,14 @@ export class RegisterComponent implements OnInit {
     //     setTimeout(() => {
     //       this.router.navigate(['/register']);
     //     },
-    //     3000);
+    //       3000);
     //   }
     // });
 
-    this.authService.register(this.form).subscribe(
+    this.authService.register(user).subscribe(
       data => {
         console.log(data);
+        console.log(user.fName);
         this.isSuccessful = true;
         this.ngFlashMessageService.showFlashMessage({
           messages: ['Your registration is successful!'],
@@ -216,9 +222,10 @@ export class RegisterComponent implements OnInit {
       },
       err => {
         this.errorMessage = err.error.message;
+        console.log(user.fName);
         // this.isSignUpFailed = true;
         this.ngFlashMessageService.showFlashMessage({
-          messages: ['Signup failed!' +  this.errorMessage],
+          messages: ['Signup failed!' + this.errorMessage],
           dismissible: true,
           timeout: 3000,
           type: 'warning'
@@ -226,12 +233,13 @@ export class RegisterComponent implements OnInit {
         setTimeout(() => {
           this.router.navigate(['/register']);
         },
-        3000);
+          3000);
 
         this.isSignUpFailed = true;
 
       }
     );
+
 
   }
 
