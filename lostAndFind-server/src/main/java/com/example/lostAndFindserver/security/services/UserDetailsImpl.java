@@ -20,20 +20,41 @@ public class UserDetailsImpl implements UserDetails {
 
     private Long id;
 
+    private String nic;
+
     private String username;
 
+    private String fName;
+
+    private String lName;
+
     private String email;
+
+    private String phone;
+
+    private String address;
+
+    private String bDay;
+
+    private String gender;
 
     @JsonIgnore
     private String password;
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserDetailsImpl(Long id, String username, String email, String password,
+    public UserDetailsImpl(Long id, String nic, String username, String fName, String lName, String email, String phone, String address, String bDay, String gender, String password,
                            Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
+        this.nic = nic;
         this.username = username;
+        this.fName = fName;
+        this.lName = lName;
         this.email = email;
+        this.phone = phone;
+        this.address = address;
+        this.bDay = bDay;
+        this.gender = gender;
         this.password = password;
         this.authorities = authorities;
     }
@@ -45,8 +66,15 @@ public class UserDetailsImpl implements UserDetails {
 
         return new UserDetailsImpl(
                 user.getId(),
+                user.getNic(),
                 user.getUsername(),
+                user.getfName(),
+                user.getlName(),
                 user.getEmail(),
+                user.getPhone(),
+                user.getAddress(),
+                user.getbDay(),
+                user.getGender(),
                 user.getPassword(),
                 authorities);
     }
@@ -62,6 +90,34 @@ public class UserDetailsImpl implements UserDetails {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getNic() {
+        return nic;
+    }
+
+    public String getfName() {
+        return fName;
+    }
+
+    public String getlName() {
+        return lName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getbDay() {
+        return bDay;
+    }
+
+    public String getGender() {
+        return gender;
     }
 
     @Override

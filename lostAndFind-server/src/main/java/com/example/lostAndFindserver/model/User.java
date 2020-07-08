@@ -15,6 +15,7 @@ import java.util.*;
 @Entity
 @Table(	name = "users",
         uniqueConstraints = {
+                @UniqueConstraint(columnNames = "nic"),
                 @UniqueConstraint(columnNames = "username"),
                 @UniqueConstraint(columnNames = "email")
         })
@@ -25,12 +26,40 @@ public class User {
 
     @NotBlank
     @Size(max = 20)
+    private String nic;
+
+    @NotBlank
+    @Size(max = 20)
     private String username;
+
+    @NotBlank
+    @Size(max = 50)
+    private String fName;
+
+    @NotBlank
+    @Size(max = 50)
+    private String lName;
 
     @NotBlank
     @Size(max = 50)
     @Email
     private String email;
+
+    @NotBlank
+    @Size(max = 15)
+    private String phone;
+
+    @NotBlank
+    @Size(max = 80)
+    private String address;
+
+    @NotBlank
+    @Size(max = 15)
+    private String bDay;
+
+    @NotBlank
+    @Size(max = 6)
+    private String gender;
 
     @NotBlank
     @Size(max = 120)
@@ -46,9 +75,16 @@ public class User {
     public User() {
     }
 
-    public User(String username, String email, String password) {
+    public User(String nic, String username, String fName, String lName, String email, String phone, String address, String bDay, String gender, String password) {
+        this.nic = nic;
         this.username = username;
+        this.fName = fName;
+        this.lName = lName;
         this.email = email;
+        this.phone = phone;
+        this.address = address;
+        this.bDay = bDay;
+        this.gender = gender;
         this.password = password;
     }
 
@@ -82,6 +118,62 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getNic() {
+        return nic;
+    }
+
+    public void setNic(String nic) {
+        this.nic = nic;
+    }
+
+    public String getfName() {
+        return fName;
+    }
+
+    public void setfName(String fName) {
+        this.fName = fName;
+    }
+
+    public String getlName() {
+        return lName;
+    }
+
+    public void setlName(String lName) {
+        this.lName = lName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getbDay() {
+        return bDay;
+    }
+
+    public void setbDay(String bDay) {
+        this.bDay = bDay;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public Set<Role> getRoles() {
