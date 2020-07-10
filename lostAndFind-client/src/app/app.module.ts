@@ -32,6 +32,7 @@ import { ValidateService } from './services/validate.service';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ModProfileComponent } from './pages/mod-profile/mod-profile.component';
+import { ModEntryComponent } from './pages/mod-entry/mod-entry.component';
 
 
 
@@ -58,6 +59,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AdminDashboardComponent,
     TestComponent,
     ModProfileComponent,
+    ModEntryComponent,
     
   ],
   imports: [
