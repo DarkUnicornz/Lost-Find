@@ -33,6 +33,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ModProfileComponent } from './pages/mod-profile/mod-profile.component';
 import { ModEntryComponent } from './pages/mod-entry/mod-entry.component';
+import { ModEntryNextComponent } from './pages/mod-entry-next/mod-entry-next.component';
 
 
 
@@ -60,6 +61,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     TestComponent,
     ModProfileComponent,
     ModEntryComponent,
+    ModEntryNextComponent,
     
   ],
   imports: [
