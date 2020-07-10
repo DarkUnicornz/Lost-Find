@@ -12,6 +12,8 @@ import { ModDashboardComponent } from './pages/mod-dashboard/mod-dashboard.compo
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 import { TestComponent } from './test/test/test.component';
 
+import { ModProfileComponent } from './pages/mod-profile/mod-profile.component';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,6 +26,7 @@ const routes: Routes = [
   { path: 'mod_dashboard', component: ModDashboardComponent},
   { path: 'admin_dashboard', component: AdminDashboardComponent},
   { path: 'test', component: TestComponent },
+   {path: 'mod_profile', component:ModProfileComponent},
 ];
 
 @NgModule({

@@ -35,6 +35,7 @@ import { ModProfileComponent } from './pages/mod-profile/mod-profile.component';
 
 
 
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -57,6 +58,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AdminDashboardComponent,
     TestComponent,
     ModProfileComponent,
+    
   ],
   imports: [
     BrowserModule,
