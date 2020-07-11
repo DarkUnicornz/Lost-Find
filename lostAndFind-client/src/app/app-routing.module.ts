@@ -12,9 +12,10 @@ import { ModDashboardComponent } from './pages/mod-dashboard/mod-dashboard.compo
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 import { TestComponent } from './test/test/test.component';
 
-import { ModProfileComponent } from './pages/mod-profile/mod-profile.component';
+
 import { ModEntryComponent } from './pages/mod-entry/mod-entry.component';
 import { ModEntryNextComponent } from './pages/mod-entry-next/mod-entry-next.component';
+import { ModProfileComponent } from './pages/mod-profile/mod-profile.component';
 
 
 const routes: Routes = [
@@ -28,9 +29,9 @@ const routes: Routes = [
   { path: 'mod_dashboard', component: ModDashboardComponent},
   { path: 'admin_dashboard', component: AdminDashboardComponent},
   { path: 'test', component: TestComponent },
-  {path: 'mod_profile', component:ModProfileComponent},
-  {path: 'mod_entry', component:ModEntryComponent},
-  {path: 'mod_entry_next', component:ModEntryNextComponent},
+  { path: 'mod_profile',component:ModProfileComponent},
+  { path: 'mod_entry', component:ModEntryComponent},
+  { path: 'mod_entry_next', component:ModEntryNextComponent},
 ];
 
 @NgModule({
