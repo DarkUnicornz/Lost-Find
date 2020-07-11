@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'mod_dashboard', component: ModDashboardComponent},
   { path: 'admin_dashboard', component: AdminDashboardComponent},
   { path: 'test', component: TestComponent },
-  { path: 'user_profile',component:UserProfileComponent}
+  { path: 'user_profile', component: UserProfileComponent}
 ];
 
 @NgModule({
