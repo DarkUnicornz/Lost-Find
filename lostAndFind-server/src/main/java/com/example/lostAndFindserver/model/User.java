@@ -54,11 +54,12 @@ public class User {
     private String address;
 
     @NotBlank
-    @Size(max = 15)
+    @Size(max = 200)
+    @Column(length = 1000)
     private String bDay;
 
     @NotBlank
-    @Size(max = 6)
+    @Size(max = 8)
     private String gender;
 
     @NotBlank

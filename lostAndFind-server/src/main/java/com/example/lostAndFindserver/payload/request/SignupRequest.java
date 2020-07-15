@@ -2,6 +2,7 @@ package com.example.lostAndFindserver.payload.request;
 
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.validation.constraints.*;
 
 public class SignupRequest {
@@ -36,11 +37,12 @@ public class SignupRequest {
     private String address;
 
     @NotBlank
-    @Size(max = 15)
+    @Size(max = 200)
+    @Column(length = 1000)
     private String bDay;
 
     @NotBlank
-    @Size(max = 6)
+    @Size(max = 8)
     private String gender;
 
     private Set<String> role;
