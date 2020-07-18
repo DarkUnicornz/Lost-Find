@@ -22,7 +22,7 @@
 
 //        String tempNIC = lostFoundItemModel.getNic();
 //        if(tempNIC != null && "".equals(tempNIC)){
-//            UserModel userObj = userService.fetchUserByNIC(tempNIC);
+//            lostFoundItemModel lostFoundObj = LostFoundItemService.fetchUserByNIC(tempNIC);
 //
 //            if(userObj!=null){
 //                throw new Exception("You should register first");
