@@ -7,6 +7,10 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import com.example.lostAndFindserver.model.*;
+import com.example.lostAndFindserver.payload.request.OfficerSignupRequest;
+import com.example.lostAndFindserver.repository.OfficerRepository;
+import com.example.lostAndFindserver.repository.PoliceStationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,9 +24,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.lostAndFindserver.model.ERole;
-import com.example.lostAndFindserver.model.Role;
-import com.example.lostAndFindserver.model.User;
 import com.example.lostAndFindserver.payload.request.LoginRequest;
 import com.example.lostAndFindserver.payload.request.SignupRequest;
 import com.example.lostAndFindserver.payload.response.JwtResponse;
@@ -44,6 +45,12 @@ public class AuthController {
 
     @Autowired
     RoleRepository roleRepository;
+
+    @Autowired
+    OfficerRepository officerRepository;
+
+    @Autowired
+    PoliceStationRepository policeStationRepository;
 
     @Autowired
     PasswordEncoder encoder;
@@ -140,5 +147,62 @@ public class AuthController {
         userRepository.save(user);
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+    }
+
+    @PostMapping("/officer/signup")
+    public ResponseEntity<?> registerOfficer(@Valid @RequestBody OfficerSignupRequest officerSignupRequest) {
+
+        if (officerRepository.existsByUsername(officerSignupRequest.getUsername())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Username is already taken!"));
+        }
+
+//        if (userRepository.existsByEmail(signUpRequest.getEmail())) {
+//            return ResponseEntity
+//                    .badRequest()
+//                    .body(new MessageResponse("Error: Email is already in use!"));
+//        }
+
+        // Create new user's account
+        Officer officer = new Officer(officerSignupRequest.getNic(),
+                officerSignupRequest.getUsername(),
+                encoder.encode(officerSignupRequest.getPassword()));
+
+        Set<String> strPolice = officerSignupRequest.getPolice_station();
+        Set<Police_Station> police_stations = new HashSet<>();
+
+        if (strPolice == null) {
+            Police_Station OfficerPoliceStation = policeStationRepository.findByPoliceStation(EPolice_Station.KARANDENIYA)
+                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+            police_stations.add(OfficerPoliceStation);
+        } else {
+            strPolice.forEach(police_station -> {
+                switch (police_station) {
+                    case "elpitiya":
+                        Police_Station elpitiyaPoliceStation = policeStationRepository.findByPoliceStation(EPolice_Station.ELPITIYA)
+                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                        police_stations.add(elpitiyaPoliceStation);
+
+                        break;
+                    case "ambalangoda":
+                        Police_Station ambalangodaPoliceStation = policeStationRepository.findByPoliceStation(EPolice_Station.AMBALANGODA)
+                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                        police_stations.add(ambalangodaPoliceStation);
+
+                        break;
+                    default:
+                        Police_Station karandeniyaPoliceStation = policeStationRepository.findByPoliceStation(EPolice_Station.KARANDENIYA)
+                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                        police_stations.add(karandeniyaPoliceStation);
+                }
+            });
+        }
+
+        officer.setPolice_stations(police_stations);
+        officerRepository.save(officer);
+
+        return ResponseEntity.ok(new MessageResponse("Officer registered successfully!"));
+
     }
 }

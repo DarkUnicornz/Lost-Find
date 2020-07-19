@@ -3,7 +3,7 @@ package com.example.lostAndFindserver.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "police_station")
+@Table(name = "police_stations")
 public class Police_Station {
 
     @Id

@@ -35,11 +35,11 @@ public class Officer {
     private String password;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "officer_pollicestation",
                joinColumns = @JoinColumn(name = "officer_id"),
                inverseJoinColumns = @JoinColumn(name = "police_Station"))
-    private Set<Police_Station> policestation = new HashSet<>();
+    private Set<Police_Station> police_stations = new HashSet<>();
 
 
     public Officer() {
@@ -83,11 +83,11 @@ public class Officer {
         this.password = password;
     }
 
-    public Set<Police_Station> getPolicestation() {
-        return policestation;
+    public Set<Police_Station> getPolice_stations() {
+        return police_stations;
     }
 
-    public void setPolicestation(Set<Police_Station> policestation) {
-        this.policestation = policestation;
+    public void setPolice_stations(Set<Police_Station> police_stations) {
+        this.police_stations = police_stations;
     }
 }
