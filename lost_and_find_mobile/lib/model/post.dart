@@ -9,7 +9,7 @@ class Post {
       state,
       lostfound_date;
 
-  Post(
+  Post(f,  
       {this.itemId,
       this.nic,
       this.post_date,
