@@ -6,7 +6,6 @@ import 'package:lost_and_find_mobile/model/post.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 //post service use to View others' post
 class PostService {
   final baseUrl = Config.baseUrl;
@@ -28,6 +27,8 @@ class PostService {
   // }
 
   Future<List<Post>> getPosts() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String post = prefs.getString("Post");
     return await Dio()
         .get(
       '$baseUrl/dashboard',
@@ -89,4 +90,30 @@ class PostService {
     });
   }
 
+  Future<bool> sendPost(
+    String nic,
+    String post_date,
+    String post_time,
+    String location,
+    String state,
+    String lostfound_date
+  ) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    return Dio().post('$baseUrl/post', data: {
+      "itemId": "",
+      "nic": nic,
+      "post_date":post_date,
+      "post_time": post_time,
+      "location": location,
+      "state": state,
+      "lostfound_date": lostfound_date
+    }).then((res) async {
+      if (res.statusCode == 201) {
+        return false;
+      }
+    }).catchError((err) {
+      return false;
+    });
+  }
 }
