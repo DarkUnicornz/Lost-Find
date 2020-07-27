@@ -4,7 +4,10 @@ import 'package:logger/logger.dart';
 import 'package:lost_and_find_mobile/config/config.dart';
 import 'package:lost_and_find_mobile/model/post.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+
+//post service use to View others' post
 class PostService {
   final baseUrl = Config.baseUrl;
 
@@ -23,10 +26,6 @@ class PostService {
   //     Logger().e(error);
   //   });
   // }
-  Future<Position> _getCurrentLocation() async {
-    return await Geolocator()
-        .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-  }
 
   Future<List<Post>> getPosts() async {
     return await Dio()
@@ -49,15 +48,9 @@ class PostService {
           String date = f["posted_at"];
           List dates = date.split('T');
           List times = dates[1].split(".");
-          Post post = Post(
-            f["itemId"],
-              f["nic"],
-              f["post_date"],
-              f["post_time"],
-              f["location"],
-              f["state"],
-              f["lostfound_date"]); //need to add other parameters
-          posts.add(post);
+          //Following two line give some error becouse nothing any backend function
+          // Post post = Post(f["itemId"], f["nic"],f["post_date"],f["post_time"],f["location"],f["state"],f["lostfound_date"]); //need to add other parameters
+          // posts.add(post);
           Logger().i("safaf0${posts.length}");
         }
         return posts;
@@ -68,16 +61,16 @@ class PostService {
   }
 
   Future<bool> publishPost(String nic, String location, String state) async {
-    Position _currentPosition = await _getCurrentLocation();
-    String lat = _currentPosition.latitude.toString();
-    String long = _currentPosition.longitude.toString();
+    //Position _currentPosition = await _getCurrentLocation();
+    // String lat = _currentPosition.latitude.toString();
+    // String long = _currentPosition.longitude.toString();
 
-    List<Placemark> placemark = await Geolocator().placemarkFromCoordinates(
-        _currentPosition.latitude, _currentPosition.longitude);
-    Placemark place = placemark[0];
-    String address = "${place.locality},${place.postalCode},${place.country}";
-    Object location_string =
-        {"name": address, "longitude": long, "latitude": lat}.toString();
+    // List<Placemark> placemark = await Geolocator().placemarkFromCoordinates(
+    //     _currentPosition.latitude, _currentPosition.longitude);
+    // Placemark place = placemark[0];
+    // String address = "${place.locality},${place.postalCode},${place.country}";
+    // Object location_string =
+    //     {"name": address, "longitude": long, "latitude": lat}.toString();
 
     return Dio().post('$baseUrl/dashboard/post', data: {
       "itemId": "",
@@ -95,4 +88,5 @@ class PostService {
       return false;
     });
   }
+
 }

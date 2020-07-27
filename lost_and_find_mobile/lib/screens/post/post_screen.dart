@@ -6,6 +6,14 @@ class PostScreen extends StatefulWidget {
 }
 
 class _PostScreenState extends State<PostScreen> {
+  bool isEnabled;
+
+  @override
+  void initState() {
+    super.initState();
+    isEnabled = true;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
