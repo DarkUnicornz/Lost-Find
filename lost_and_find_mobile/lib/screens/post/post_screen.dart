@@ -10,7 +10,7 @@ class PostScreen extends StatefulWidget {
 
 class _PostScreenState extends State<PostScreen> {
   bool isEnabled;
-  final _fineFormKey = new GlobalKey<FormState>();
+  final _postFormKey = new GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -62,15 +62,110 @@ class _PostScreenState extends State<PostScreen> {
     });
   }
 
+  String nic, location,state;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Send Post"),
-      ),
       body: Container(
-        child: Center(
-          child: Text("Post Page"),
+        child: Form(
+          key: _postFormKey,
+          child: Column(
+            children: <Widget>[
+              SizedBox(
+                height: 40,
+              ),
+              Text(
+                "Fill in the details to post",
+                style: TextStyle(fontSize: 20),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              TextFormField(
+                decoration: new InputDecoration(
+                  labelText: "NIC",
+                  fillColor: Colors.white,
+                  border: new OutlineInputBorder(
+                    borderRadius: new BorderRadius.circular(25.0),
+                    borderSide: new BorderSide(),
+                  ),
+                ),
+                onChanged: (value) {
+                  setState(() {
+                    nic = value;
+                  });
+                },
+                validator: (val) {
+                  if (val.length == 0) {
+                    return "nid number cannot be empty";
+                  } else if (val.length != 10 || val.length != 12) {
+                    return "nid number not valid";
+                  }
+                },
+                style: new TextStyle(
+                  fontFamily: "Poppins",
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                decoration: new InputDecoration(
+                  labelText: "location",
+                  fillColor: Colors.white,
+                  border: new OutlineInputBorder(
+                    borderRadius: new BorderRadius.circular(25.0),
+                    borderSide: new BorderSide(),
+                  ),
+                ),
+                onChanged: (value) {
+                  setState(() {
+                    location = value;
+                  });
+                },
+                validator: (val) {
+                  if (val.length == 0) {
+                    return "location cannot be empty";
+                  }
+                },
+                style: new TextStyle(
+                  fontFamily: "Poppins",
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                decoration: new InputDecoration(
+                  labelText: "state",
+                  fillColor: Colors.white,
+                  border: new OutlineInputBorder(
+                    borderRadius: new BorderRadius.circular(25.0),
+                    borderSide: new BorderSide(),
+                  ),
+                ),
+                onChanged: (value) {
+                  setState(() {
+                    state = value;
+                  });
+                },
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              // RaisedButton(
+              //   onPressed: () async {
+              //     if (_postFormKey.currentState.validate()) {
+              //       if (isEnabled) {
+              //         isEnabled = false;
+              //         Post p = new Post(itemId: );
+              //       }
+              //     }
+              //   },
+              // )
+            ],
+          ),
         ),
       ),
     );
