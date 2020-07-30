@@ -9,6 +9,7 @@ class PostScreen extends StatefulWidget {
 }
 
 class _PostScreenState extends State<PostScreen> {
+  String nic, post_date, post_time, location, state, lostfound_date;
   bool isEnabled;
   final _postFormKey = new GlobalKey<FormState>();
 
@@ -16,14 +17,16 @@ class _PostScreenState extends State<PostScreen> {
   void initState() {
     super.initState();
     isEnabled = true;
-    var post = '';
+    //Post post = new Post();
   }
 
-  Future _handlePostIssueed(Post post) async {
-    await PostService()
-        .sendPost(post.nic, post.post_date, post.post_time, post.location,
-            post.state, post.lostfound_date)
-        .then((res) async {
+  void _handlePostIssueed(BuildContext context) {
+    Post post = new Post(
+        nic: nic,
+        location: location,
+        state: state,
+        lostfound_date: lostfound_date);
+    PostService().sendPost(post).then((res) async {
       if (res) {
         isEnabled = true;
         showDialog(
@@ -61,8 +64,6 @@ class _PostScreenState extends State<PostScreen> {
       }
     });
   }
-
-  String nic, location,state;
 
   @override
   Widget build(BuildContext context) {
@@ -154,16 +155,21 @@ class _PostScreenState extends State<PostScreen> {
               SizedBox(
                 height: 20,
               ),
-              // RaisedButton(
-              //   onPressed: () async {
-              //     if (_postFormKey.currentState.validate()) {
-              //       if (isEnabled) {
-              //         isEnabled = false;
-              //         Post p = new Post(itemId: );
-              //       }
-              //     }
-              //   },
-              // )
+              RaisedButton(
+                onPressed: () async {
+                  if (_postFormKey.currentState.validate()) {
+                    if (isEnabled) {
+                      isEnabled = false;
+                      _handlePostIssueed(context);
+                    } else {
+                      return null;
+                    }
+                  }
+                },
+                textColor: Colors.white,
+                child: const Text('Post', style: TextStyle(fontSize: 20)),
+                color: Colors.lightBlue,
+              )
             ],
           ),
         ),
