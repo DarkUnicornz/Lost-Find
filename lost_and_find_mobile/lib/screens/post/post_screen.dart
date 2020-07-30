@@ -155,6 +155,24 @@ class _PostScreenState extends State<PostScreen> {
               SizedBox(
                 height: 20,
               ),
+              TextFormField(
+                decoration: new InputDecoration(
+                  labelText: "lost or found date",
+                  fillColor: Colors.white,
+                  border: new OutlineInputBorder(
+                    borderRadius: new BorderRadius.circular(25.0),
+                    borderSide: new BorderSide(),
+                  ),
+                ),
+                onChanged: (value) {
+                  setState(() {
+                    lostfound_date = value;
+                  });
+                },
+              ),
+              SizedBox(
+                height: 20,
+              ),
               RaisedButton(
                 onPressed: () async {
                   if (_postFormKey.currentState.validate()) {
