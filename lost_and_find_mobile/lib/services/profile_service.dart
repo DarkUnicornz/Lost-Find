@@ -24,4 +24,43 @@ class ProfService {
       return false;
     });
   }
+  Future<bool> editDetails(
+    String officer,
+    String first_name,
+    String last_name,
+    String email,
+    String contact_nummber,
+    String nic,
+    String police_station,
+    String password,
+  ) {
+    Logger().i("$officer");
+    Logger().i("$first_name");
+    Logger().i("$last_name");
+    Logger().i("$email");
+    Logger().i("$contact_nummber");
+    Logger().i("$nic");
+    Logger().i("$police_station");
+    Logger().i("$password");
+
+    return Dio().post('$baseUrl/officer/$officer', data: {
+      "officer": officer,
+      "first_name": first_name,
+      "last_name": last_name,
+      "email": email,
+      "contact_number": contact_nummber,
+      "nic": nic,
+      "police_station": police_station,
+      "password": password
+    }).then((res) async {
+      if (res.statusCode == 202) {
+        Logger().i("${res.statusCode}");
+        return true;
+      }
+      return false;
+    }).catchError((err) {
+      Logger().i("$err");
+      return false;
+    });
+  }
 }
