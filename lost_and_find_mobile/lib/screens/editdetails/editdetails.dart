@@ -30,5 +30,41 @@ class _EditDetailsState extends State<EditDetails> {
     });
   }
 
-  
+  Future editDetails(
+      String nic,
+      String password,
+      String fName,
+      String lName,
+      String email,
+      String phoneNo,
+      String address,
+      String dob,
+      String gender) async {
+    ProfService()
+        .editDetails(
+            nic, password, fName, lName, email, phoneNo, address, dob, gender)
+        .then((res) {
+      if (res) {
+        isEnabled = true;
+        Application.router.navigateTo(context, '/home', clearStack: true);
+      } else {
+        isEnabled = true;
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Invalid credentials"),
+                actions: <Widget>[
+                  FlatButton(
+                    child: Text("Okay"),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  )
+                ],
+              );
+            });
+      }
+    });
+  }
 }
