@@ -25,42 +25,64 @@ class ProfService {
     });
   }
   Future<bool> editDetails(
-    String officer,
-    String first_name,
-    String last_name,
-    String email,
-    String contact_nummber,
     String nic,
-    String police_station,
     String password,
+    String fName,
+    String lName,
+    String email,
+    String phoneNo,
+    String address,
+    String dob,
+    String gender,
   ) {
-    Logger().i("$officer");
-    Logger().i("$first_name");
-    Logger().i("$last_name");
-    Logger().i("$email");
-    Logger().i("$contact_nummber");
-    Logger().i("$nic");
-    Logger().i("$police_station");
-    Logger().i("$password");
 
-    return Dio().post('$baseUrl/officer/$officer', data: {
-      "officer": officer,
-      "first_name": first_name,
-      "last_name": last_name,
-      "email": email,
-      "contact_number": contact_nummber,
+    return Dio().post('$baseUrl/user/$user', data: {
       "nic": nic,
-      "police_station": police_station,
-      "password": password
+      "password": password,
+      "fName": fName,
+      "lName": lName,
+      "email": email,
+      "phoneNo": phoneNo,
+      "address": address,
+      "dob": dob,
+      "gender": gender,
     }).then((res) async {
       if (res.statusCode == 202) {
-        Logger().i("${res.statusCode}");
         return true;
       }
       return false;
     }).catchError((err) {
-      Logger().i("$err");
       return false;
     });
+  }
+  Future<User> getDetails() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String token = prefs.getString("token");
+    User user;
+
+    return Dio()
+        .get(
+      '$baseUrl/me?token=$token',
+    )
+        .then((res) async {
+
+
+      if (res.statusCode == 200) {
+        var f = res.data["data"];
+        // user = User(
+        //     f["nic"],
+        //     f["password"],
+        //     f["fName"],
+        //     f["lName"],
+        //     f["email"],
+        //     f["phoneNo"],
+        //     f["address"],
+        //     f["dob"],
+        //     f["gender"]);
+        return user;
+      }
+
+      return user;
+    }).catchError((err) => user);
   }
 }
