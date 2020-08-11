@@ -29,7 +29,38 @@ class _EditDetailsState extends State<EditDetails> {
       print(e);
     });
   }
-
+  showDialogBox(String email, String contact_number) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Enter your password'),
+            content: TextField(
+              onChanged: (value) {
+                setState(() {
+                  password = value;
+                });
+              },
+              decoration: InputDecoration(hintText: "Current password"),
+            ),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('CONTINUE'),
+                onPressed: () {
+                  editDetails(nic, password, fName, lName, email,
+                      phoneNo, address, dob, gender);
+                },
+              ),
+              FlatButton(
+                child: Text('CANCEL'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          );
+        });
+  }
   Future editDetails(
       String nic,
       String password,
@@ -67,4 +98,15 @@ class _EditDetailsState extends State<EditDetails> {
       }
     });
   }
+  static final _regFormKey = new GlobalKey<FormState>();
+  String fName, lName, password, dob, email, nic, gender;
+  String phoneNo, address;
+  // String new_email, new_contact;
+
+
+
+
+
+
+  
 }
