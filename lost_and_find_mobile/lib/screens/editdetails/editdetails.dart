@@ -108,5 +108,16 @@ class _EditDetailsState extends State<EditDetails> {
 
 
 
-  
+  Future _handleRegistration(
+      String nid,
+      String password,
+      String fName,
+      String lName,
+      String email,
+      String phoneNo,
+      String address,
+      String dob,
+      String gender) async {
+    final form = _regFormKey.currentState;
+  }
 }
