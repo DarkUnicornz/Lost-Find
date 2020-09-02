@@ -1,14 +1,13 @@
 package com.example.lostAndFindserver.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="LostFoundItems")
 public class LostFoundItemModel {
    @Id
-   private String ItemId;
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
+   private Long ItemId;
 
    private String location;
 
@@ -16,17 +15,16 @@ public class LostFoundItemModel {
 
    public LostFoundItemModel (){ }
 
-   public LostFoundItemModel(String itemId, String location, String description) {
-       this.ItemId = itemId;
+   public LostFoundItemModel(String location, String description) {
        this.location = location;
        this.description = description;
    }
 
-   public String getItemId() {
+   public Long getItemId() {
        return ItemId;
    }
 
-   public void setItemId(String itemId) {
+   public void setItemId(Long itemId) {
        this.ItemId = itemId;
    }
 

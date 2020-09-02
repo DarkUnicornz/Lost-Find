@@ -1,24 +1,17 @@
 package com.example.lostAndFindserver.payload.request;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 public class PostRequest {
-    @NotBlank
-    private String itemId;
 
     @NotBlank
+    @Size(max = 500)
     private String description;
 
     @NotBlank
+    @Size(max = 20)
     private String location;
-
-    public String getItemId() {
-        return itemId;
-    }
-
-    public void setItemId(String itemId) {
-        this.itemId = itemId;
-    }
 
     public String getDescription() {
         return description;
