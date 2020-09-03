@@ -1,34 +1,41 @@
-//package com.example.lostAndFindserver.controller;
-//
-//
-//import com.example.lostAndFindserver.model.LostFoundItemModel;
-//import com.example.lostAndFindserver.payload.request.PostRequest;
-//import com.example.lostAndFindserver.service.LostFoundItemService;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.access.prepost.PreAuthorize;
-//import org.springframework.web.bind.annotation.*;
-//
-//import javax.validation.Valid;
-//
-//@CrossOrigin(origins = "*", maxAge = 3600)
-//@RestController
-//@RequestMapping("/api/user")
-//public class UserController {
-//
-//    @Autowired
-//    private LostFoundItemService lostFoundItemService;
-//
-//    @PostMapping("/post")
-//    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
-//    public LostFoundItemModel savePost(@Valid @RequestBody PostRequest postrequest){
-//
-//        LostFoundItemModel lostFoundItemModel = new LostFoundItemModel(
-//                postrequest.getDescription(),
-//                postrequest.getLocation());
-//
-//        return lostFoundItemService.savePost(lostFoundItemModel);
-//
-////        LostFoundItemRepository.save(lostFoundItemModel);
-////        return ResponseEntity.ok(new MessageResponse("Create post successfully!"));
-//    }
-//}
+package com.example.lostAndFindserver.controller;
+
+
+import com.example.lostAndFindserver.model.OwnItemDetails;
+import com.example.lostAndFindserver.payload.request.OwnItemDetailsRequest;
+import com.example.lostAndFindserver.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
+
+@CrossOrigin(origins = "*", maxAge = 3600)
+@RestController
+@RequestMapping("/api/user")
+public class UserController {
+
+    @Autowired
+    private UserService userService;
+
+    @PostMapping("/ownitemdetails")
+    @PreAuthorize("hasRole('USER') ")
+    public OwnItemDetails saveOwnItemDetails(@Valid @RequestBody OwnItemDetailsRequest ownItemDetailsRequest){
+
+        OwnItemDetails ownItemDetails = new OwnItemDetails(
+                ownItemDetailsRequest.getItem_name());
+
+        return userService.saveOwnItemDetails(ownItemDetails);
+
+//        LostFoundItemRepository.save(lostFoundItemModel);
+//        return ResponseEntity.ok(new MessageResponse("Create post successfully!"));
+    }
+
+    @GetMapping("/allitem")
+    @PreAuthorize("hasRole('USER') ")
+    public List<OwnItemDetails> getAllOwnItemDetails() {
+
+        return userService.getOwnItem();
+    }
+}
