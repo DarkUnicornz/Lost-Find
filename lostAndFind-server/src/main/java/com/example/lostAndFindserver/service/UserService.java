@@ -21,4 +21,9 @@ public class UserService {
         return ownItemDetailsRepository.findAll();
     }
 
+    public String deleteOwnItem(Long id) {
+        ownItemDetailsRepository.deleteById(id);
+        return "Item removed" + id;
+    }
+
 }

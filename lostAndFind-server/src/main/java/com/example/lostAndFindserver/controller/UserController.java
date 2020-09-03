@@ -28,8 +28,6 @@ public class UserController {
 
         return userService.saveOwnItemDetails(ownItemDetails);
 
-//        LostFoundItemRepository.save(lostFoundItemModel);
-//        return ResponseEntity.ok(new MessageResponse("Create post successfully!"));
     }
 
     @GetMapping("/allitem")
@@ -37,5 +35,11 @@ public class UserController {
     public List<OwnItemDetails> getAllOwnItemDetails() {
 
         return userService.getOwnItem();
+    }
+
+    @DeleteMapping("/deleteitem/{id}")
+    @PreAuthorize("hasRole('USER')")
+    public String deleteOwnItemDetails(@PathVariable Long id) {
+        return userService.deleteOwnItem(id);
     }
 }
