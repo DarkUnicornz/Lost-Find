@@ -26,4 +26,10 @@ public class UserService {
         return "Item removed" + id;
     }
 
+    public OwnItemDetails updateOwnItem(OwnItemDetails ownItemDetails) {
+        OwnItemDetails existingOwnItem = ownItemDetailsRepository.findById(ownItemDetails.getId()).orElse(null);
+        existingOwnItem.setItem_name(ownItemDetails.getItem_name());
+        return ownItemDetailsRepository.save(existingOwnItem);
+    }
+
 }

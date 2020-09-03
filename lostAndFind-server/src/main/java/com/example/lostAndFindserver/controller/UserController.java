@@ -42,4 +42,10 @@ public class UserController {
     public String deleteOwnItemDetails(@PathVariable Long id) {
         return userService.deleteOwnItem(id);
     }
+
+    @PutMapping("/updateitem")
+    @PreAuthorize("hasRole('USER')")
+    public OwnItemDetails updateOwnItemDetails(@RequestBody OwnItemDetails ownItemDetails) {
+        return userService.updateOwnItem(ownItemDetails);
+    }
 }
