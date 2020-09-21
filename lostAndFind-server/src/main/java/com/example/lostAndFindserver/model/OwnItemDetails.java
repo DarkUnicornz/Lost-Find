@@ -16,12 +16,17 @@ public class OwnItemDetails {
     @Size(max = 20)
     private String item_name;
 
+    @ManyToOne
+    @JoinColumn(name="u_id")
+    private User user;
+
 
     public OwnItemDetails() {
     }
 
-    public OwnItemDetails(String item_name){
+    public OwnItemDetails(String item_name, User user){
         this.item_name=item_name;
+        this.user = user;
     }
 
     public Long getId() {
@@ -38,5 +43,13 @@ public class OwnItemDetails {
 
     public void setItem_name(String item_name) {
         this.item_name = item_name;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
