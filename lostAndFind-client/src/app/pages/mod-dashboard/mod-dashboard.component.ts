@@ -10,6 +10,7 @@ export class ModDashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log("hellow");
   }
 
 }
