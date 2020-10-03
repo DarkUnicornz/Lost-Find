@@ -10,6 +10,9 @@ export class ModDashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
+    console.log("pamal sahan");
+    console.log("this is pamal ")
   }
 
 }
