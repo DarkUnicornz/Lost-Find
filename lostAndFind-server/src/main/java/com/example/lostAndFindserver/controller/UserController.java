@@ -10,12 +10,12 @@ import com.example.lostAndFindserver.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.context.SecurityContextHolder;
+//import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.security.Principal;
+//import java.security.Principal;
 import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -64,4 +64,11 @@ public class UserController {
     public OwnItemDetails updateOwnItemDetails(@RequestBody OwnItemDetails ownItemDetails) {
         return userService.updateOwnItem(ownItemDetails);
     }
+
+
+//    @GetMapping("/user_name/{id}")
+//    @PreAuthorize("hasRole('USER') ")
+//    public User getUserName(@PathVariable("id") Long id) {
+//        return null;
+//    }
 }
