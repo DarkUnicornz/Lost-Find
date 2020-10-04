@@ -66,9 +66,9 @@ public class UserController {
     }
 
 
-//    @GetMapping("/user_name/{id}")
-//    @PreAuthorize("hasRole('USER') ")
-//    public User getUserName(@PathVariable("id") Long id) {
-//        return null;
-//    }
+    @GetMapping("/user_name/{id}")
+    @PreAuthorize("hasRole('USER') ")
+    public User findUser(@PathVariable Long id) {
+        return userService.getUserById(id);
+    }
 }
