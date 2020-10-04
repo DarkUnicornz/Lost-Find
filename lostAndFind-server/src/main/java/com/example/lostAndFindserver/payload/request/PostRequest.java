@@ -6,12 +6,12 @@ import javax.validation.constraints.Size;
 public class PostRequest {
 
     @NotBlank
-    @Size(max = 500)
-    private String description;
+    @Size(max = 50)
+    private String location;
 
     @NotBlank
-    @Size(max = 20)
-    private String location;
+    @Size(max = 500)
+    private String description;
 
     public String getDescription() {
         return description;

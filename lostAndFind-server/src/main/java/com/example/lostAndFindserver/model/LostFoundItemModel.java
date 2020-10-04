@@ -12,11 +12,11 @@ public class LostFoundItemModel {
    private Long ItemId;
 
     @NotBlank
-    @Size(max = 20)
+    @Size(max = 50)
    private String location;
 
     @NotBlank
-    @Size(max = 20)
+    @Size(max = 500)
    private String description;
 
     @ManyToOne
@@ -25,9 +25,10 @@ public class LostFoundItemModel {
 
    public LostFoundItemModel (){ }
 
-   public LostFoundItemModel(String location, String description) {
+   public LostFoundItemModel(String location, String description, User user) {
        this.location = location;
        this.description = description;
+       this.user = user;
    }
 
    public Long getItemId() {
@@ -53,4 +54,12 @@ public class LostFoundItemModel {
    public void setDescription(String description) {
        this.description = description;
    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
