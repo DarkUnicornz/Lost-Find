@@ -1,6 +1,8 @@
 package com.example.lostAndFindserver.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="LostFoundItems")
@@ -9,9 +11,17 @@ public class LostFoundItemModel {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long ItemId;
 
+    @NotBlank
+    @Size(max = 20)
    private String location;
 
+    @NotBlank
+    @Size(max = 20)
    private String description;
+
+    @ManyToOne
+    @JoinColumn(name="u_id")
+    private User user;
 
    public LostFoundItemModel (){ }
 
