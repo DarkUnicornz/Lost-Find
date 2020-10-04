@@ -36,8 +36,7 @@ public class LostFoundItemService {
     @Autowired
     private LostFoundItemRepository lostFoundItemRepository;
 
-    public LostFoundItemModel savePost(LostFoundItemModel lostFoundItemModel) {
+    public LostFoundItemModel saveLostFoundPost(LostFoundItemModel lostFoundItemModel) {
        return lostFoundItemRepository.save(lostFoundItemModel);
-//        return "Success";
     }
 }

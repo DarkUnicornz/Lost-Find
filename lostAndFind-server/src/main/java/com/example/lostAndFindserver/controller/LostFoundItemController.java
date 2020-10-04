@@ -1,10 +1,15 @@
 package com.example.lostAndFindserver.controller;
 
 import com.example.lostAndFindserver.model.LostFoundItemModel;
+import com.example.lostAndFindserver.model.User;
 import com.example.lostAndFindserver.payload.request.PostRequest;
+//import com.example.lostAndFindserver.repository.LostFoundItemRepository;
+import com.example.lostAndFindserver.repository.UserRepository;
+import com.example.lostAndFindserver.security.services.UserDetailsImpl;
 import com.example.lostAndFindserver.service.LostFoundItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -17,15 +22,26 @@ public class LostFoundItemController {
     @Autowired
     private LostFoundItemService lostFoundItemService;
 
+//    @Autowired
+//    private LostFoundItemRepository lostFoundItemRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
     @PostMapping("/post")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
-    public LostFoundItemModel savePost(@Valid @RequestBody PostRequest postrequest){
+    public LostFoundItemModel saveLostFoundPost(@Valid @RequestBody PostRequest postrequest, Authentication authentication){
+
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        User user = userRepository.findById(userDetails.getId()).get();
 
         LostFoundItemModel lostFoundItemModel = new LostFoundItemModel(
+                postrequest.getLocation(),
                 postrequest.getDescription(),
-                postrequest.getLocation());
+                user
+        );
 
-        return lostFoundItemService.savePost(lostFoundItemModel);
+        return lostFoundItemService.saveLostFoundPost(lostFoundItemModel);
 
 //        LostFoundItemRepository.save(lostFoundItemModel);
 //        return ResponseEntity.ok(new MessageResponse("Create post successfully!"));
