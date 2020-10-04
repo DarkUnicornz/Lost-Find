@@ -29,7 +29,7 @@ export class AuthenticationService {
 
   register(user): Observable<any> {
     console.log('aaaaaaa =' + user.bDay);
-    return this.http.post(AppConfig.BASE_URL + 'signup', {
+    return this.http.post(AppConfig.BASE_URL + 'auth/signup', {
       nic: user.nic,
       username: user.username,
       fName: user.fName,
@@ -44,7 +44,7 @@ export class AuthenticationService {
   }
 
   login(credentials): Observable<any> {
-    return this.http.post(AppConfig.BASE_URL + 'signin', {
+    return this.http.post(AppConfig.BASE_URL + 'auth/signin', {
       username: credentials.username,
       password: credentials.password
     }, httpOptions);

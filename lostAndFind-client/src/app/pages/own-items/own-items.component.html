@@ -1,0 +1,66 @@
+<div class="container register">
+  <div class="row">
+    <div class="col-md-3 register-left">
+      <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+      <h3>Welcome</h3>
+      <p>You can add your items details....!</p>
+      <!-- <input type="submit" name="" value="Login" /><br /> -->
+    </div>
+    <div class="col-md-9 register-right">
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <h3 class="register-heading">Add New Item</h3>
+
+          <form (submit)="onItemSubmit()" [formGroup]="itemForm">
+            <div class="row register-form">
+
+              <div class="col-md-6">
+
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-id-card"></i></span>
+                  </div>
+                  <input name="item_name" type="text" class="form-control" formControlName="item_name"
+                    placeholder="Item Name"
+                    [ngClass]="{'is-invalid': (item_name.touched || item_name.dirty) && item_name.invalid }">
+                  <div class="invalid-feedback" *ngIf="(item_name.touched || item_name.dirty) && item_name.invalid">
+                    Enter Item name.
+                  </div>
+                </div>
+
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-address-card"></i></span>
+                  </div>
+                  <textarea class="form-control" name="item_details" formControlName="item_details" type="text" id="exampleFormControlTextarea1"
+                    rows="3" placeholder="Item Details"
+                    [ngClass]="{'is-invalid': (item_details.touched || item_details.dirty) && item_details.invalid }"></textarea>
+                  <div class="invalid-feedback" *ngIf="(item_details.touched || item_details.dirty) && item_details.invalid">
+                    Enter your item details.
+                  </div>
+                </div>
+
+
+              </div>
+              <!--end col-md-6-->
+
+              <div class="col-md-6">
+
+
+                <input type="submit" class="btnRegister" value="Submit" />
+
+              </div>
+              <!--end col-md-6-->
+
+            </div>
+            <!--end row register-form-->
+          </form>
+          <!--end form-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<app-footer></app-footer>

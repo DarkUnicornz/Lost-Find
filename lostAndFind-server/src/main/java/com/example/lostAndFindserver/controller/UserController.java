@@ -38,6 +38,7 @@ public class UserController {
 //        String name = auth.getName();
         OwnItemDetails ownItemDetails = new OwnItemDetails(
                 ownItemDetailsRequest.getItem_name(),
+                ownItemDetailsRequest.getItem_details(),
                 user
         );
 

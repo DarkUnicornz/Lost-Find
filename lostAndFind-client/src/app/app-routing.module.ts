@@ -12,6 +12,7 @@ import { ModDashboardComponent } from './pages/mod-dashboard/mod-dashboard.compo
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 import { TestComponent } from './test/test/test.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { OwnItemsComponent } from './pages/own-items/own-items.component';
 
 
 const routes: Routes = [
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: 'mod_dashboard', component: ModDashboardComponent},
   { path: 'admin_dashboard', component: AdminDashboardComponent},
   { path: 'test', component: TestComponent },
-  { path: 'user_profile', component: UserProfileComponent}
+  { path: 'user_profile', component: UserProfileComponent },
+  { path: 'own_item', component: OwnItemsComponent }
 ];
 
 @NgModule({
