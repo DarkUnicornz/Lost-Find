@@ -12,7 +12,7 @@ export class ModDashboardComponent implements OnInit {
   ngOnInit() {
 
     console.log("pamal sahan");
-    console.log("this is pamal ")
+
   }
 
 }
