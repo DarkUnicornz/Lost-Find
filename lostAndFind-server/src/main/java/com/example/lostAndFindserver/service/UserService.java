@@ -41,4 +41,9 @@ public class UserService {
         return userRepository.findById(id).orElse(null);
     }
 
+
+//    public OwnItemDetails getUserOwnItemDetails(Long u_id) {
+//        return ownItemDetailsRepository.findByU_id(u_id).orElse(null);
+//    }
+
 }

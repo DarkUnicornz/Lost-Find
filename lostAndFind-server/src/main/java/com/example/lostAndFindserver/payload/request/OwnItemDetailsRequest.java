@@ -13,6 +13,9 @@ public class OwnItemDetailsRequest {
     @Size(max = 200)
     private String item_details;
 
+    @NotBlank
+    private String[] images;
+
     public String getItem_name() {
         return item_name;
     }
@@ -27,5 +30,13 @@ public class OwnItemDetailsRequest {
 
     public void setItem_details(String item_details) {
         this.item_details = item_details;
+    }
+
+    public String[] getImages() {
+        return images;
+    }
+
+    public void setImages(String[] images) {
+        this.images = images;
     }
 }

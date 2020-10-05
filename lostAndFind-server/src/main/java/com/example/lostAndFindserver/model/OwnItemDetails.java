@@ -20,6 +20,12 @@ public class OwnItemDetails {
     @Size(max = 200)
     private String item_details;
 
+    @NotBlank
+    private String image1;
+
+    @NotBlank
+    private String image2;
+
     @ManyToOne
     @JoinColumn(name="u_id")
     private User user;
@@ -28,9 +34,11 @@ public class OwnItemDetails {
     public OwnItemDetails() {
     }
 
-    public OwnItemDetails(String item_name, String item_details, User user){
+    public OwnItemDetails(String item_name, String item_details, String image1, String image2, User user){
         this.item_name=item_name;
         this.item_details = item_details;
+        this.image1 = image1;
+        this.image2 = image2;
         this.user = user;
     }
 
@@ -56,6 +64,22 @@ public class OwnItemDetails {
 
     public void setItem_details(String item_details) {
         this.item_details = item_details;
+    }
+
+    public String getImage1() {
+        return image1;
+    }
+
+    public void setImage1(String image1) {
+        this.image1 = image1;
+    }
+
+    public String getImage2() {
+        return image2;
+    }
+
+    public void setImage2(String image2) {
+        this.image2 = image2;
     }
 
     public User getUser() {

@@ -9,14 +9,15 @@ import { TokenStorageService } from '../../services/token-storage.service';
   styleUrls: ['./user-dashboard.component.scss']
 })
 export class UserDashboardComponent implements OnInit {
-  
-  user:User;
+
+  user: User;
+
   constructor(
     private tokenStorageService: TokenStorageService,
   ) { }
 
   ngOnInit() {
-    this.user=this.tokenStorageService.getUser();
+    this.user = this.tokenStorageService.getUser();
   }
 
 }
