@@ -37,6 +37,7 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { OwnItemsComponent } from './pages/own-items/own-items.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ComplainComponent } from './pages/complain/complain.component';
+import { ModProfileComponent } from './pages/mod-profile/mod-profile.component';
 
 
 
@@ -66,6 +67,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     OwnItemsComponent,
     ProfileComponent,
     ComplainComponent,
+    ModProfileComponent,
   ],
   imports: [
     BrowserModule,
