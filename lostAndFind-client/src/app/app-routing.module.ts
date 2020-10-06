@@ -13,6 +13,7 @@ import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard
 import { TestComponent } from './test/test/test.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { OwnItemsComponent } from './pages/own-items/own-items.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 const routes: Routes = [
@@ -22,12 +23,13 @@ const routes: Routes = [
   { path: 'new_admin', component: AdminNewComponent },
   { path: 'new_mod', component: ModNewComponent },
   { path: 'lostfounditem', component: LostfoundItemComponent },
-  { path: 'user_dashboard', component: UserDashboardComponent},
-  { path: 'mod_dashboard', component: ModDashboardComponent},
-  { path: 'admin_dashboard', component: AdminDashboardComponent},
+  { path: 'user_dashboard', component: UserDashboardComponent },
+  { path: 'mod_dashboard', component: ModDashboardComponent },
+  { path: 'admin_dashboard', component: AdminDashboardComponent },
   { path: 'test', component: TestComponent },
   { path: 'user_profile', component: UserProfileComponent },
-  { path: 'own_item', component: OwnItemsComponent }
+  { path: 'own_item', component: OwnItemsComponent },
+  { path: 'profile', component: ProfileComponent }
 ];
 
 @NgModule({
