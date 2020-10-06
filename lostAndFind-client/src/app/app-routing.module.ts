@@ -15,6 +15,9 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { OwnItemsComponent } from './pages/own-items/own-items.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ComplainComponent } from './pages/complain/complain.component';
+import { ModProfileComponent } from './pages/mod-profile/mod-profile.component';
+
+
 
 
 const routes: Routes = [
@@ -31,7 +34,8 @@ const routes: Routes = [
   { path: 'user_profile', component: UserProfileComponent },
   { path: 'own_item', component: OwnItemsComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: "complain", component: ComplainComponent }
+  { path: "complain", component: ComplainComponent },
+   {path: "mod_profile", component: ModProfileComponent}
 ];
 
 @NgModule({
