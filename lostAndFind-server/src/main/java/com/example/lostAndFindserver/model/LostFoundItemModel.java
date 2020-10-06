@@ -17,7 +17,10 @@ public class LostFoundItemModel {
 
     @NotBlank
     @Size(max = 500)
-   private String description;
+    private String description;
+
+    @NotBlank
+    private String flag;
 
     @ManyToOne
     @JoinColumn(name="u_id")
@@ -25,9 +28,10 @@ public class LostFoundItemModel {
 
    public LostFoundItemModel (){ }
 
-   public LostFoundItemModel(String location, String description, User user) {
+   public LostFoundItemModel(String location, String description, String flag, User user) {
        this.location = location;
        this.description = description;
+       this.flag = flag;
        this.user = user;
    }
 
@@ -54,6 +58,14 @@ public class LostFoundItemModel {
    public void setDescription(String description) {
        this.description = description;
    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
 
     public User getUser() {
         return user;

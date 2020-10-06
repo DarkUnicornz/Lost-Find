@@ -53,7 +53,7 @@ public class UserController {
 
         String image1Id = UUID.randomUUID().toString();
         String image2Id = UUID.randomUUID().toString();
-        
+
 
         try (FileOutputStream fos = new FileOutputStream(fileLocation + "/" + image1Id)) {
             fos.write(image1);

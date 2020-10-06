@@ -24,9 +24,9 @@
 // }
 package com.example.lostAndFindserver.service;
 
-import com.example.lostAndFindserver.model.FoundItem;
+//import com.example.lostAndFindserver.model.FoundItem;
 import com.example.lostAndFindserver.model.LostFoundItemModel;
-import com.example.lostAndFindserver.repository.FoundItemRepository;
+//import com.example.lostAndFindserver.repository.FoundItemRepository;
 import com.example.lostAndFindserver.repository.LostFoundItemRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,14 +38,14 @@ public class LostFoundItemService {
     @Autowired
     private LostFoundItemRepository lostFoundItemRepository;
 
-    public LostFoundItemModel saveLostFoundPost(LostFoundItemModel lostFoundItemModel) {
+    public LostFoundItemModel saveLostPost(LostFoundItemModel lostFoundItemModel) {
        return lostFoundItemRepository.save(lostFoundItemModel);
     }
 
-    @Autowired
-    private FoundItemRepository foundItemRepository;
+//    @Autowired
+//    private FoundItemRepository foundItemRepository;
 
-    public FoundItem saveFoundPost (FoundItem foundItem) {
-        return foundItemRepository.save(foundItem);
+    public LostFoundItemModel saveFoundPost (LostFoundItemModel lostFoundItemModel) {
+        return lostFoundItemRepository.save(lostFoundItemModel);
     }
 }
