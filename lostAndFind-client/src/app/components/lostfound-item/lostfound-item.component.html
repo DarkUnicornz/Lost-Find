@@ -1,128 +1,179 @@
-<br>
 <div class="container register">
   <div class="row">
     <div class="col-md-3 register-left">
       <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
       <h3>Welcome</h3>
-      <p>You can upload lost or found item description..!</p>
+      <p>You can add new administrators and new Moderators....!</p>
       <!-- <input type="submit" name="" value="Login" /><br /> -->
+      <div class="input-group form-group">
+        <ng-flash-message></ng-flash-message>
+      </div>
     </div>
     <div class="col-md-9 register-right">
       <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
         <li class="nav-item">
           <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-            aria-selected="true">Item Details</a>
+            aria-selected="true">Admin</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
-            aria-selected="false">Complain</a>
+            aria-selected="false">Moderator</a>
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-          <h3 class="register-heading">Enter Item Description Here</h3>
-          <form [formGroup]="postForm" (ngSubmit)="onPostSubmit()">
+
+          <h3 class="register-heading">Add New Admin</h3>
+
+          <form (submit)="onLostPostSubmit()" [formGroup]="lostForm">
             <div class="row register-form">
+
               <div class="col-md-6">
-                <div class="form-group">
-                  <input type="text" formControlName="location" class="form-control" placeholder="Location *"
-                  [ngClass]="{ 'is-invalid': submitted && f.location.errors }" />
+
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-id-card"></i></span>
+                  </div>
+                  <input name="location" type="text" class="form-control" formControlName="location" placeholder="location"
+                    [ngClass]="{'is-invalid': (location.touched || location.dirty) && location.invalid }">
+                  <div class="invalid-feedback" *ngIf="(location.touched || location.dirty) && location.invalid">
+                    Enter Location name.
+                  </div>
                 </div>
-                <!-- <div class="form-group">
-                      <input type="date" class="form-control" placeholder="Enter Lost/Found Date *" value="" />
-                    </div> -->
-                <div class="form-group">
-                  <textarea class="form-control" formControlName="description" name="description"
-                    id="exampleFormControlTextarea1" rows="2" placeholder="Description *" 
-                    [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></textarea>
-                  <!-- <input type="password" class="form-control" placeholder="Password *" value="" /> -->
+
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-address-card"></i></span>
+                  </div>
+                  <textarea class="form-control" name="description" formControlName="description" type="text"
+                    id="exampleFormControlTextarea1" rows="3" placeholder="Lost item Details"
+                    [ngClass]="{'is-invalid': (description.touched || description.dirty) && description.invalid }"></textarea>
+                  <div class="invalid-feedback" *ngIf="(description.touched || description.dirty) && description.invalid">
+                    Enter your item details.
+                  </div>
                 </div>
+
+              </div>
+              <!--end col-md-6-->
+
+              <div class="col-md-6">
+
                 <!-- <div class="form-group">
-                      <input type="password" class="form-control" placeholder="Confirm Password *" value="" />
-                    </div> -->
+                <input type="text" class="form-control" placeholder="Enter Your Answer *" value="" />
+              </div> -->
+                <input type="submit" class="btnRegister" value="Submit" />
+
+              </div>
+              <!--end col-md-6-->
+
+            </div>
+            <!--end row register-form-->
+          </form>
+          <!--end form-->
+
+        </div>
+
+        <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <h3 class="register-heading">Add New Moderator</h3>
+          <form (submit)="onRegisterSubmit()">
+            <div class="row register-form">
+
+              <div class="col-md-6">
+
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-id-card"></i></span>
+                  </div>
+                  <input name="fName" type="text" class="form-control"
+                    placeholder="{{'REGISTER.PLACEHOLDER_FNAME' | translate}}">
+                </div>
+
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                  </div>
+                  <input name="fName" type="text" class="form-control"
+                    placeholder="{{'REGISTER.PLACEHOLDER_FNAME' | translate}}">
+                </div>
+
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                  </div>
+                  <input name="fName" type="text" class="form-control"
+                    placeholder="{{'REGISTER.PLACEHOLDER_FNAME' | translate}}">
+                </div>
+
+                <!-- <div class="form-group">
+                  <select class="form-control">
+                    <option class="hidden" selected disabled>Please select your Security Question</option>
+                    <option>What is your Birth date?</option>
+                    <option>What is Your old Phone Number</option>
+                    <option>What is your Pet Name?</option>
+                  </select>
+                </div> -->
+
                 <div class="form-group">
                   <div class="maxl">
                     <label class="radio inline">
-                      <input type="radio" name="status" formControlName="status" value="lost" checked>
-                      <span> Lost </span>
+                      <input type="radio" name="gender" value="male" checked>
+                      <span> Male </span>
                     </label>
                     <label class="radio inline">
-                      <input type="radio" name="status" formControlName="status" value="found">
-                      <span> found </span>
+                      <input type="radio" name="gender" value="female">
+                      <span>Female </span>
                     </label>
                   </div>
-                </div>  
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <input type="date" formControlName="date" class="form-control" placeholder="" 
-                  [ngClass]="{ 'is-invalid': submitted && f.date.errors }" />
                 </div>
+
+              </div>
+              <!--end col-md-6-->
+
+              <div class="col-md-6">
+
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-id-card"></i></span>
+                  </div>
+                  <input name="fName" type="text" class="form-control"
+                    placeholder="{{'REGISTER.PLACEHOLDER_FNAME' | translate}}">
+                </div>
+
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                  </div>
+                  <input name="fName" type="text" class="form-control"
+                    placeholder="{{'REGISTER.PLACEHOLDER_FNAME' | translate}}">
+                </div>
+
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+                  </div>
+                  <input name="fName" type="text" class="form-control"
+                    placeholder="{{'REGISTER.PLACEHOLDER_FNAME' | translate}}">
+                </div>
+
+
                 <!-- <div class="form-group">
-                      <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control"
-                        placeholder="Your Phone *" value="" />
-                    </div> -->
-                <!-- <div class="form-group">
-                  <select class="form-control" formControlName="status" [ngClass]="{ 'is-invalid': submitted && f.status.errors }">
-                    <option class="hidden" selected disabled>Status</option>
-                    <option>Delivered</option>
-                    <option>Not Delivered</option>
-                    <option>received</option>
-                    <option>Not received</option>
-                  </select>
+                  <input type="text" class="form-control" placeholder="Enter Your Answer *" value="" />
                 </div> -->
-                <!-- <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Enter Your Answer *" value="" />
-                    </div> -->
-                <input type="submit" [disabled]="postForm.invalid" class="btnRegister" value="Send Post" />
+                <input type="submit" class="btnRegister" value="Register" />
+
               </div>
+              <!--end col-md-6-->
+
             </div>
+            <!--end row register-form-->
           </form>
+          <!--end form-->
+
         </div>
-
-        <!-- <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-          <h3 class="register-heading">Enter related details here </h3>
-          <div class="row register-form">
-            <div class="col-md-6">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="nearest police station *" value="" />
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder=" *" value="" />
-              </div>
-              <div class="form-group">
-                <input type="email" class="form-control" placeholder="Email *" value="" />
-              </div>
-              <div class="form-group">
-                <input type="text" maxlength="10" minlength="10" class="form-control" placeholder="Phone *" value="" />
-              </div>
-
-
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <input type="password" class="form-control" placeholder="Password *" value="" />
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control" placeholder="Confirm Password *" value="" />
-              </div>
-              <div class="form-group">
-                <select class="form-control">
-                  <option class="hidden" selected disabled>Please select your Security Question</option>
-                  <option>What is your Birth date?</option>
-                  <option>What is Your old Phone Number</option>
-                  <option>What is your Pet Name?</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="`Answer *" value="" />
-              </div>
-              <input type="submit" class="btnRegister" value="Send Complain" />
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>
 
 </div>
+
+<app-footer></app-footer>
