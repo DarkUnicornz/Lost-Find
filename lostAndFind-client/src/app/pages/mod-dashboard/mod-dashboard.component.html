@@ -21,7 +21,7 @@
             <span class="user-name">{{user.fName}}
               <strong>{{user.lName}}</strong>
             </span>
-            <span class="user-role">User</span>
+            <span class="user-role">Moderator</span>
             <span class="user-status">
               <i class="fa fa-circle"></i>
               <span>Online</span>
@@ -47,6 +47,13 @@
             <li class="header-menu">
               <span>General</span>
             </li>
+
+            <li>
+              <a href [routerLink]="'/mod_dashboard'">
+                  <i class="fa fa-folder"></i>
+                  <span>Dashboard</span>
+              </a>
+          </li>
             <li>
               <a href [routerLink]="'/own_item'">
                 <i class="fa fa-book"></i>
@@ -59,12 +66,14 @@
                 <span>Edit profile</span>
               </a>
             </li>
+
             <li>
-              <a href="#">
-                <i class="fa fa-folder"></i>
-                <span>Examples</span>
+              <a href [routerLink]="'/complain'">
+                <i class="fa fa-calendar"></i>
+                <span>Complain</span>
               </a>
             </li>
+
           </ul>
         </div>
         <!-- sidebar-menu  -->

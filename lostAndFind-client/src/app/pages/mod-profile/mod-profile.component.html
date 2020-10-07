@@ -47,6 +47,14 @@
                         <li class="header-menu">
                             <span>General</span>
                         </li>
+
+                        <li>
+                            <a href [routerLink]="'/mod_dashboard'">
+                                <i class="fa fa-folder"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+
                         <li>
                             <a href [routerLink]="'/own_item'">
                                 <i class="fa fa-book"></i>
@@ -56,15 +64,17 @@
                         <li>
                             <a href [routerLink]="'/mod_profile'">
                                 <i class="fa fa-calendar"></i>
-                                <span>Profile</span>
+                                <span>Edit Profile</span>
                             </a>
                         </li>
+
                         <li>
-                            <a href="#">
-                                <i class="fa fa-folder"></i>
-                                <span>Examples</span>
+                            <a href [routerLink]="'/complain'">
+                                <i class="fa fa-calendar"></i>
+                                <span>Complain</span>
                             </a>
                         </li>
+
                     </ul>
                 </div>
                 <!-- sidebar-menu  -->
@@ -118,6 +128,17 @@
                         <form class="form" action="##" method="post" id="registrationForm">
                             <div class="form-group">
           
+                                <div class="col-xs-6">
+                                  <label for="ID">
+                                    <h4>Phone</h4>
+                                  </label>
+                                  <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone"
+                                    title="enter your phone number if any.">
+                                </div>
+                              </div>
+
+                            <div class="form-group">
+          
                               <div class="col-xs-6">
                                 <label for="first_name">
                                   <h4>First name</h4>
@@ -137,16 +158,7 @@
                               </div>
                             </div>
           
-                            <div class="form-group">
-          
-                              <div class="col-xs-6">
-                                <label for="phone">
-                                  <h4>Phone</h4>
-                                </label>
-                                <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone"
-                                  title="enter your phone number if any.">
-                              </div>
-                            </div>
+
           
                             <div class="form-group">
                               <div class="col-xs-6">
