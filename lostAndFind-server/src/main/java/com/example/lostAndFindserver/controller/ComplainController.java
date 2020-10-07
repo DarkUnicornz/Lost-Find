@@ -74,7 +74,8 @@ public class ComplainController {
 
     }
 
-    //
+
+    //Count user complains count
     @GetMapping("/user_complain_count")
     @PreAuthorize("hasRole('USER')")
     public Long getComplainCount(Authentication authentication) {
@@ -83,4 +84,13 @@ public class ComplainController {
 
         return complainService.getUserComplainCount(user);
     }
+
+    
+    //All complain count
+    @GetMapping("/all_complain_count")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public Long getAllComplainCount() {
+        return complainService.getAllComplainCount();
+    }
+
 }
