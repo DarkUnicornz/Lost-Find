@@ -32,6 +32,8 @@ import com.example.lostAndFindserver.repository.LostFoundItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class LostFoundItemService {
 
@@ -47,5 +49,10 @@ public class LostFoundItemService {
 
     public LostFoundItemModel saveFoundPost (LostFoundItemModel lostFoundItemModel) {
         return lostFoundItemRepository.save(lostFoundItemModel);
+    }
+
+    public List<LostFoundItemModel> getAllLostPost() {
+        String flag = "lost";
+        return lostFoundItemRepository.findByFlag(flag);
     }
 }

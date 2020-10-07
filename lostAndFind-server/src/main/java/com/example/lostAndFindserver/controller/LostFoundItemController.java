@@ -6,6 +6,7 @@ import com.example.lostAndFindserver.model.User;
 //import com.example.lostAndFindserver.payload.request.FoundItemRequest;
 import com.example.lostAndFindserver.payload.request.PostRequest;
 //import com.example.lostAndFindserver.repository.LostFoundItemRepository;
+import com.example.lostAndFindserver.repository.LostFoundItemRepository;
 import com.example.lostAndFindserver.repository.UserRepository;
 import com.example.lostAndFindserver.security.services.UserDetailsImpl;
 import com.example.lostAndFindserver.service.LostFoundItemService;
@@ -15,6 +16,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -73,6 +75,14 @@ public class LostFoundItemController {
         );
 
         return lostFoundItemService.saveFoundPost(lostFoundItemModel);
+    }
+
+
+    @GetMapping("/allLost_post")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public List<LostFoundItemModel> getAllLostPost() {
+        return lostFoundItemService.getAllLostPost();
+
     }
 
 
