@@ -55,4 +55,10 @@ public class LostFoundItemService {
         String flag = "lost";
         return lostFoundItemRepository.findByFlag(flag);
     }
+
+
+    public List<LostFoundItemModel> getAllFoundPost() {
+        String flag = "found";
+        return lostFoundItemRepository.findByFlag(flag);
+    }
 }

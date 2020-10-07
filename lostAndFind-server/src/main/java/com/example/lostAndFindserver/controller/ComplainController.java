@@ -85,7 +85,7 @@ public class ComplainController {
         return complainService.getUserComplainCount(user);
     }
 
-    
+
     //All complain count
     @GetMapping("/all_complain_count")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
