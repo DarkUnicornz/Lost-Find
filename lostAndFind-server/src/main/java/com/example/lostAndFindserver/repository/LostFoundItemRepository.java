@@ -9,6 +9,8 @@ import java.util.List;
 @Repository
 public interface LostFoundItemRepository extends JpaRepository <LostFoundItemModel, Long> {
     List<LostFoundItemModel> findByFlag(String flag);
+
+    Long countByFlag(String flag);
 //   LostFoundItemModel save(LostFoundItemModel lostFoundItemModel);
 
 //   @Override

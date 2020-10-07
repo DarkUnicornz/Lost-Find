@@ -94,4 +94,20 @@ public class LostFoundItemController {
     public List<LostFoundItemModel> getAllFoundPost() {
         return lostFoundItemService.getAllFoundPost();
     }
+
+    //Count lost posts
+    @GetMapping("/all_lost_count")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public  Long getLostCount() {
+        String flag = "lost";
+        return lostFoundItemService.getAllLostCount(flag);
+    }
+
+    //Count found posts
+    @GetMapping("/all_found_count")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public  Long getFoundCount() {
+        String flag = "found";
+        return lostFoundItemService.getAllFoundCount(flag);
+    }
 }

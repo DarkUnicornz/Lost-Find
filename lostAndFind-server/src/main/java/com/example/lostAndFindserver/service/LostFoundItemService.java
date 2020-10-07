@@ -61,4 +61,14 @@ public class LostFoundItemService {
         String flag = "found";
         return lostFoundItemRepository.findByFlag(flag);
     }
+
+    public Long getAllLostCount(String flag) {
+        return lostFoundItemRepository.countByFlag(flag);
+    }
+
+
+    public Long getAllFoundCount(String flag) {
+        return lostFoundItemRepository.countByFlag(flag);
+    }
+
 }
