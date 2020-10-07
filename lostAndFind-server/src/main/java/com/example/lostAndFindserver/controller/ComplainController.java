@@ -73,5 +73,14 @@ public class ComplainController {
         return complainService.getUserComplain(user);
 
     }
-    
+
+    //
+    @GetMapping("/user_complain_count")
+    @PreAuthorize("hasRole('USER')")
+    public Long getComplainCount(Authentication authentication) {
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        User user = userRepository.findById(userDetails.getId()).get();
+
+        return complainService.getUserComplainCount(user);
+    }
 }

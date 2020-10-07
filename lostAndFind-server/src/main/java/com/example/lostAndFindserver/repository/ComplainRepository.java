@@ -13,5 +13,9 @@ public interface ComplainRepository extends JpaRepository<Complain, Long> {
 //    List<Complain> findByU_id(Long u_id);
 
     List<Complain> findByUser(User u_id);
-    
+
+    Long countByUser(User u_id);
+
+//    Complain countByUser(User u_id);
+
 }

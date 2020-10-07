@@ -22,4 +22,8 @@ public class ComplainService {
     public List<Complain> getUserComplain(User u_id) {
         return complainRepository.findByUser(u_id);
     }
+
+    public Long getUserComplainCount(User u_id) {
+        return complainRepository.countByUser(u_id);
+    }
 }
