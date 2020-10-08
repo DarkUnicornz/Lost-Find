@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
+import { AdminMod } from 'src/app/models/admin-mod.model';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
@@ -14,7 +15,7 @@ export class AdminModProfileComponent implements OnInit {
 
   editForm: FormGroup;
   Securityform: FormGroup;
-  //personDetails: FormGroup;
+  personDetails: AdminMod = <AdminMod>{};
 
   fileData: File = null;
   previewUrls;
@@ -69,7 +70,37 @@ export class AdminModProfileComponent implements OnInit {
   }
 
   async ngOnInit() {
-    //this.pers = this.tokenService.getUser();
+    this.personDetails = this.tokenService.getUser();
   }
+
+  get first_name(){
+    return this.editForm.get('first_name');
+  }
+
+  get last_name(){
+    return this.editForm.get('last_name');
+  }
+
+  get phone(){
+    return this.editForm.get('phone');
+  }
+
+  get email(){
+    return this.editForm.get('email');
+  }
+
+  get location(){
+    return this.editForm.get('location');
+  }
+
+  onSubmit(){
+    const editForm = {
+      first_name: this.first_name.value,
+      last_name: this.last_name.value,
+      phone: this.phone.value,
+      email: this.email.value,
+      location: this.location.value
+    };
+  };  
 
 }
