@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AkithaComponent } from './akitha.component';
+import { LostfoundItemCardComponent } from './lostfound-item-card.component';
 
-describe('AkithaComponent', () => {
-  let component: AkithaComponent;
-  let fixture: ComponentFixture<AkithaComponent>;
+describe('LostfoundItemCardComponent', () => {
+  let component: LostfoundItemCardComponent;
+  let fixture: ComponentFixture<LostfoundItemCardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AkithaComponent ]
+      declarations: [ LostfoundItemCardComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AkithaComponent);
+    fixture = TestBed.createComponent(LostfoundItemCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

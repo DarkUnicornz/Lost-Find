@@ -3,9 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { NgFlashMessageService } from 'ng-flash-messages';
-
-import { AuthenticationService } from 'src/app/services/authentication.service';
-import { ValidateService } from 'src/app/services/validate.service';
+import { LostAndFindService } from './../../services/lost-and-find.service';
 
 
 @Component({
@@ -15,104 +13,67 @@ import { ValidateService } from 'src/app/services/validate.service';
 })
 export class LostfoundItemComponent implements OnInit {
 
-  postForm: FormGroup;
+  lostForm: FormGroup;
   public onClose: Subject<boolean>;
-  //submitted = false;
-  //currentDate = new Date();
+  errorMessage = '';
 
   constructor(
-    private authService: AuthenticationService,
     private router: Router,
     private ngFlashMessageService: NgFlashMessageService,
-    private validateService: ValidateService,
     private formBuilder: FormBuilder,
+    private lostandfindservice: LostAndFindService,
   ) { }
 
   ngOnInit() {
-    this.postForm = this.formBuilder.group({
+    this.lostForm = this.formBuilder.group({
       location: ['', [
         Validators.required,
       ]],
       description: ['', [
         Validators.required,
       ]],
-      date: ['', [
-        Validators.required,
-      ]],
-      status: ['',[
-        Validators.required,
-      ]]
     });
     this.onClose = new Subject();
 }
 
-  onCancel(){
+  onCancel() {
     this.onClose.next(false);
   }
 
   get location() {
-    return this.postForm.get('location');
+    return this.lostForm.get('location');
   }
   get description() {
-    return this.postForm.get('description');
-  }
-  get date() {
-    return this.postForm.get('date');
-  }
-  get status(){
-    return this.postForm.get('status');
+    return this.lostForm.get('description');
   }
 
 
-  // convenience getter for easy access to form fields
-  //get f() { return this.postForm.controls; }
+  onLostPostSubmit() {
 
-  onPostSubmit() {
-    //this.submitted=true;
-    const post = {
+    const lostPost = {
       location: this.location.value,
       description: this.description.value,
-      date: this.date.value,
-      status: this.status.value
     };
-     console.log(post.location);
-     console.log(post.description);
-     console.log(post.date);
-     console.log(post.status);
-     console.log('Asenith');
-    // if (!this.validateService.validatePost(post)) {
-    //   this.ngFlashMessageService.showFlashMessage({
-    //     messages: ['please fill in all fields'],
-    //     dismissible: true,
-    //     timeout: 3000,
-    //     type: 'danger'
-    //   });
-    //   return false;
-    // }
 
-    this.authService.sendPost(post).subscribe((res) => {
-      if (res) {
+    this.lostandfindservice.saveLostPostDetails(lostPost).subscribe (
+      data => {
+        console.log(data.itemId);
+        window.sessionStorage.setItem('LOST_ID', data.itemId);
+        console.log(lostPost.location);
         this.ngFlashMessageService.showFlashMessage({
-          messages: ['post success'],
+          messages: ['Create lost item successful....!'],
           dismissible: true,
-          timeout: 3000,
+          timeout: 6000,
           type: 'success'
         });
         setTimeout(() => {
-          this.router.navigate(['']);
-        }, 3000);
-      }
-      else {
-        this.ngFlashMessageService.showFlashMessage({
-          messages: ['Fill all Feilds'],
-          dismissible: true,
-          timeout: 3000,
-          type: 'danger'
-        });
-        setTimeout(() => {
-          this.router.navigate(['/lostfounditem']);
-        }, 3000);
-      }
-    });
+          this.router.navigate(['/complain']);
+        },
+          6000);
+      },
+      err => {
+        this.errorMessage = err.error.message;
+      },
+    );
   }
 }

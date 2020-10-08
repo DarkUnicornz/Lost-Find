@@ -36,6 +36,8 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { OwnItemsComponent } from './pages/own-items/own-items.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { ComplainComponent } from './components/complain/complain.component';
+import { LostfoundItemCardComponent } from './components/lostfound-item-card/lostfound-item-card.component';
 
 
 
@@ -64,6 +66,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserProfileComponent,
     OwnItemsComponent,
     ProfileComponent,
+    ComplainComponent,
+    LostfoundItemCardComponent,
   ],
   imports: [
     BrowserModule,
