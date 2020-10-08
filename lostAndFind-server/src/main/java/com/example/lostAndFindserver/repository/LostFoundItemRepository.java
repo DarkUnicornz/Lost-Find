@@ -1,6 +1,7 @@
 package com.example.lostAndFindserver.repository;
 
 import com.example.lostAndFindserver.model.LostFoundItemModel;
+import com.example.lostAndFindserver.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,6 +12,12 @@ public interface LostFoundItemRepository extends JpaRepository <LostFoundItemMod
     List<LostFoundItemModel> findByFlag(String flag);
 
     Long countByFlag(String flag);
+
+    List<LostFoundItemModel> findByUser(User user);
+
+    List<LostFoundItemModel> findByUserAndFlag(User user, String flag);
+
+//    List<LostFoundItemModel> findByUserAndFlag(User user);
 //   LostFoundItemModel save(LostFoundItemModel lostFoundItemModel);
 
 //   @Override

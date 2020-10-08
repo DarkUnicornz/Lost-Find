@@ -110,4 +110,34 @@ public class LostFoundItemController {
         String flag = "found";
         return lostFoundItemService.getAllFoundCount(flag);
     }
+
+
+    //Get lost post by user id
+    @GetMapping("/user_lost_posts")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public List<LostFoundItemModel> getUserLostPost(Authentication authentication) {
+
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        User user = userRepository.findById(userDetails.getId()).get();
+
+        String flag = "lost";
+
+        return lostFoundItemService.getUserLostPost(user, flag);
+
+    }
+
+
+    //Get found post by user id
+    @GetMapping("/user_found_posts")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public List<LostFoundItemModel> getUserFoundPost(Authentication authentication) {
+
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        User user = userRepository.findById(userDetails.getId()).get();
+
+        String flag = "found";
+
+        return lostFoundItemService.getUserFoundPost(user, flag);
+
+    }
 }
