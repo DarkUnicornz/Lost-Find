@@ -38,6 +38,7 @@ import { OwnItemsComponent } from './pages/own-items/own-items.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ComplainComponent } from './components/complain/complain.component';
 import { LostfoundItemCardComponent } from './components/lostfound-item-card/lostfound-item-card.component';
+import { AdminModProfileComponent } from './pages/admin-mod-profile/admin-mod-profile.component';
 
 
 
@@ -68,6 +69,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProfileComponent,
     ComplainComponent,
     LostfoundItemCardComponent,
+    AdminModProfileComponent,
   ],
   imports: [
     BrowserModule,
