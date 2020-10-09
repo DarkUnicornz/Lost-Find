@@ -23,11 +23,6 @@ import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.co
 import { ModDashboardComponent } from './pages/mod-dashboard/mod-dashboard.component';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 import { TestComponent } from './test/test/test.component';
-import { UserProfileComponent } from './pages/user-profile/user-profile.component';
-import { OwnItemsComponent } from './pages/own-items/own-items.component';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { ComplainComponent } from './components/complain/complain.component';
-import { LostfoundItemCardComponent } from './components/lostfound-item-card/lostfound-item-card.component';
 
 // services
 import { AuthenticationService } from './services/authentication.service';
