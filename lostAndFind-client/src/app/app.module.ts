@@ -23,6 +23,11 @@ import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.co
 import { ModDashboardComponent } from './pages/mod-dashboard/mod-dashboard.component';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 import { TestComponent } from './test/test/test.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { OwnItemsComponent } from './pages/own-items/own-items.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { ComplainComponent } from './components/complain/complain.component';
+import { LostfoundItemCardComponent } from './components/lostfound-item-card/lostfound-item-card.component';
 
 // services
 import { AuthenticationService } from './services/authentication.service';
@@ -33,12 +38,8 @@ import { authInterceptorProviders } from './helpers/authentication.interceptor';
 // ngx-bootstrap
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-import { UserProfileComponent } from './pages/user-profile/user-profile.component';
-import { OwnItemsComponent } from './pages/own-items/own-items.component';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { ComplainComponent } from './components/complain/complain.component';
-import { LostfoundItemCardComponent } from './components/lostfound-item-card/lostfound-item-card.component';
 
+import { ChartsModule } from 'ng2-charts';
 
 
 
@@ -76,6 +77,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     NgFlashMessagesModule.forRoot(),
     ModalModule.forRoot(),
+    ChartsModule,
     TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,
