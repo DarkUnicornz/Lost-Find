@@ -57,6 +57,8 @@ export class LostfoundItemComponent implements OnInit {
 
     this.lostandfindservice.saveLostPostDetails(lostPost).subscribe (
       data => {
+        console.log(data.itemId);
+        window.sessionStorage.setItem('LOST_ID', data.itemId);
         console.log(lostPost.location);
         this.ngFlashMessageService.showFlashMessage({
           messages: ['Create lost item successful....!'],
@@ -65,7 +67,7 @@ export class LostfoundItemComponent implements OnInit {
           type: 'success'
         });
         setTimeout(() => {
-          this.router.navigate(['/user_dashboard']);
+          this.router.navigate(['/complain']);
         },
           6000);
       },

@@ -13,6 +13,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 //import javax.validation.Valid;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -29,6 +31,7 @@ public class ComplainController {
     @Autowired
     private ComplainService complainService;
 
+    // Post complain
     @PostMapping("/complain_post/{id}")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public Complain saveComplainPost(@PathVariable Long id, @RequestBody ComplainRequest complainRequest, Authentication authentication) {
@@ -56,4 +59,38 @@ public class ComplainController {
 
         return complainService.saveComplain(complain);
     }
+
+    // View user complains
+    @GetMapping("/user_complain")
+    @PreAuthorize("hasRole('USER')")
+    public List<Complain> getUserComplains(Authentication authentication) {
+
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        User user = userRepository.findById(userDetails.getId()).get();
+
+//        Long u_id = user.getId();
+
+        return complainService.getUserComplain(user);
+
+    }
+
+
+    //Count user complains count
+    @GetMapping("/user_complain_count")
+    @PreAuthorize("hasRole('USER')")
+    public Long getComplainCount(Authentication authentication) {
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        User user = userRepository.findById(userDetails.getId()).get();
+
+        return complainService.getUserComplainCount(user);
+    }
+
+
+    //All complain count
+    @GetMapping("/all_complain_count")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public Long getAllComplainCount() {
+        return complainService.getAllComplainCount();
+    }
+
 }
