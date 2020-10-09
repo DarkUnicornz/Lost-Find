@@ -49,11 +49,13 @@ public class User {
     @Size(max = 15)
     private String phone;
 
-    @NotBlank
+    @Size(max = 30)
+    private String police_station;
+
     @Size(max = 80)
     private String address;
 
-    @NotBlank
+
     @Size(max = 200)
     @Column(length = 1000)
     private String bDay;
@@ -83,13 +85,14 @@ public class User {
     public User() {
     }
 
-    public User(String nic, String username, String fName, String lName, String email, String phone, String address, String bDay, String gender, String password) {
+    public User(String nic, String username, String fName, String lName, String email, String phone, String police_station, String address, String bDay, String gender, String password) {
         this.nic = nic;
         this.username = username;
         this.fName = fName;
         this.lName = lName;
         this.email = email;
         this.phone = phone;
+        this.police_station = police_station;
         this.address = address;
         this.bDay = bDay;
         this.gender = gender;
@@ -158,6 +161,14 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getPolice_station() {
+        return police_station;
+    }
+
+    public void setPolice_station(String police_station) {
+        this.police_station = police_station;
     }
 
     public String getAddress() {

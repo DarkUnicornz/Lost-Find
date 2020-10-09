@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
   public onClose: Subject<boolean>;
   registerForm: FormGroup;
   currentDate = new Date();
-  mobNumberPattern = '^((\\+94-?)|0)?[7,9]{1}[1,6,7]{1}[0-9]{7}$';       // "^((\\+91-?)|0)?[0-9]{10}$";
+  mobNumberPattern = '^((\\+94-?)|0)?[7,9]{1}[0,1,6,7]{1}[0-9]{7}$';       // "^((\\+91-?)|0)?[0-9]{10}$";
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
@@ -133,7 +133,7 @@ export class RegisterComponent implements OnInit {
       bDay: this.bDay.value,
       gender: this.gender.value,
       password: this.password.value,
-
+      role: [''],
     };
 
     console.log(this.email.value);

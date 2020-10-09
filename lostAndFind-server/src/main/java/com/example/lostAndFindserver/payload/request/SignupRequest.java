@@ -32,11 +32,12 @@ public class SignupRequest {
     @Size(max = 15)
     private String phone;
 
-    @NotBlank
+    @Size(max = 30)
+    private String police_station;
+
     @Size(max = 80)
     private String address;
 
-    @NotBlank
     @Size(max = 200)
     @Column(length = 1000)
     private String bDay;
@@ -69,6 +70,14 @@ public class SignupRequest {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getPolice_station() {
+        return police_station;
+    }
+
+    public void setPolice_station(String police_station) {
+        this.police_station = police_station;
     }
 
     public void setPassword(String password) {
