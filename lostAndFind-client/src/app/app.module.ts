@@ -29,6 +29,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { ComplainComponent } from './components/complain/complain.component';
 import { LostfoundItemCardComponent } from './components/lostfound-item-card/lostfound-item-card.component';
 import { AdminModProfileComponent } from './pages/admin-mod-profile/admin-mod-profile.component';
+import { EdituserprofileComponent } from './pages/edituserprofile/edituserprofile.component';
 
 // services
 import { AuthenticationService } from './services/authentication.service';
@@ -68,6 +69,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserProfileComponent,
     OwnItemsComponent,
     ProfileComponent,
+    EdituserprofileComponent,
+
+
     ComplainComponent,
     LostfoundItemCardComponent,
     AdminModProfileComponent,

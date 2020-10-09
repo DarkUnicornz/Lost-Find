@@ -16,3 +16,18 @@ export class User {
   //   this.password = password;
   // }
 }
+
+export class UserDetail{
+    id :number
+     nic :string;
+     username :string;
+     fName :string;
+     lName :string;
+     email :string;
+     phone :string;
+     address :string;
+     bDay :string;
+     gender :string;    
+     roles : [string];
+     
+}

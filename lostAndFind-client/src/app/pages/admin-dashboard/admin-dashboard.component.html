@@ -6,7 +6,7 @@
     <nav id="sidebar" class="sidebar-wrapper">
       <div class="sidebar-content">
         <div class="sidebar-brand">
-          <a href="#">Welcome User</a>
+          <a href="#">Welcome Admin</a>
           <div id="close-sidebar">
             <i class="fas fa-times"></i>
           </div>
@@ -21,7 +21,7 @@
             <span class="user-name">{{user.fName}}
               <strong>{{user.lName}}</strong>
             </span>
-            <span class="user-role">User</span>
+            <span class="user-role">Admin</span>
             <span class="user-status">
               <i class="fa fa-circle"></i>
               <span>Online</span>
@@ -48,21 +48,45 @@
               <span>General</span>
             </li>
             <li>
-              <a href [routerLink]="'/own_item'">
+              <a href [routerLink]="'/new_admin'">
                 <i class="fa fa-book"></i>
-                <span>New Item</span>
+                <span>Analytics</span>
               </a>
             </li>
             <li>
               <a href="#">
                 <i class="fa fa-calendar"></i>
-                <span>Item List</span>
+                <span>Inbox</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-calendar"></i>
+                <span>Windgets</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-calendar"></i>
+                <span>Charts</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-calendar"></i>
+                <span>Apps</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-calendar"></i>
+                <span>Notifications</span>
               </a>
             </li>
             <li>
               <a href="#">
                 <i class="fa fa-folder"></i>
-                <span>Examples</span>
+                <span>Tables</span>
               </a>
             </li>
           </ul>
@@ -97,7 +121,7 @@
           
 
         </div>
-        <h5>More templates</h5>
+        <h5>Dashboard</h5>
         <hr>
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
@@ -106,7 +130,7 @@
                 src="https://user-images.githubusercontent.com/25878302/58369568-a49b2480-7efc-11e9-9ca9-2be44afacda1.png"
                 class="card-img-top rounded-0" alt="Angular pro sidebar">
               <div class="card-body text-center">
-                <h6 class="card-title">User Profile</h6>
+                <h6 class="card-title">Number of Users</h6>
                 
               </div>
             </div>
@@ -117,7 +141,7 @@
                 src="https://user-images.githubusercontent.com/25878302/58369258-33f20900-7ef8-11e9-8ff3-b277cb7ed7b4.PNG"
                 class="card-img-top rounded-0" alt="Angular pro sidebar">
               <div class="card-body text-center">
-                <h6 class="card-title">Angular Dashboard</h6>
+                <h6 class="card-title">Page views</h6>
                 
               </div>
             </div>
@@ -129,12 +153,11 @@
                 src="https://user-images.githubusercontent.com/25878302/58369568-a49b2480-7efc-11e9-9ca9-2be44afacda1.png"
                 class="card-img-top rounded-0" alt="Angular pro sidebar">
               <div class="card-body text-center">
-                <h6 class="card-title">User Profile</h6>
+                <h6 class="card-title">Sessions</h6>
                
               </div>
             </div>
           </div>
-
           
           
           <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
@@ -144,7 +167,7 @@
               class="card-img-top rounded-0" alt="Angular pro sidebar">
 
               <div class="card-body text-center">
-                <h6 class="card-title">User Profile</h6>
+                <h6 class="card-title">Views and posts statistics</h6>
               </div>
             </div>
           </div>
@@ -156,7 +179,7 @@
               class="card-img-top rounded-0" alt="Angular pro sidebar">
 
               <div class="card-body text-center">
-                <h6 class="card-title">User Profile</h6>
+                <h6 class="card-title">Visitors Online</h6>
               </div>
             </div>
           </div>
