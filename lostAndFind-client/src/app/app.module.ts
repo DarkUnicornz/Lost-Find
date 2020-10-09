@@ -38,6 +38,12 @@ import { authInterceptorProviders } from './helpers/authentication.interceptor';
 // ngx-bootstrap
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { OwnItemsComponent } from './pages/own-items/own-items.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { ComplainComponent } from './components/complain/complain.component';
+import { LostfoundItemCardComponent } from './components/lostfound-item-card/lostfound-item-card.component';
+import { AdminModProfileComponent } from './pages/admin-mod-profile/admin-mod-profile.component';
 
 import { ChartsModule } from 'ng2-charts';
 
@@ -69,6 +75,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProfileComponent,
     ComplainComponent,
     LostfoundItemCardComponent,
+    AdminModProfileComponent,
   ],
   imports: [
     BrowserModule,
