@@ -36,6 +36,9 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { OwnItemsComponent } from './pages/own-items/own-items.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { EdituserprofileComponent } from './pages/edituserprofile/edituserprofile.component';
+
+
 
 
 
@@ -64,6 +67,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserProfileComponent,
     OwnItemsComponent,
     ProfileComponent,
+    EdituserprofileComponent,
+    
+
   ],
   imports: [
     BrowserModule,

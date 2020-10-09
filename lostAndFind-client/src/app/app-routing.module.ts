@@ -14,6 +14,8 @@ import { TestComponent } from './test/test/test.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { OwnItemsComponent } from './pages/own-items/own-items.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { EdituserprofileComponent } from './pages/edituserprofile/edituserprofile.component';
+
 
 
 const routes: Routes = [
@@ -29,7 +31,9 @@ const routes: Routes = [
   { path: 'test', component: TestComponent },
   { path: 'user_profile', component: UserProfileComponent },
   { path: 'own_item', component: OwnItemsComponent },
-  { path: 'profile', component: ProfileComponent }
+  { path: 'profile', component: ProfileComponent },
+  { path: 'edituserprofile', component: EdituserprofileComponent },
+  
 ];
 
 @NgModule({
