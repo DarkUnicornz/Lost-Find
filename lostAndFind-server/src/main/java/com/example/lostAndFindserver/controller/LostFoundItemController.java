@@ -16,6 +16,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -41,13 +43,25 @@ public class LostFoundItemController {
         User user = userRepository.findById(userDetails.getId()).get();
 
         String flag = "lost";
+        LocalDate lostPostDate = LocalDate.now();
+        LocalTime lostPostTime = LocalTime.now();
+
+        System.out.println("Date" + lostPostDate);
+        System.out.println("Time"+lostPostTime);
 
         LostFoundItemModel lostFoundItemModel = new LostFoundItemModel(
+                postrequest.getItem(),
                 postrequest.getLocation(),
+                postrequest.getPrice(),
                 postrequest.getDescription(),
                 flag,
+                postrequest.getLost_found_date(),
+                lostPostDate,
+                lostPostTime,
                 user
         );
+
+        System.out.println("Lost date"+ lostFoundItemModel.getLost_found_date());
 
         return lostFoundItemService.saveLostPost(lostFoundItemModel);
 
@@ -68,11 +82,18 @@ public class LostFoundItemController {
         User user = userRepository.findById(userDetails.getId()).get();
 
         String flag = "found";
+        LocalDate lostPostDate = LocalDate.now();
+        LocalTime lostPostTime = LocalTime.now();
 
         LostFoundItemModel lostFoundItemModel = new LostFoundItemModel(
+                postRequest.getItem(),
                 postRequest.getLocation(),
+                postRequest.getPrice(),
                 postRequest.getDescription(),
                 flag,
+                postRequest.getLost_found_date(),
+                lostPostDate,
+                lostPostTime,
                 user
         );
 
