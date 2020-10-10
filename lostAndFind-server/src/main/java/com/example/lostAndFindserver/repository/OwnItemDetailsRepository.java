@@ -1,6 +1,7 @@
 package com.example.lostAndFindserver.repository;
 
 import com.example.lostAndFindserver.model.OwnItemDetails;
+import com.example.lostAndFindserver.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,14 +15,6 @@ public interface OwnItemDetailsRepository extends JpaRepository<OwnItemDetails, 
 
     Optional<OwnItemDetails> findById(Long id);
 
-//    OwnItemDetails findByItem_name(String item_name);
-//
-//    @Override
-//    List<OwnItemDetails> findAllById(Iterable<Long> longs);
+    Long countByUser(User user);
 
-//    Optional<OwnItemDetails> findByU_id(Long aLong);
-
-
-//    @Override
-//    List<OwnItemDetails> findAllById(Iterable<Long> u_id);
 }
