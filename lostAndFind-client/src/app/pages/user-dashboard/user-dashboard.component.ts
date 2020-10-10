@@ -15,6 +15,7 @@ export class UserDashboardComponent implements OnInit {
   lostCount : number;
   foundCount : number;
   complainCount : number;
+  detailsCount :  number;
 
 
   constructor(
@@ -26,6 +27,7 @@ export class UserDashboardComponent implements OnInit {
 
     this.getFoundItemCount();
     this. getLostItemCount() ;
+    this.getComplainCount();
     
   }
 
@@ -50,12 +52,24 @@ export class UserDashboardComponent implements OnInit {
 
   getComplainCount() {
     this.user = this.tokenStorageService.getUser();
-    this.staticService.getComplain().subscribe( res => { // must use the subscribe function to retrive the data
-      this.lostCount = res;
-      console.log("Count"+this.lostCount);
+    this.staticService.getComplainCount().subscribe( res => { // must use the subscribe function to retrive the data
+      this.complainCount = res;
+      console.log("Count"+this.complainCount);
       
     })
   }
+
+
+  // getDetailsCount() {
+  //   this.user = this.tokenStorageService.getUser();
+  //   this.staticService.getDetails().subscribe( res => { // must use the subscribe function to retrive the data
+  //     this.lostCount = res;
+  //     console.log("Count"+this.detailsCount);
+      
+  //   })
+  // }
+
+  
 
 
 
