@@ -38,6 +38,7 @@ import { OwnItemsComponent } from './pages/own-items/own-items.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ComplainComponent } from './pages/complain/complain.component';
 import { ModProfileComponent } from './pages/mod-profile/mod-profile.component';
+import { AddModeratorComponent } from './add-moderator/add-moderator.component';
 
 
 
@@ -68,6 +69,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProfileComponent,
     ComplainComponent,
     ModProfileComponent,
+    AddModeratorComponent,
   ],
   imports: [
     BrowserModule,
