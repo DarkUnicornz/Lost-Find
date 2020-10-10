@@ -43,22 +43,21 @@ export class StaticsService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': this.tokenStorageService.getToken() })
     };
 
-    return this.http.get(AppConfig.BASE_URL + 'lost&founditem/all_lost_count',{});
+    return this.http.get(AppConfig.BASE_URL + 'lost&founditem/user_lost_count',{});
 
   }
 
 
   
   getComplainCount(item): Observable<any> {
+
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': this.tokenStorageService.getToken() })
     };
 
     console.log('Token = ' + this.tokenStorageService.getToken());
 
-    return this.http.post(AppConfig.BASE_URL + 'user/foundcount', { // check the url
-     
-    }, httpOptions);
+    return this.http.get(AppConfig.BASE_URL + 'user/user_found_count', {});
   }
 
 }
