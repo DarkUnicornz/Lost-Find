@@ -26,8 +26,26 @@ export class LostAndFindService {
     };
 
     return this.http.post(AppConfig.BASE_URL + 'lost&founditem/lost_post', {
+      item: lostPost.item,
       location: lostPost.location,
+      price: lostPost.price,
+      lost_found_date: lostPost.lostDate,
       description: lostPost.description,
+    }, httpOptions);
+
+  }
+
+  savefoundPostDetails(foundPost): Observable<any> {
+
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': this.tokenStorageService.getToken() })
+    };
+
+    return this.http.post(AppConfig.BASE_URL + 'lost&founditem/found_post', {
+      item: foundPost.founditem,
+      location: foundPost.foundlocation,
+      lost_found_date: foundPost.foundlostDate,
+      description: foundPost.founddescription,
     }, httpOptions);
 
   }

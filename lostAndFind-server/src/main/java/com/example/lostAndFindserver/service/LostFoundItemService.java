@@ -79,4 +79,12 @@ public class LostFoundItemService {
     public List<LostFoundItemModel> getUserFoundPost(User user, String flag) {
         return lostFoundItemRepository.findByUserAndFlag(user, flag);
     }
+
+    public Long getUserLostCount(User user, String flag) {
+        return lostFoundItemRepository.countByUserAndFlag(user, flag);
+    }
+
+    public Long getUserFoundCount(User user, String flag) {
+        return lostFoundItemRepository.countByUserAndFlag(user, flag);
+    }
 }

@@ -32,14 +32,18 @@
 
                 <div class="input-group form-group">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-id-card"></i></span>
+                    <span class="input-group-text"><i class="fa fa-list-ul"></i></span>
                   </div>
-                  <input name="police_station" type="text" class="form-control" formControlName="police_station"
-                    placeholder="location"
+                  <select name="police_station" formControlName="police_station" class="form-control" id="police_station" type="text"
                     [ngClass]="{'is-invalid': (police_station.touched || police_station.dirty) && police_station.invalid }">
-                  <div class="invalid-feedback" *ngIf="(police_station.touched || police_station.dirty) && police_station.invalid">
-                    Enter Location name.
-                  </div>
+                    <div class="invalid-feedback" *ngIf="(police_station.touched || police_station.dirty) && police_station.invalid">
+                      Enter nearest police station.
+                    </div>
+                    <option selected>{{'COMPLAIN.POLICE_STATION' | translate}}</option>
+                    <option value="Karandeniya">{{'COMPLAIN.POLICE_STATION1' | translate}}</option>
+                    <option value="Ambalangoda">{{'COMPLAIN.POLICE_STATION2' | translate}}</option>
+                    <option value="Elpitiya">{{'COMPLAIN.POLICE_STATION3' | translate}}</option>
+                  </select>
                 </div>
 
                 <div class="input-group form-group">
@@ -47,11 +51,11 @@
                     <span class="input-group-text"><i class="fa fa-address-card"></i></span>
                   </div>
                   <textarea class="form-control" name="description" formControlName="description" type="text"
-                    id="exampleFormControlTextarea1" rows="3" placeholder="Lost item Details"
+                    id="exampleFormControlTextarea1" rows="3" placeholder="{{'COMPLAIN.DESCRIPTION' | translate}}"
                     [ngClass]="{'is-invalid': (description.touched || description.dirty) && description.invalid }"></textarea>
                   <div class="invalid-feedback"
                     *ngIf="(description.touched || description.dirty) && description.invalid">
-                    Enter your item details.
+                    Enter your complain details.
                   </div>
                 </div>
 
