@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { from } from 'rxjs';
 import { User } from 'src/app/models/user.model';
+import { StaticsService } from 'src/app/services/statics.service';
 import { TokenStorageService } from '../../services/token-storage.service';
 
 @Component({
@@ -11,13 +12,42 @@ import { TokenStorageService } from '../../services/token-storage.service';
 export class UserDashboardComponent implements OnInit {
 
   user: User;
+  count : number;
 
   constructor(
     private tokenStorageService: TokenStorageService,
+    private staticService: StaticsService
   ) { }
 
   ngOnInit() {
-    this.user = this.tokenStorageService.getUser();
+
+    this.getFoundItemCount()
+    
   }
+
+  getFoundItemCount() {
+    this.user = this.tokenStorageService.getUser();
+    this.staticService.getFoundCount().subscribe( res => { // must use the subscribe function to retrive the data
+      this.count = res;
+      console.log("Count"+this.count);
+      
+    })
+  }
+
+  getLostItemCount() {
+    this.user = this.tokenStorageService.getUser();
+    this.staticService.getLostCount().subscribe( res => { // must use the subscribe function to retrive the data
+      this.count = res;
+      console.log("Count"+this.count);
+      
+    })
+  }
+
+
+
+
+
+
+
 
 }
