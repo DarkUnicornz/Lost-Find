@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { AdminMod } from 'src/app/models/admin-mod.model';
-import { AuthenticationService } from 'src/app/services/authentication.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -17,16 +16,15 @@ export class AdminModProfileComponent implements OnInit {
   Securityform: FormGroup;
   personDetails: AdminMod = <AdminMod>{};
 
-  fileData: File = null;
-  previewUrls;
-  fileUploadProgress: string = null;
-  uploadedFilePath: string = null;
+  // fileData: File = null;
+  // previewUrls;
+  // fileUploadProgress: string = null;
+  // uploadedFilePath: string = null;
 
   constructor(
     fb: FormBuilder,
-    private userService: UserService,
+    private AdminModService: UserService,
     private tokenService: TokenStorageService,
-    private authService: AuthenticationService
   ) {
     this.editForm = fb.group({
       first_name: ['', [Validators.required]],
@@ -49,28 +47,36 @@ export class AdminModProfileComponent implements OnInit {
     });
   }
 
-  fileChangeEvent(fileInput: any) {
-    this.fileData = fileInput.target.files[0];
-    this.preview();
-  }
+  // fileChangeEvent(fileInput: any) {
+  //   this.fileData = fileInput.target.files[0];
+  //   this.preview();
+  // }
 
-  preview() {
-    // Show preview
-    var mimeType = this.fileData.type;
-    if (mimeType.match(/image\/*/) == null) {
-      return;
-    }
+  // preview() {
+  //   // Show preview
+  //   var mimeType = this.fileData.type;
+  //   if (mimeType.match(/image\/*/) == null) {
+  //     return;
+  //   }
 
-    var reader = new FileReader();
-    reader.readAsDataURL(this.fileData);
-    reader.onload = (_event) => {
-      console.log(reader.result)
-      this.previewUrls = reader.result;
-    };
-  }
+  //   var reader = new FileReader();
+  //   reader.readAsDataURL(this.fileData);
+  //   reader.onload = (_event) => {
+  //     console.log(reader.result)
+  //     this.previewUrls = reader.result;
+  //   };
+  // }
 
   async ngOnInit() {
     this.personDetails = this.tokenService.getUser();
+
+    this.editForm.patchValue({
+      first_name: this.personDetails.first_name,
+      last_name: this.personDetails.last_name,
+      phone: this.personDetails.phone,
+      email: this.personDetails.email,
+      location: this.personDetails.location
+    });
   }
 
   get first_name(){
@@ -100,7 +106,17 @@ export class AdminModProfileComponent implements OnInit {
       phone: this.phone.value,
       email: this.email.value,
       location: this.location.value
-    };
+    }
+
+    console.log(this.first_name)
+
+    this.AdminModService.editProfile(editForm).subscribe({next:(res)=>{
+      console.log(res)
+    },
+    error: (err) => {
+      console.log(err);
+    }
+  })
   };  
 
 }
