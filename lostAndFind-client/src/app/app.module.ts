@@ -40,8 +40,9 @@ import { authInterceptorProviders } from './helpers/authentication.interceptor';
 // ngx-bootstrap
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-
 import { ChartsModule } from 'ng2-charts';
+
+
 
 
 
