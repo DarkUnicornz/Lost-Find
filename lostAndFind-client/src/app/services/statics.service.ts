@@ -20,7 +20,7 @@ export class StaticsService {
 
 
 
-  getFoundCount(): Observable<any> {
+   getAllFoundCount(): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': this.tokenStorageService.getToken() })
     };

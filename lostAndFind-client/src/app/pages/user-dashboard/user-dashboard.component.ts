@@ -25,15 +25,15 @@ export class UserDashboardComponent implements OnInit {
 
   ngOnInit() {
 
-    this.getFoundItemCount();
+    this.getAllFoundItemCount();
     this. getLostItemCount() ;
     this.getComplainCount();
     
   }
 
-  getFoundItemCount() {
+  getAllFoundItemCount() {
     this.user = this.tokenStorageService.getUser();
-    this.staticService.getFoundCount().subscribe( res => { // must use the subscribe function to retrive the data
+    this.staticService.getAllFoundCount().subscribe( res => { // must use the subscribe function to retrive the data
       this.foundCount = res;
       console.log("Count"+this.foundCount);
       
