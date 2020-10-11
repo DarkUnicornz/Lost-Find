@@ -67,15 +67,15 @@ export class StaticsService {
 
     return this.http.get(AppConfig.BASE_URL + 'lost&founditem/user_lost_count',{}); // rewrite this
 
+}
+
+  getPoliceComplainCount(): Observable<any> {
+
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': this.tokenStorageService.getToken() })
+    };
+
+    return this.http.get(AppConfig.BASE_URL + 'complain/location_count', {});
   }
-
-  
-
-
-
-
-
-  
- 
 
 }
