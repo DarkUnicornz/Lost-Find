@@ -2,6 +2,7 @@ package com.example.lostAndFindserver.repository;
 
 import com.example.lostAndFindserver.model.Complain;
 import com.example.lostAndFindserver.model.User;
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,8 +17,5 @@ public interface ComplainRepository extends JpaRepository<Complain, Long> {
 
     Long countByUser(User u_id);
 
-//    Long countAll();
-
-//    Complain countByUser(User u_id);
-
+    Long countByPolicestation(String police_station);
 }

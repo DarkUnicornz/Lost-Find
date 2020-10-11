@@ -50,7 +50,7 @@ public class User {
     private String phone;
 
     @Size(max = 30)
-    private String police_station;
+    private String policestation;
 
     @Size(max = 80)
     private String address;
@@ -85,14 +85,14 @@ public class User {
     public User() {
     }
 
-    public User(String nic, String username, String fName, String lName, String email, String phone, String police_station, String address, String bDay, String gender, String password) {
+    public User(String nic, String username, String fName, String lName, String email, String phone, String policestation, String address, String bDay, String gender, String password) {
         this.nic = nic;
         this.username = username;
         this.fName = fName;
         this.lName = lName;
         this.email = email;
         this.phone = phone;
-        this.police_station = police_station;
+        this.policestation = policestation;
         this.address = address;
         this.bDay = bDay;
         this.gender = gender;
@@ -163,12 +163,12 @@ public class User {
         this.phone = phone;
     }
 
-    public String getPolice_station() {
-        return police_station;
+    public String getPolicestation() {
+        return policestation;
     }
 
-    public void setPolice_station(String police_station) {
-        this.police_station = police_station;
+    public void setPolicestation(String policestation) {
+        this.policestation = policestation;
     }
 
     public String getAddress() {

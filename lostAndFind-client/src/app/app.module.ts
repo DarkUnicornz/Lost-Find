@@ -40,15 +40,10 @@ import { authInterceptorProviders } from './helpers/authentication.interceptor';
 // ngx-bootstrap
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-<<<<<<< HEAD
-import { UserProfileComponent } from './pages/user-profile/user-profile.component';
-import { OwnItemsComponent } from './pages/own-items/own-items.component';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { ComplainComponent } from './pages/complain/complain.component';
-=======
 import { ChartsModule } from 'ng2-charts';
+import { SearchComponent } from './components/search/search.component';
+import { SearchPageComponent } from './pages/search-page/search-page.component';
 
->>>>>>> 6795cf84e3e03e82fa2c3b85448290afb44de811
 
 
 
@@ -77,16 +72,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserProfileComponent,
     OwnItemsComponent,
     ProfileComponent,
-<<<<<<< HEAD
-    ComplainComponent,
-=======
-    EdituserprofileComponent,
-
-
     ComplainComponent,
     LostfoundItemCardComponent,
     AdminModProfileComponent,
->>>>>>> 6795cf84e3e03e82fa2c3b85448290afb44de811
+    SearchComponent,
+    SearchPageComponent,
+    EdituserprofileComponent
   ],
   imports: [
     BrowserModule,

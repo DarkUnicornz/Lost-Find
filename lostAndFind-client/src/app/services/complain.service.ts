@@ -26,7 +26,7 @@ export class ComplainService {
     };
 
     return this.http.post(AppConfig.BASE_URL + 'complain/complain_post/' + lost_id, {
-      police_station: complain.police_station,
+      policestation: complain.police_station,
       description: complain.description,
     }, httpOptions);
 

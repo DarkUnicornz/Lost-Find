@@ -47,7 +47,7 @@ public class ComplainController {
 
 
         Complain complain = new Complain(
-                complainRequest.getPolice_station(),
+                complainRequest.getPolicestation(),
                 complainRequest.getDescription(),
 //                item_id,
 //                flag,
@@ -75,7 +75,7 @@ public class ComplainController {
     }
 
 
-    //Count user complains count
+    //Count user complains
     @GetMapping("/user_complain_count")
     @PreAuthorize("hasRole('USER')")
     public Long getComplainCount(Authentication authentication) {
@@ -91,6 +91,21 @@ public class ComplainController {
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public Long getAllComplainCount() {
         return complainService.getAllComplainCount();
+    }
+
+//    //Get police station Complain count
+    @GetMapping("/location_count")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public Long getLocationComplainCount(Authentication authentication) {
+//
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+////        String police_station = userRepository.findByPoliceStation(userDetails.getPolice_station()).get();
+        User user = userRepository.findById(userDetails.getId()).get();
+//
+        String police_station = user.getPolicestation();
+        System.out.println("Police station" +police_station);
+//
+        return  complainService.getLocationComplainCount(police_station);
     }
 
 }
