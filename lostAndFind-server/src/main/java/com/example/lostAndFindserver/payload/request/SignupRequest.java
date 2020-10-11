@@ -33,7 +33,7 @@ public class SignupRequest {
     private String phone;
 
     @Size(max = 30)
-    private String police_station;
+    private String policestation;
 
     @Size(max = 80)
     private String address;
@@ -72,12 +72,12 @@ public class SignupRequest {
         return password;
     }
 
-    public String getPolice_station() {
-        return police_station;
+    public String getPolicestation() {
+        return policestation;
     }
 
-    public void setPolice_station(String police_station) {
-        this.police_station = police_station;
+    public void setPolicestation(String policestation) {
+        this.policestation = policestation;
     }
 
     public void setPassword(String password) {

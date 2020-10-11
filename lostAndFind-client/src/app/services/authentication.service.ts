@@ -70,7 +70,7 @@ export class AuthenticationService {
       lName: user.lName,
       email: user.email,
       phone: user.phone,
-      police_station: user.police_station,
+      policestation: user.police_station,
       // address: user.address,
       // bDay: user.bDay,
       gender: user.gender,
