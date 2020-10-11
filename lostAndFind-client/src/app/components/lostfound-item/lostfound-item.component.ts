@@ -143,7 +143,6 @@ export class LostfoundItemComponent implements OnInit {
     };
 
     console.log(foundPost);
-    console.log("Date:" + foundPost.foundDate);
 
     this.lostandfindservice.savefoundPostDetails(foundPost).subscribe(
       data => {

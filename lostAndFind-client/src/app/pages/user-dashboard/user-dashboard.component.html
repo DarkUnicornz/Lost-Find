@@ -16,12 +16,12 @@
                         <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg" alt="User picture"></div>
                     <div class="user-info">
                         <span class="user-name">{{user.fName}}
-                                <strong>{{user.lName}}</strong>
-                            </span>
+                            <strong>{{user.lName}}</strong>
+                        </span>
                         <span class="user-role">User</span>
                         <span class="user-status">
-                                <i class="fa fa-circle"></i>
-                                <span>Online</span>
+                            <i class="fa fa-circle"></i>
+                            <span>Online</span>
                         </span>
                     </div>
                 </div>
@@ -32,8 +32,8 @@
                             <input type="text" class="form-control search-menu" placeholder="Search...">
                             <div class="input-group-append">
                                 <span class="input-group-text">
-                                            <i class="fa fa-search" aria-hidden="true"></i>
-                                        </span>
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -96,7 +96,43 @@
             <div class="container-fluid">
                 <h2>User Dashboard</h2>
 
-                <h5>More templates</h5>
+                <br>
+
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="card text-white bg-primary">
+                            <div class="card-header">found</div>
+                            <div class="card-body">
+                                <button type="button" class="btn btn-light btn-lg btn-block">{{foundCount}}</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-white bg-primary">
+                            <div class="card-header">lost</div>
+                            <div class="card-body">
+                                <button type="button" class="btn btn-light btn-lg btn-block">{{lostCount}}</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-white bg-primary">
+                            <div class="card-header">complain</div>
+                            <div class="card-body">
+                                <button type="button" class="btn btn-light btn-lg btn-block">{{complainCount}}</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-white bg-primary">
+                            <div class="card-header">ooo</div>
+                            <div class="card-body">
+                                <button type="button" class="btn btn-light btn-lg btn-block">500</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
                 <ul class="nav nav-tabs nav-justified md-tabs indigo" id="myTabJust" role="tablist">
                     <li class="nav-item">

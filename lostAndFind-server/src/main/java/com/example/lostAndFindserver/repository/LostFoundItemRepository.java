@@ -17,6 +17,8 @@ public interface LostFoundItemRepository extends JpaRepository <LostFoundItemMod
 
     List<LostFoundItemModel> findByUserAndFlag(User user, String flag);
 
+    Long countByUserAndFlag(User user, String flag);
+
 //    List<LostFoundItemModel> findByUserAndFlag(User user);
 //   LostFoundItemModel save(LostFoundItemModel lostFoundItemModel);
 

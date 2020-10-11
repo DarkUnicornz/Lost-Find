@@ -14,7 +14,7 @@ public class Complain {
 
     @NotBlank
     @Size(max = 50)
-    private String police_station;
+    private String policestation;
 
     @NotBlank
     @Size(max = 500)
@@ -37,8 +37,8 @@ public class Complain {
 
     public Complain() {}
 
-    public Complain(String police_station, String description, LostFoundItemModel lostFoundItemModel, String flag, User user) {
-        this.police_station = police_station;
+    public Complain(String policestation, String description, LostFoundItemModel lostFoundItemModel, String flag, User user) {
+        this.policestation = policestation;
         this.description = description;
         this.lostFoundItemModel = lostFoundItemModel;
         this.flag = flag;
@@ -54,12 +54,12 @@ public class Complain {
         this.complain_id = complain_id;
     }
 
-    public String getPolice_station() {
-        return police_station;
+    public String getPolicestation() {
+        return policestation;
     }
 
-    public void setPolice_station(String police_station) {
-        this.police_station = police_station;
+    public void setPolicestation(String policestation) {
+        this.policestation = policestation;
     }
 
     public String getDescription() {

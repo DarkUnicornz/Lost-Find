@@ -30,4 +30,9 @@ public class ComplainService {
     public Long getAllComplainCount() {
         return complainRepository.count();
     }
+
+    public Long getLocationComplainCount(String police_station) {
+        return complainRepository.countByPolicestation(police_station);
+    }
+
 }

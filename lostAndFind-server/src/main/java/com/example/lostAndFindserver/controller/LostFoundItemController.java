@@ -116,7 +116,7 @@ public class LostFoundItemController {
         return lostFoundItemService.getAllFoundPost();
     }
 
-    //Count lost posts
+    //Count all lost posts
     @GetMapping("/all_lost_count")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public  Long getLostCount() {
@@ -124,7 +124,7 @@ public class LostFoundItemController {
         return lostFoundItemService.getAllLostCount(flag);
     }
 
-    //Count found posts
+    //Count all found posts
     @GetMapping("/all_found_count")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public  Long getFoundCount() {
@@ -161,4 +161,31 @@ public class LostFoundItemController {
         return lostFoundItemService.getUserFoundPost(user, flag);
 
     }
+
+    //Count lost post by user id
+    @GetMapping("/user_lost_count")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public  Long getUserLostCount(Authentication authentication) {
+
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        User user = userRepository.findById(userDetails.getId()).get();
+
+        String flag = "lost";
+        return lostFoundItemService.getUserLostCount(user, flag);
+    }
+
+
+    //Count found post by user id
+    @GetMapping("/user_found_count")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public  Long getUserFoundCount(Authentication authentication) {
+
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        User user = userRepository.findById(userDetails.getId()).get();
+
+        String flag = "found";
+        return lostFoundItemService.getUserFoundCount(user, flag);
+    }
+
+
 }

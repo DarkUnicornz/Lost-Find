@@ -41,11 +41,11 @@ export class UserService {
     }, httpOptions);
   }
 
-  editProfile(data){
+  editProfile(data) {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': this.tokenStorageService.getToken() })
     };
-    return this.http.put(AppConfig.BASE_URL + 'profile/editprofile', {
+    return this.http.put(AppConfig.BASE_URL + 'app/profile/editprofile', {
       username : data.username,
       fname : data.fname,
       lname : data.lname,
@@ -53,6 +53,10 @@ export class UserService {
       phone : data.phone,
       address : data.address,
     }, httpOptions);
+  }
+
+  editProfile1(data){
+    return this.http.put('http://localhost:8082/app/profile/editprofile' , data);
   }
 
 }
