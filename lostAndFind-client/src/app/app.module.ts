@@ -40,18 +40,9 @@ import { authInterceptorProviders } from './helpers/authentication.interceptor';
 // ngx-bootstrap
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-<<<<<<< HEAD
 import { ChartsModule } from 'ng2-charts';
 import { SearchComponent } from './components/search/search.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
-=======
-import { UserProfileComponent } from './pages/user-profile/user-profile.component';
-import { OwnItemsComponent } from './pages/own-items/own-items.component';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { ComplainComponent } from './pages/complain/complain.component';
-import { ModProfileComponent } from './pages/mod-profile/mod-profile.component';
-import { AddModeratorComponent } from './pages/add-moderator/add-moderator.component';
->>>>>>> nilannimeshika
 
 
 
