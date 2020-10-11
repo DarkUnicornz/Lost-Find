@@ -108,6 +108,7 @@ public class AuthController {
                 signUpRequest.getlName(),
                 signUpRequest.getEmail(),
                 signUpRequest.getPhone(),
+                signUpRequest.getPolice_station(),
                 signUpRequest.getAddress(),
                 signUpRequest.getbDay(),
                 signUpRequest.getGender(),
@@ -115,6 +116,8 @@ public class AuthController {
 
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();
+
+        System.out.println(strRoles);
 
         if (strRoles == null) {
             Role userRole = roleRepository.findByName(ERole.ROLE_USER)

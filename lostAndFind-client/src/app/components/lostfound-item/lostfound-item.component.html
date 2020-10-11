@@ -1,128 +1,216 @@
-<br>
 <div class="container register">
   <div class="row">
     <div class="col-md-3 register-left">
       <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
       <h3>Welcome</h3>
-      <p>You can upload lost or found item description..!</p>
+      <p>You can add new administrators and new Moderators....!</p>
       <!-- <input type="submit" name="" value="Login" /><br /> -->
+      <div class="input-group form-group">
+        <ng-flash-message></ng-flash-message>
+      </div>
     </div>
     <div class="col-md-9 register-right">
       <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
         <li class="nav-item">
           <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-            aria-selected="true">Item Details</a>
+            aria-selected="true">Admin</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
-            aria-selected="false">Complain</a>
+            aria-selected="false">Moderator</a>
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-          <h3 class="register-heading">Enter Item Description Here</h3>
-          <form [formGroup]="postForm" (ngSubmit)="onPostSubmit()">
+
+          <h3 class="register-heading">Lost Item</h3>
+
+          <form (submit)="onLostPostSubmit()" [formGroup]="lostForm">
             <div class="row register-form">
+
               <div class="col-md-6">
-                <div class="form-group">
-                  <input type="text" formControlName="location" class="form-control" placeholder="Location *"
-                  [ngClass]="{ 'is-invalid': submitted && f.location.errors }" />
-                </div>
-                <!-- <div class="form-group">
-                      <input type="date" class="form-control" placeholder="Enter Lost/Found Date *" value="" />
-                    </div> -->
-                <div class="form-group">
-                  <textarea class="form-control" formControlName="description" name="description"
-                    id="exampleFormControlTextarea1" rows="2" placeholder="Description *" 
-                    [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></textarea>
-                  <!-- <input type="password" class="form-control" placeholder="Password *" value="" /> -->
-                </div>
-                <!-- <div class="form-group">
-                      <input type="password" class="form-control" placeholder="Confirm Password *" value="" />
-                    </div> -->
-                <div class="form-group">
-                  <div class="maxl">
-                    <label class="radio inline">
-                      <input type="radio" name="status" formControlName="status" value="lost" checked>
-                      <span> Lost </span>
-                    </label>
-                    <label class="radio inline">
-                      <input type="radio" name="status" formControlName="status" value="found">
-                      <span> found </span>
-                    </label>
+
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-list-ul"></i></span>
                   </div>
-                </div>  
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <input type="date" formControlName="date" class="form-control" placeholder="" 
-                  [ngClass]="{ 'is-invalid': submitted && f.date.errors }" />
-                </div>
-                <!-- <div class="form-group">
-                      <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control"
-                        placeholder="Your Phone *" value="" />
-                    </div> -->
-                <!-- <div class="form-group">
-                  <select class="form-control" formControlName="status" [ngClass]="{ 'is-invalid': submitted && f.status.errors }">
-                    <option class="hidden" selected disabled>Status</option>
-                    <option>Delivered</option>
-                    <option>Not Delivered</option>
-                    <option>received</option>
-                    <option>Not received</option>
+                  <select name="item" formControlName="item" class="form-control" id="item" type="text"
+                    [ngClass]="{'is-invalid': (item.touched || item.dirty) && item.invalid }">
+                    <div class="invalid-feedback" *ngIf="(item.touched || item.dirty) && item.invalid">
+                      Enter lost item.
+                    </div>
+                    <option selected>{{'LOST_ITEM.ITEM' | translate}}</option>
+                    <option value="phone">{{'LOST_ITEM.ITEM1' | translate}}</option>
+                    <option value="purse">{{'LOST_ITEM.ITEM2' | translate}}</option>
+                    <option value="watch">{{'LOST_ITEM.ITEM3' | translate}}</option>
                   </select>
-                </div> -->
-                <!-- <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Enter Your Answer *" value="" />
-                    </div> -->
-                <input type="submit" [disabled]="postForm.invalid" class="btnRegister" value="Send Post" />
+                </div>
+
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-list-ul"></i></span>
+                  </div>
+                  <select name="location" formControlName="location" class="form-control" id="location" type="text"
+                    [ngClass]="{'is-invalid': (location.touched || location.dirty) && location.invalid }">
+                    <div class="invalid-feedback" *ngIf="(location.touched || location.dirty) && location.invalid">
+                      Enter item lost location.
+                    </div>
+                    <option selected>{{'LOST_ITEM.LOCATION' | translate}}</option>
+                    <option value="Karandeniya">{{'LOST_ITEM.LOCATION1' | translate}}</option>
+                    <option value="Ambalangoda">{{'LOST_ITEM.LOCATION2' | translate}}</option>
+                    <option value="Elpitiya">{{'LOST_ITEM.LOCATION3' | translate}}</option>
+                  </select>
+                </div>
+
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-id-card"></i></span>
+                  </div>
+                  <input name="price" type="text" class="form-control" formControlName="price"
+                    placeholder="{{'LOST_ITEM.PRICE' | translate}}"
+                    [ngClass]="{'is-invalid': (price.touched || price.dirty) && price.invalid }">
+                  <div class="invalid-feedback" *ngIf="(price.touched || price.dirty) && price.invalid">
+                    Enter price of lost item.
+                  </div>
+                </div>
+
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-birthday-cake"></i></span>
+                  </div>
+                  <input class="form-control" bsDatepicker formControlName="lostDate"
+                    placeholder="{{'LOST_ITEM.LOST_DATE' | translate}}"
+                    [ngClass]="{'is-invalid': (lostDate.touched || lostDate.dirty) && lostDate.invalid }"
+                    [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }">
+                  <div class="invalid-feedback" *ngIf="(lostDate.touched || lostDate.dirty) && lostDate.invalid">
+                    Enter item lost date.
+                  </div>
+                </div>
+
               </div>
+              <!--end col-md-6-->
+
+              <div class="col-md-6">
+
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-address-card"></i></span>
+                  </div>
+                  <textarea class="form-control" name="description" formControlName="description" type="text"
+                    id="exampleFormControlTextarea1" rows="3" placeholder="{{'LOST_ITEM.DESCRIPTION' | translate}}"
+                    [ngClass]="{'is-invalid': (description.touched || description.dirty) && description.invalid }"></textarea>
+                  <div class="invalid-feedback"
+                    *ngIf="(description.touched || description.dirty) && description.invalid">
+                    Enter your item details.
+                  </div>
+                </div>
+
+                <!-- <div class="form-group">
+                <input type="text" class="form-control" placeholder="Enter Your Answer *" value="" />
+              </div> -->
+                <input type="submit" class="btnRegister" value="Submit" />
+
+              </div>
+              <!--end col-md-6-->
+
             </div>
+            <!--end row register-form-->
           </form>
+          <!--end form-->
+
         </div>
 
-        <!-- <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-          <h3 class="register-heading">Enter related details here </h3>
-          <div class="row register-form">
-            <div class="col-md-6">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="nearest police station *" value="" />
+        <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <h3 class="register-heading">Found Item</h3>
+          <form (submit)="onFoundPostSubmit()" [formGroup]="foundForm">
+            <div class="row register-form">
+
+              <div class="col-md-6">
+
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-list-ul"></i></span>
+                  </div>
+                  <select name="founditem" formControlName="founditem" class="form-control" id="founditem" type="text"
+                    [ngClass]="{'is-invalid': (founditem.touched || founditem.dirty) && founditem.invalid }">
+                    <div class="invalid-feedback" *ngIf="(founditem.touched || founditem.dirty) && founditem.invalid">
+                      Enter found item.
+                    </div>
+                    <option selected>{{'LOST_ITEM.ITEM' | translate}}</option>
+                    <option value="phone">{{'LOST_ITEM.ITEM1' | translate}}</option>
+                    <option value="purse">{{'LOST_ITEM.ITEM2' | translate}}</option>
+                    <option value="watch">{{'LOST_ITEM.ITEM3' | translate}}</option>
+                  </select>
+                </div>
+
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-list-ul"></i></span>
+                  </div>
+                  <select name="foundlocation" formControlName="foundlocation" class="form-control" id="foundlocation"
+                    type="text"
+                    [ngClass]="{'is-invalid': (foundlocation.touched || foundlocation.dirty) && foundlocation.invalid }">
+                    <div class="invalid-feedback"
+                      *ngIf="(foundlocation.touched || foundlocation.dirty) && foundlocation.invalid">
+                      Enter item found location.
+                    </div>
+                    <option selected>{{'LOST_ITEM.LOCATION' | translate}}</option>
+                    <option value="Karandeniya">{{'LOST_ITEM.LOCATION1' | translate}}</option>
+                    <option value="Ambalangoda">{{'LOST_ITEM.LOCATION2' | translate}}</option>
+                    <option value="Elpitiya">{{'LOST_ITEM.LOCATION3' | translate}}</option>
+                  </select>
+                </div>
+
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-birthday-cake"></i></span>
+                  </div>
+                  <input class="form-control" bsDatepicker formControlName="foundDate"
+                    placeholder="{{'LOST_ITEM.LOST_DATE' | translate}}"
+                    [ngClass]="{'is-invalid': (foundDate.touched || foundDate.dirty) && foundDate.invalid }"
+                    [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }">
+                  <div class="invalid-feedback" *ngIf="(foundDate.touched || foundDate.dirty) && foundDate.invalid">
+                    Enter item found date.
+                  </div>
+                </div>
+
               </div>
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder=" *" value="" />
-              </div>
-              <div class="form-group">
-                <input type="email" class="form-control" placeholder="Email *" value="" />
-              </div>
-              <div class="form-group">
-                <input type="text" maxlength="10" minlength="10" class="form-control" placeholder="Phone *" value="" />
-              </div>
+              <!--end col-md-6-->
+
+              <div class="col-md-6">
+
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-address-card"></i></span>
+                  </div>
+                  <textarea class="form-control" name="founddescription" formControlName="founddescription" type="text"
+                    id="exampleFormControlTextarea1" rows="3" placeholder="{{'LOST_ITEM.DESCRIPTION' | translate}}"
+                    [ngClass]="{'is-invalid': (founddescription.touched || founddescription.dirty) && founddescription.invalid }"></textarea>
+                  <div class="invalid-feedback"
+                    *ngIf="(founddescription.touched || founddescription.dirty) && founddescription.invalid">
+                    Enter found item details.
+                  </div>
+                </div>
 
 
+                <!-- <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Enter Your Answer *" value="" />
+                </div> -->
+                <input type="submit" class="btnRegister" value="Register" />
+
+              </div>
+              <!--end col-md-6-->
+
             </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <input type="password" class="form-control" placeholder="Password *" value="" />
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control" placeholder="Confirm Password *" value="" />
-              </div>
-              <div class="form-group">
-                <select class="form-control">
-                  <option class="hidden" selected disabled>Please select your Security Question</option>
-                  <option>What is your Birth date?</option>
-                  <option>What is Your old Phone Number</option>
-                  <option>What is your Pet Name?</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="`Answer *" value="" />
-              </div>
-              <input type="submit" class="btnRegister" value="Send Complain" />
-            </div>
-          </div>
-        </div> -->
+            <!--end row register-form-->
+          </form>
+          <!--end form-->
+
+        </div>
       </div>
     </div>
   </div>
 
 </div>
+
+<app-footer></app-footer>

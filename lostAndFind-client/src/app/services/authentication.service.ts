@@ -28,7 +28,7 @@ export class AuthenticationService {
   // *****************************************
 
   register(user): Observable<any> {
-    console.log('aaaaaaa =' + user.bDay);
+    console.log('aaaaaaa =' + user);
     return this.http.post(AppConfig.BASE_URL + 'auth/signup', {
       nic: user.nic,
       username: user.username,
@@ -39,7 +39,43 @@ export class AuthenticationService {
       address: user.address,
       bDay: user.bDay,
       gender: user.gender,
-      password: user.password
+      password: user.password,
+    }, httpOptions);
+  }
+
+
+  adminRegister(user): Observable<any> {
+    console.log('aaaaaaa =' + user);
+    return this.http.post(AppConfig.BASE_URL + 'auth/signup', {
+      nic: user.nic,
+      username: user.username,
+      fName: user.fName,
+      lName: user.lName,
+      email: user.email,
+      phone: user.phone,
+      // address: user.address,
+      // bDay: user.bDay,
+      gender: user.gender,
+      password: user.password,
+      role: ['admin'],
+    }, httpOptions);
+  }
+
+  modRegister(user): Observable<any> {
+    console.log('aaaaaaa =' + user);
+    return this.http.post(AppConfig.BASE_URL + 'auth/signup', {
+      nic: user.nic,
+      username: user.username,
+      fName: user.fName,
+      lName: user.lName,
+      email: user.email,
+      phone: user.phone,
+      police_station: user.police_station,
+      // address: user.address,
+      // bDay: user.bDay,
+      gender: user.gender,
+      password: user.password,
+      role: ['mod'],
     }, httpOptions);
   }
 

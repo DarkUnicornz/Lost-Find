@@ -36,10 +36,28 @@
     "FOOTER_SIGNIN": "Sign In"
   },
 
-  "LOSTFOUNDITEM": {
-    "HEADER": "LOST FOUND ITEM",
-    "LOCATION": "Location",
-    "DESCRIPTION": "Description",
-    "LOSTFOUNDDATE": "Lost/Found Date"
+  "LOST_ITEM": {
+    "HEADER": "LOST ITEM",
+    "ITEM": "Item",
+    "ITEM1": "Phone",
+    "ITEM2": "Purse",
+    "ITEM3": "Watch",
+    "LOCATION": "Lost location",
+    "LOCATION1": "Karandeniya",
+    "LOCATION2": "Ambalangoda",
+    "LOCATION3": "Elpitiya",
+    "PRICE": "Lost item price",
+    "LOST_DATE": "Item lost date",
+    "DESCRIPTION": "Lost item details",
+    "LOSTFOUNDDATE": "Lost Date"
+
+  },
+
+  "COMPLAIN": {
+    "POLICE_STATION": "Nearest police station wich lost",
+    "POLICE_STATION1": "Karandeniya",
+    "POLICE_STATION2": "Ambalangoda",
+    "POLICE_STATION3": "Elpitiya",
+    "DESCRIPTION": "Complain details"
   }
 }
