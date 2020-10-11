@@ -41,6 +41,8 @@ import { authInterceptorProviders } from './helpers/authentication.interceptor';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ChartsModule } from 'ng2-charts';
+import { SearchComponent } from './components/search/search.component';
+import { SearchPageComponent } from './pages/search-page/search-page.component';
 
 
 
@@ -76,6 +78,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ComplainComponent,
     LostfoundItemCardComponent,
     AdminModProfileComponent,
+    SearchComponent,
+    SearchPageComponent,
   ],
   imports: [
     BrowserModule,
