@@ -8,6 +8,7 @@ import { User } from './../models/user.model';
 import { Post } from './../models/post.model';
 import { TokenStorageService } from './../services/token-storage.service';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,6 +18,7 @@ export class LostAndFindService {
     private http: HttpClient,
     private router: Router,
     private tokenStorageService: TokenStorageService,
+   
   ) { }
 
   saveLostPostDetails(lostPost): Observable<any> {
@@ -48,5 +50,14 @@ export class LostAndFindService {
       description: foundPost.founddescription,
     }, httpOptions);
 
+  }
+
+  getAllFoundPost(): Observable<any> {
+
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': this.tokenStorageService.getToken() })
+    };
+
+    return this.http.get(AppConfig.BASE_URL + 'lost&founditem/user_found_posts', httpOptions);
   }
 }

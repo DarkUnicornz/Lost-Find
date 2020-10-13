@@ -101,7 +101,7 @@
                 <div class="row mb-4">
                     <div class="col-md-3">
                         <div class="card text-white bg-primary">
-                            <div class="card-header">found</div>
+                            <div class="card-header">Found Items</div>
                             <div class="card-body">
                                 <button type="button" class="btn btn-light btn-lg btn-block">{{foundCount}}</button>
                             </div>
@@ -109,7 +109,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="card text-white bg-primary">
-                            <div class="card-header">lost</div>
+                            <div class="card-header">Lost Items</div>
                             <div class="card-body">
                                 <button type="button" class="btn btn-light btn-lg btn-block">{{lostCount}}</button>
                             </div>
@@ -117,7 +117,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="card text-white bg-primary">
-                            <div class="card-header">complain</div>
+                            <div class="card-header">Complains</div>
                             <div class="card-body">
                                 <button type="button" class="btn btn-light btn-lg btn-block">{{complainCount}}</button>
                             </div>
@@ -125,7 +125,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="card text-white bg-primary">
-                            <div class="card-header">ooo</div>
+                            <div class="card-header">Own Items</div>
                             <div class="card-body">
                                 <button type="button" class="btn btn-light btn-lg btn-block">500</button>
                             </div>
@@ -148,76 +148,89 @@
                             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
 
+                                <div *ngFor="let cmp of lostfound" class="col-md-4 my-2">
+                                    <!-- <app-lostfound-item-card id={{cmp._id}} item={{cmp.item}} description={{cmp.description}}>
+                                    </app-lostfound-item-card> -->
+                                    <section id="gallery">
+                                        <div class="container">
+                                            <div class="row">
 
-                                <section id="gallery">
-                                    <div class="container">
-                                        <div class="row">
+                                                <div class="col-lg-4 mb-4">
+                                                    <div class="card">
+                                                        <img src="https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" alt="" class="card-img-top">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">Sunset</h5>
+                                                            <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut eum similique repellat a laborum, rerum voluptates ipsam eos quo tempore iusto dolore modi dolorum in pariatur. Incidunt repellendus
+                                                                praesentium quae!
+                                                            </p>
+                                                            <a href="" class="btn btn-outline-success btn-sm">Read More</a>
 
-                                            <div class="col-lg-4 mb-4">
-                                                <div class="card">
-                                                    <img src="https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" alt="" class="card-img-top">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">Sunset</h5>
-                                                        <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut eum similique repellat a laborum, rerum voluptates ipsam eos quo tempore iusto dolore modi dolorum in pariatur. Incidunt repellendus praesentium
-                                                            quae!
-                                                        </p>
-                                                        <a href="" class="btn btn-outline-success btn-sm">Read More</a>
-
+                                                        </div>
                                                     </div>
                                                 </div>
+
                                             </div>
-
                                         </div>
-                                    </div>
-                                </section>
+                                    </section>
 
+                                </div>
 
                             </div>
                             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                <section id="gallery">
-                                    <div class="container">
-                                        <div class="row">
+                                <div *ngFor="let cmp of found" class="col-md-6 my-2">
+                                    <!-- <app-lostfound-item-card id={{cmp._id}} item={{cmp.item}} description={{cmp.description}}>
+                                    </app-lostfound-item-card> -->
+                                    <section id="gallery">
+                                        <div class="container">
+                                            <div class="row">
 
-                                            <div class="col-lg-4 mb-4">
-                                                <div class="card">
-                                                    <img src="https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" alt="" class="card-img-top">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">Sunset</h5>
-                                                        <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut eum similique repellat a laborum, rerum voluptates ipsam eos quo tempore iusto dolore modi dolorum in pariatur. Incidunt repellendus praesentium
-                                                            quae!
-                                                        </p>
-                                                        <a href="" class="btn btn-outline-success btn-sm">Read More</a>
+                                                <div class="col-lg-4 mb-4">
+                                                    <div class="card">
+                                                        <img src="https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" alt="" class="card-img-top">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">{{found.item}}</h5>
+                                                            <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut eum similique repellat a laborum, rerum voluptates ipsam eos quo tempore iusto dolore modi dolorum in pariatur. Incidunt repellendus
+                                                                praesentium quae!
+                                                            </p>
+                                                            <a href="" class="btn btn-outline-success btn-sm">Read More</a>
 
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
 
+                                            </div>
                                         </div>
-                                    </div>
-                                </section>
+                                    </section>
+
+                                </div>
                             </div>
                             <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                <section id="gallery">
-                                    <div class="container">
-                                        <div class="row">
+                                <div *ngFor="let cmp of lostfound" class="col-md-4 my-2">
+                                    <!-- <app-lostfound-item-card id={{cmp._id}} item={{cmp.item}} description={{cmp.description}}>
+                                    </app-lostfound-item-card> -->
+                                    <section id="gallery">
+                                        <div class="container">
+                                            <div class="row">
 
-                                            <div class="col-lg-4 mb-4">
-                                                <div class="card">
-                                                    <img src="https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" alt="" class="card-img-top">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">Sunset</h5>
-                                                        <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut eum similique repellat a laborum, rerum voluptates ipsam eos quo tempore iusto dolore modi dolorum in pariatur. Incidunt repellendus praesentium
-                                                            quae!
-                                                        </p>
-                                                        <a href="" class="btn btn-outline-success btn-sm">Read More</a>
+                                                <div class="col-lg-4 mb-4">
+                                                    <div class="card">
+                                                        <img src="https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" alt="" class="card-img-top">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">Sunset</h5>
+                                                            <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut eum similique repellat a laborum, rerum voluptates ipsam eos quo tempore iusto dolore modi dolorum in pariatur. Incidunt repellendus
+                                                                praesentium quae!
+                                                            </p>
+                                                            <a href="" class="btn btn-outline-success btn-sm">Read More</a>
 
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
 
+                                            </div>
                                         </div>
-                                    </div>
-                                </section>
+                                    </section>
+
+                                </div>
                             </div>
                             <div class="tab-pane fade" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
                                 <section id="gallery">

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { from } from 'rxjs';
+import { LostAndFound } from 'src/app/models/lost-and-found.model';
 import { User } from 'src/app/models/user.model';
 import { StaticsService } from 'src/app/services/statics.service';
 import { TokenStorageService } from '../../services/token-storage.service';
+import { LostAndFindService } from './../../services/lost-and-find.service';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -16,11 +18,13 @@ export class UserDashboardComponent implements OnInit {
   foundCount : number;
   complainCount : number;
   detailsCount :  number;
+  found: LostAndFound[];
 
 
   constructor(
     private tokenStorageService: TokenStorageService,
-    private staticService: StaticsService
+    private staticService: StaticsService,
+    private lostAndFindService: LostAndFindService,
   ) { }
 
   ngOnInit() {
@@ -57,6 +61,17 @@ export class UserDashboardComponent implements OnInit {
       console.log("Count"+this.complainCount);
       
     })
+  }
+
+  getFoundItem() {
+    this.lostAndFindService.getAllFoundPost().subscribe(
+      data => {
+        this.found = data['found'] as LostAndFound[];
+      },
+      err => {
+        return ("Found item error");
+      }
+    )
   }
 
 
