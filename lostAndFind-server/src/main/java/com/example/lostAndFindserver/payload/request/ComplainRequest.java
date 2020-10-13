@@ -7,18 +7,18 @@ public class ComplainRequest {
 
     @NotBlank
     @Size(max = 50)
-    private String police_station;
+    private String policestation;
 
     @NotBlank
     @Size(max = 500)
     private String description;
 
-    public String getPolice_station() {
-        return police_station;
+    public String getPolicestation() {
+        return policestation;
     }
 
-    public void setPolice_station(String police_station) {
-        this.police_station = police_station;
+    public void setPolicestation(String policestation) {
+        this.policestation = policestation;
     }
 
     public String getDescription() {

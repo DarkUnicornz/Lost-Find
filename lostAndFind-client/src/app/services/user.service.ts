@@ -41,7 +41,7 @@ export class UserService {
     }, httpOptions);
   }
 
-  editProfile(data){
+  editProfile(data) {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': this.tokenStorageService.getToken() })
     };
